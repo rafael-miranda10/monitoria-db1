@@ -1,6 +1,6 @@
 ﻿using Flunt.Validations;
-using Monitoria.Domain.Registration.ValueObjects;
 using Monitoria.Infra.Shared.Entities;
+using Monitoria.Infra.Shared.ValueObjects;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,12 +17,15 @@ namespace Monitoria.Domain.Registration.Entities
             Email = email;
             Address = address;
             _animals = new List<Animal>();
+
+            AddNotifications(name, document, email, address);
         }
 
         public Name Name { get; private set; }
         public Document Document { get; private set; }
         public Email Email { get; private set; }
         public Address Address { get; private set; }
+        public IList<Animal> Animails { get { return _animals.ToArray(); } }
 
         public void AddAnimal(Animal animal)
         {
@@ -32,7 +35,7 @@ namespace Monitoria.Domain.Registration.Entities
             {
                 AddNotifications(new Contract()
                 .Requires()
-                .IsNotNull(hasSameName, "Customer.animals", "Você já tem um animal com o mesmo nome")
+                .IsNotNull(hasSameName, "Customer.Animals", "Você já tem um animal com o mesmo nome")
                 );
             }
 

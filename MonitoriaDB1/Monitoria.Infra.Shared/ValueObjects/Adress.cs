@@ -1,7 +1,6 @@
 ﻿using Flunt.Validations;
-using Monitoria.Infra.Shared.ValueObjects;
 
-namespace Monitoria.Domain.Registration.ValueObjects
+namespace Monitoria.Infra.Shared.ValueObjects
 {
     public class Address : ValueObject
     {
@@ -18,7 +17,7 @@ namespace Monitoria.Domain.Registration.ValueObjects
             AddNotifications(new Contract()
                 .Requires()
                 .HasMinLen(Street, 3, "Address.Street", "A rua deve conter pelo menos 3 caracteres")
-                .AreEquals(ZipCode,8,"Address.ZipCode", "O CEP deve conter 8 caracteres")
+                .AreEquals(ZipCode, 8, "Address.ZipCode", "O CEP deve conter 8 caracteres")
             );
         }
 

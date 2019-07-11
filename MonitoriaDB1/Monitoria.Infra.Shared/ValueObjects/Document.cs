@@ -1,10 +1,9 @@
 ﻿using Flunt.Validations;
-using Monitoria.Domain.Registration.Enum;
-using Monitoria.Infra.Shared.ValueObjects;
+using Monitoria.Infra.Shared.Enum;
 using System;
 using System.Text.RegularExpressions;
 
-namespace Monitoria.Domain.Registration.ValueObjects
+namespace Monitoria.Infra.Shared.ValueObjects
 {
     public class Document : ValueObject
     {

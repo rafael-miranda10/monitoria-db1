@@ -16,7 +16,7 @@ namespace Monitoria.Domain.Registration.Entities
 
             AddNotifications(new Contract()
                 .Requires()
-                .IsLowerOrEqualsThan(0,Age,"Animal.Age", "A idade deve ser maior que zero")
+                .IsLowerThan(0,Age,"Animal.Age", "A idade deve ser maior que zero")
                 .HasMinLen(Name, 3, "Animal.Name", "O nome deve conter pelo menos 3 caracteres")
                 .HasMaxLen(Name, 40, "Animal.Name", "Nome deve conter até 40 caracteres")
                 );

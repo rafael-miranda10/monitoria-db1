@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Monitoria.Domain.Registration.Enum
+namespace Monitoria.Domain.PetCare.Enum
 {
     public enum ProfessionalEnum
     {
