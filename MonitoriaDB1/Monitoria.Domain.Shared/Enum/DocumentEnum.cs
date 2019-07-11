@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Monitoria.Infra.Shared.Enum
+namespace Monitoria.Domain.Shared.Enum
 {
     public enum EDocumentType
     {

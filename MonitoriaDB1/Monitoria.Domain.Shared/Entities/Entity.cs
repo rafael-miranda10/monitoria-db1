@@ -1,7 +1,7 @@
 ﻿using Flunt.Notifications;
 using System;
 
-namespace Monitoria.Infra.Shared.Entities
+namespace Monitoria.Domain.Shared.Entities
 {
     public abstract class Entity : Notifiable
     {

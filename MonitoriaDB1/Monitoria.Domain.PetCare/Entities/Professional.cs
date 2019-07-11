@@ -1,6 +1,6 @@
 ﻿using Monitoria.Domain.PetCare.Enum;
-using Monitoria.Infra.Shared.Entities;
-using Monitoria.Infra.Shared.ValueObjects;
+using Monitoria.Domain.Shared.Entities;
+using Monitoria.Domain.Shared.ValueObjects;
 
 namespace Monitoria.Domain.PetCare.Entities
 {

@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.Shared", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.Data", "Monitoria.Infra.Data\Monitoria.Infra.Data.csproj", "{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{F1B2CC76-36C2-4517-95D3-475E0C787B0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.Shared", "Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj", "{60ABB8DE-FC9E-4893-9F16-376987241EAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60ABB8DE-FC9E-4893-9F16-376987241EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60ABB8DE-FC9E-4893-9F16-376987241EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60ABB8DE-FC9E-4893-9F16-376987241EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60ABB8DE-FC9E-4893-9F16-376987241EAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +70,8 @@ Global
 		{E1F2060B-E0DD-4900-A5F5-9494B00299B4} = {A595C0DB-AA04-45BF-84CC-E7DACEEA459C}
 		{1B970975-EDDE-4190-AB75-224EE3157E29} = {E1F2060B-E0DD-4900-A5F5-9494B00299B4}
 		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4} = {16EF5B4B-3531-49A9-B21A-E826F8AF2FD2}
+		{F1B2CC76-36C2-4517-95D3-475E0C787B0B} = {06B36992-0B5A-474A-9857-D3CA038C75A2}
+		{60ABB8DE-FC9E-4893-9F16-376987241EAE} = {F1B2CC76-36C2-4517-95D3-475E0C787B0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A8EFCC-FC88-4970-9F0F-0B19AADAAA81}

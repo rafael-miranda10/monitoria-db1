@@ -1,6 +1,6 @@
 ﻿using Flunt.Validations;
-using Monitoria.Infra.Shared.Entities;
-using Monitoria.Infra.Shared.ValueObjects;
+using Monitoria.Domain.Shared.Entities;
+using Monitoria.Domain.Shared.ValueObjects;
 using System.Collections.Generic;
 using System.Linq;
 

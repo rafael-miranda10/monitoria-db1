@@ -1,6 +1,6 @@
 ﻿using Flunt.Notifications;
 
-namespace Monitoria.Infra.Shared.ValueObjects
+namespace Monitoria.Domain.Shared.Valueobjects
 {
     public abstract class ValueObject : Notifiable
     {

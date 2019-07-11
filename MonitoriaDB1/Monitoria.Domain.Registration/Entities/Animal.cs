@@ -1,6 +1,6 @@
 ﻿using Flunt.Validations;
 using Monitoria.Domain.Registration.Enum;
-using Monitoria.Infra.Shared.Entities;
+using Monitoria.Domain.Shared.Entities;
 
 namespace Monitoria.Domain.Registration.Entities
 {

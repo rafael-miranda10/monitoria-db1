@@ -1,6 +1,7 @@
 ﻿using Flunt.Validations;
+using Monitoria.Domain.Shared.Valueobjects;
 
-namespace Monitoria.Infra.Shared.ValueObjects
+namespace Monitoria.Domain.Shared.ValueObjects
 {
     public class Name : ValueObject
     {
