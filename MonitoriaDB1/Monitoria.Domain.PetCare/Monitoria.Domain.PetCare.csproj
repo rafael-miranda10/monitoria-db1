@@ -10,7 +10,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Interfaces\Repositories\" />
     <Folder Include="ValueObjects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flunt" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

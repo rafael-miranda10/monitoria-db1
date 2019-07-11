@@ -23,13 +23,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registratio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E1F2060B-E0DD-4900-A5F5-9494B00299B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.Shared", "Monitoria.Infra.Shared\Monitoria.Infra.Shared.csproj", "{1B970975-EDDE-4190-AB75-224EE3157E29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.Shared", "Monitoria.Infra.Shared\Monitoria.Infra.Shared.csproj", "{1B970975-EDDE-4190-AB75-224EE3157E29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.Data", "Monitoria.Infra.Data\Monitoria.Infra.Data.csproj", "{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.Data", "Monitoria.Infra.Data\Monitoria.Infra.Data.csproj", "{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{F1B2CC76-36C2-4517-95D3-475E0C787B0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.Shared", "Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj", "{60ABB8DE-FC9E-4893-9F16-376987241EAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Domain.Shared", "Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj", "{60ABB8DE-FC9E-4893-9F16-376987241EAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Tests", "5 - Tests", "{1499D49A-0F0A-4121-8FF8-74B088137028}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainTests", "DomainTests", "{98C562EA-2BF6-40AB-B7B9-21F32A4E9921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.Registration.Tests", "Monitoria.Domain.Registration.Tests\Monitoria.Domain.Registration.Tests.csproj", "{583A1DA0-52A7-465B-BC41-88852FD14BF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.PetCare.Tests", "Monitoria.Domain.PetCare.Tests\Monitoria.Domain.PetCare.Tests.csproj", "{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.Shared.Tests", "Monitoria.Domain.Shared.Tests\Monitoria.Domain.Shared.Tests.csproj", "{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +67,18 @@ Global
 		{60ABB8DE-FC9E-4893-9F16-376987241EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60ABB8DE-FC9E-4893-9F16-376987241EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60ABB8DE-FC9E-4893-9F16-376987241EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583A1DA0-52A7-465B-BC41-88852FD14BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583A1DA0-52A7-465B-BC41-88852FD14BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583A1DA0-52A7-465B-BC41-88852FD14BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583A1DA0-52A7-465B-BC41-88852FD14BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +94,10 @@ Global
 		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4} = {16EF5B4B-3531-49A9-B21A-E826F8AF2FD2}
 		{F1B2CC76-36C2-4517-95D3-475E0C787B0B} = {06B36992-0B5A-474A-9857-D3CA038C75A2}
 		{60ABB8DE-FC9E-4893-9F16-376987241EAE} = {F1B2CC76-36C2-4517-95D3-475E0C787B0B}
+		{98C562EA-2BF6-40AB-B7B9-21F32A4E9921} = {1499D49A-0F0A-4121-8FF8-74B088137028}
+		{583A1DA0-52A7-465B-BC41-88852FD14BF9} = {98C562EA-2BF6-40AB-B7B9-21F32A4E9921}
+		{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED} = {98C562EA-2BF6-40AB-B7B9-21F32A4E9921}
+		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51} = {98C562EA-2BF6-40AB-B7B9-21F32A4E9921}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A8EFCC-FC88-4970-9F0F-0B19AADAAA81}
