@@ -13,13 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{16EF5B4B-3531-49A9-B21A-E826F8AF2FD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.Registration", "Monitoria.Domain.Registration\Monitoria.Domain.Registration.csproj", "{EA6E1CB7-2661-44A0-9D17-6E0C44EB48B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Domain.Registration", "Monitoria.Domain.Registration\Monitoria.Domain.Registration.csproj", "{EA6E1CB7-2661-44A0-9D17-6E0C44EB48B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.PetCare", "Monitoria.Domain.PetCare\Monitoria.Domain.PetCare.csproj", "{D73E5380-ED2D-446F-A5D7-29FFF3B0BCCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Domain.PetCare", "Monitoria.Domain.PetCare\Monitoria.Domain.PetCare.csproj", "{D73E5380-ED2D-446F-A5D7-29FFF3B0BCCC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PetCare", "PetCare", "{3D4F50CD-89FB-4CF0-88AA-353EB5B6A390}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registration", "{A9ECC21D-09B4-41A5-B694-B27696FD6D43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E1F2060B-E0DD-4900-A5F5-9494B00299B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.Shared", "Monitoria.Infra.Shared\Monitoria.Infra.Shared.csproj", "{1B970975-EDDE-4190-AB75-224EE3157E29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.Data", "Monitoria.Infra.Data\Monitoria.Infra.Data.csproj", "{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +41,14 @@ Global
 		{D73E5380-ED2D-446F-A5D7-29FFF3B0BCCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D73E5380-ED2D-446F-A5D7-29FFF3B0BCCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D73E5380-ED2D-446F-A5D7-29FFF3B0BCCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B970975-EDDE-4190-AB75-224EE3157E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B970975-EDDE-4190-AB75-224EE3157E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B970975-EDDE-4190-AB75-224EE3157E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B970975-EDDE-4190-AB75-224EE3157E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +59,9 @@ Global
 		{D73E5380-ED2D-446F-A5D7-29FFF3B0BCCC} = {3D4F50CD-89FB-4CF0-88AA-353EB5B6A390}
 		{3D4F50CD-89FB-4CF0-88AA-353EB5B6A390} = {06B36992-0B5A-474A-9857-D3CA038C75A2}
 		{A9ECC21D-09B4-41A5-B694-B27696FD6D43} = {06B36992-0B5A-474A-9857-D3CA038C75A2}
+		{E1F2060B-E0DD-4900-A5F5-9494B00299B4} = {A595C0DB-AA04-45BF-84CC-E7DACEEA459C}
+		{1B970975-EDDE-4190-AB75-224EE3157E29} = {E1F2060B-E0DD-4900-A5F5-9494B00299B4}
+		{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4} = {16EF5B4B-3531-49A9-B21A-E826F8AF2FD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A8EFCC-FC88-4970-9F0F-0B19AADAAA81}
