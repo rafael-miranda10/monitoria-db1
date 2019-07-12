@@ -21,7 +21,6 @@ namespace Monitoria.Domain.PetCare.Entities
                 .HasMinLen(CheckList, 3, "PetServices.CheckList", "O checklist deve conter pelo menos 3 caracteres")
                 .HasMaxLen(CheckList, 200, "PetServices.CheckList", "O checklist deve conter até 200 caracteres")
                 .IsGreaterThan(ServiceValue, 0, "PetServices.ServiceValue", "O valor deve ser maior que zero")
-
             );
 
         }

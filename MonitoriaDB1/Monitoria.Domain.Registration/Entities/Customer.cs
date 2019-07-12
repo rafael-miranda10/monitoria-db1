@@ -1,4 +1,5 @@
-﻿using Flunt.Validations;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
 using Monitoria.Domain.Shared.Entities;
 using Monitoria.Domain.Shared.ValueObjects;
 using System.Collections.Generic;
@@ -33,10 +34,7 @@ namespace Monitoria.Domain.Registration.Entities
 
             if (hasSameName != null)
             {
-                AddNotifications(new Contract()
-                .Requires()
-                .IsNotNull(hasSameName, "Customer.Animals", "Você já tem um animal com o mesmo nome")
-                );
+                AddNotification(new Notification("Customer.Animals", $"O cliente {Name.FirstName} já tem um animal chamado {animal.Name}"));
             }
 
             if (Valid)
