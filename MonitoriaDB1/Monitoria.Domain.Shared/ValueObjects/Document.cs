@@ -8,19 +8,19 @@ namespace Monitoria.Domain.Shared.ValueObjects
 {
     public class Document : ValueObject
     {
-        public Document(string number, EDocumentType type)
+        public Document(string number, DocumentEnum type)
         {
             Number = number;
             Type = type;
 
             AddNotifications(new Contract()
                 .Requires()
-                .IsTrue(IsCPFCNPJ(Number), "Document.Number", "Documento inválido")
+                .IsTrue(IsCPFCNPJ(Number), "Document.Number", $"Documento {type.ToString()} é inválido")
             );
         }
 
         public string Number { get; private set; }
-        public EDocumentType Type { get; private set; }
+        public DocumentEnum Type { get; private set; }
 
         private bool IsCPFCNPJ(string cpfcnpj)
         {

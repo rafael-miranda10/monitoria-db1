@@ -2,7 +2,7 @@
 
 namespace Monitoria.Domain.Shared.Enum
 {
-    public enum EDocumentType
+    public enum DocumentEnum
     {
         [Description("CPF")]
         CPF = 1,
