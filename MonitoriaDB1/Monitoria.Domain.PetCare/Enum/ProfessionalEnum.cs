@@ -9,7 +9,7 @@ namespace Monitoria.Domain.PetCare.Enum
         Veterinary = 1,
 
         [Description("Tosador")]
-        AnimalHaircut = 2,
+        AnimalHairCut = 2,
 
         [Description("Balconista")]
         Clerk = 3,

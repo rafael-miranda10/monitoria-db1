@@ -1,4 +1,5 @@
-﻿using Flunt.Validations;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
 using Monitoria.Domain.Shared.Entities;
 using System;
 
@@ -19,6 +20,7 @@ namespace Monitoria.Domain.PetCare.Entities
                     .HasMaxLen(Note, 150, "ProfessionalServicesAnimal.Note", "O campo descrição deve ter no maximo 150 caracteres")
                    );
 
+            AddNotifications(prof, pService);
         }
 
         public Professional Professional { get; private set; }
@@ -27,17 +29,24 @@ namespace Monitoria.Domain.PetCare.Entities
         public DateTime EndDate { get; private set; }
         public string Note { get; private set; }
 
-        public void ValidationOfEndDate(DateTime endDate)
+        private bool ValidationOfEndDate(DateTime dateToVerify)
         {
-            int resultCompare = DateTime.Compare(EndDate, DateTime.Now);
-            if (resultCompare == 0 || resultCompare > 0)
-                EndDate = endDate;
+            int resultCompare = DateTime.Compare(dateToVerify, StartDate);
             if (resultCompare < 0)
-                AddNotifications(new Contract()
-                   .Requires()
-                   .IsTrue(false, "ProfessionalServicesAnimal.EndDate", "A data de finalização deve ser maior ou igual ao dia que foi iniciado o atendimento.")
-                   );
+            {
+                AddNotification(new Notification("ProfessionalServicesAnimal.EndDate", "A data de finalização do atendimento deve ser maior ou igual a de início do atendimento."));
+                return false;
+            }
 
+            return true;
         }
+
+        public void FinalizeThePetService(DateTime finalizeDate)
+        {
+            if (ValidationOfEndDate(finalizeDate))
+                EndDate = finalizeDate;
+        }
+
+
     }
 }

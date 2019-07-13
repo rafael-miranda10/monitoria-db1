@@ -1,10 +1,11 @@
-﻿using Monitoria.Domain.Shared.Entities;
+﻿using Flunt.Notifications;
+using Monitoria.Domain.Shared.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Monitoria.Domain.PetCare.Entities
 {
-    public class RowAnimalCare: Entity
+    public class RowAnimalCare : Entity
     {
         private IList<ProfessionalServicesAnimal> _animalServices;
 
@@ -22,14 +23,24 @@ namespace Monitoria.Domain.PetCare.Entities
         public decimal ValueTotal { get; private set; }
         public IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
 
-        private void CalculatePriceTotal()
+        public void CalculatePriceTotal()
         {
-            ValueTotal = _animalServices.Sum(x => x.PetService.ServiceValue);
+            if (_animalServices.Count > 0)
+                ValueTotal = _animalServices.Sum(x => x.PetService.ServiceValue);
         }
 
-        private void AddProfessionalService(ProfessionalServicesAnimal profService)
+        public void AddProfessionalService(ProfessionalServicesAnimal profService)
         {
-            if (Valid)
+            if (profService.Invalid)
+            {
+                foreach (var item in profService.Notifications)
+                {
+                    AddNotification(new Notification("RowAnimalCare.List<ProfessionalServicesAnimal>", 
+                        $"Não foi possível adicionar o atendimento! Motivo: {profService.PetService.Description} - {item.Message}"));
+                }
+            }
+
+            if (profService.Valid)
                 _animalServices.Add(profService);
         }
     }

@@ -8,7 +8,7 @@ namespace Monitoria.Domain.PetCare.Entities
     public class AnimalPetCare : Entity
     {
 
-        public AnimalPetCare(string name, int age, SpeciesEnum specie, bool isAlive)
+        public AnimalPetCare(string name, int age, SpeciesEnum specie)
         {
             Name = name;
             Age = age;
