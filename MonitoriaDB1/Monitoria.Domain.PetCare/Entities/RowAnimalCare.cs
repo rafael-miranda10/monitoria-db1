@@ -21,7 +21,7 @@ namespace Monitoria.Domain.PetCare.Entities
 
         public AnimalPetCare AnimalPetCare { get; private set; }
         public decimal ValueTotal { get; private set; }
-        public IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
+        public virtual IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
 
         public void CalculatePriceTotal()
         {

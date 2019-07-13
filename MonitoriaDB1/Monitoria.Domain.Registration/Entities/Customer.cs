@@ -26,7 +26,7 @@ namespace Monitoria.Domain.Registration.Entities
         public Document Document { get; private set; }
         public Email Email { get; private set; }
         public Address Address { get; private set; }
-        public IList<Animal> Animails { get { return _animals.ToArray(); } }
+        public virtual IList<Animal> Animails { get { return _animals.ToArray(); } }
 
         public void AddAnimal(Animal animal)
         {
