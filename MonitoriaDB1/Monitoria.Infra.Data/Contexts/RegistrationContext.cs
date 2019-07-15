@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Monitoria.Domain.Registration.Entities;
+using Monitoria.Domain.Shared.ValueObjects;
+using Monitoria.Infra.Data.Configurations.RegistrationContext;
 
 namespace Monitoria.Infra.Data.Contexts
 {
@@ -23,6 +25,14 @@ namespace Monitoria.Infra.Data.Contexts
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.HasDefaultSchema("Registration");
+
+            modelBuilder.Ignore<Address>();
+            modelBuilder.Ignore<Document>();
+            modelBuilder.Ignore<Email>();
+            modelBuilder.Ignore<Name>();
+
+            modelBuilder.ApplyConfiguration(new AnimalConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
 
         }
 

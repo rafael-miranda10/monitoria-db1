@@ -1,6 +1,7 @@
 ﻿using Flunt.Validations;
 using Monitoria.Domain.Shared.Entities;
 using Monitoria.Domain.Shared.Enum;
+using System;
 
 namespace Monitoria.Domain.Registration.Entities
 {
@@ -26,6 +27,7 @@ namespace Monitoria.Domain.Registration.Entities
         public int Age { get; private set; }
         public SpeciesEnum Specie { get; private set; }
         public bool IsAlive { get; private set; }
+        public Guid CustomerId { get; private set; }
         public virtual Customer Customer {get; private set;}
     }
 }
