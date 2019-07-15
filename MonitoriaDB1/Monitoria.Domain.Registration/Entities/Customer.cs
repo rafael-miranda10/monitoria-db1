@@ -1,5 +1,4 @@
 ﻿using Flunt.Notifications;
-using Flunt.Validations;
 using Monitoria.Domain.Shared.Entities;
 using Monitoria.Domain.Shared.ValueObjects;
 using System.Collections.Generic;

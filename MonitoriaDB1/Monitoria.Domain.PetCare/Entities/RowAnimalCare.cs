@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using Monitoria.Domain.Shared.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

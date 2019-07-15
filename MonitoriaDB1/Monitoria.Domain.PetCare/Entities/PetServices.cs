@@ -1,11 +1,15 @@
 ﻿using Flunt.Validations;
 using Monitoria.Domain.PetCare.Enum;
 using Monitoria.Domain.Shared.Entities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Monitoria.Domain.PetCare.Entities
 {
     public class PetServices : Entity
     {
+        private IList<ProfessionalServicesAnimal> _animalServices;
+
         public PetServices(string descr, CategoryEnum category, string checkList, decimal serviceValue, bool active)
         {
             Description = descr;
@@ -13,6 +17,7 @@ namespace Monitoria.Domain.PetCare.Entities
             CheckList = checkList;
             Active = active;
             ServiceValue = serviceValue;
+            _animalServices = new List<ProfessionalServicesAnimal>();
 
             AddNotifications(new Contract()
                 .Requires()
@@ -30,6 +35,8 @@ namespace Monitoria.Domain.PetCare.Entities
         public string CheckList { get; private set; }
         public decimal ServiceValue { get; private set; }
         public bool Active { get; private set; }
+
+        public virtual IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
 
     }
 }

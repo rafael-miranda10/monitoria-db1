@@ -1,7 +1,7 @@
 ﻿using Flunt.Validations;
 using Monitoria.Domain.Shared.Entities;
 using Monitoria.Domain.Shared.Enum;
-
+using System;
 
 namespace Monitoria.Domain.PetCare.Entities
 {
@@ -25,5 +25,6 @@ namespace Monitoria.Domain.PetCare.Entities
         public string Name { get; private set; }
         public int Age { get; private set; }
         public SpeciesEnum Specie { get; private set; }
+        public RowAnimalCare RowAnimalCare { get; private set; }
     }
 }

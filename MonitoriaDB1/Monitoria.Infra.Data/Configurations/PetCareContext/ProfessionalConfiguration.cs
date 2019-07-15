@@ -41,6 +41,12 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
                 cb.Property(x => x.Country).HasMaxLength(50).HasColumnName("AddressCountry").IsRequired();
                 cb.Property(x => x.ZipCode).HasMaxLength(8).HasColumnName("AddressZipCode").IsRequired();
             });
+
+            //Relacionamento
+            builder.HasMany(x => x.AnimailServices)
+                .WithOne(c => c.Professional)
+                .HasForeignKey(k => k.professionalId)
+                .HasPrincipalKey(p => p.Id);
         }
     }
 }

@@ -15,6 +15,18 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
             builder.Property(x => x.ValueTotal)
                 .IsRequired()
                 .HasColumnName("ValueTotal");
+
+            //Relacionamento ProfessionalServicesAnimal
+            builder.HasMany(x => x.AnimailServices)
+                .WithOne(c => c.RowAnimalCare)
+                .HasForeignKey(k => k.RowAnimalCareId)
+                .HasPrincipalKey(p => p.Id);
+
+            //Relacionamento AnimalPetCare
+            builder.HasOne(x => x.AnimalPetCare)
+                .WithOne(c => c.RowAnimalCare)
+                .HasForeignKey<AnimalPetCare>(k => k.Id)
+                .HasPrincipalKey<RowAnimalCare>(p => p.Id);
         }
     }
 }

@@ -33,6 +33,13 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
             builder.Property(x => x.Category)
               .IsRequired()
               .HasColumnName("Category");
+
+
+            //Relacionamento
+            builder.HasMany(x => x.AnimailServices)
+                .WithOne(c => c.PetService)
+                .HasForeignKey(k => k.PetServiceId)
+                .HasPrincipalKey(p => p.Id);
         }
     }
 }
