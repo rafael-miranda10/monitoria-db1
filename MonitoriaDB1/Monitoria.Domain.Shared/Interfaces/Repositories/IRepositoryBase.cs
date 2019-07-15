@@ -10,5 +10,8 @@ namespace Monitoria.Domain.Shared.Interfaces.Repositories
         IEnumerable<TEntity> GetAll();
         void Update(TEntity obj);
         void Remove(TEntity obj);
+        void RemoveById(Guid id);
+        bool ExistingEntity(TEntity obj);
+        TEntity ExistingReturnEntity(TEntity obj);
     }
 }
