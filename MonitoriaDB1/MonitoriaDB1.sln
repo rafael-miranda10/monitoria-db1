@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PetCare", "PetCare", "{3D4F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registration", "{A9ECC21D-09B4-41A5-B694-B27696FD6D43}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E1F2060B-E0DD-4900-A5F5-9494B00299B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IOC", "IOC", "{E1F2060B-E0DD-4900-A5F5-9494B00299B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.Shared", "Monitoria.Infra.Shared\Monitoria.Infra.Shared.csproj", "{1B970975-EDDE-4190-AB75-224EE3157E29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.IoC", "Monitoria.Infra.Shared\Monitoria.Infra.IoC.csproj", "{1B970975-EDDE-4190-AB75-224EE3157E29}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.Data", "Monitoria.Infra.Data\Monitoria.Infra.Data.csproj", "{6825D9EF-EAA5-4971-91CD-69CB6D3D3AA4}"
 EndProject
@@ -35,11 +35,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Tests", "5 - Tests", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainTests", "DomainTests", "{98C562EA-2BF6-40AB-B7B9-21F32A4E9921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.Registration.Tests", "Monitoria.Domain.Registration.Tests\Monitoria.Domain.Registration.Tests.csproj", "{583A1DA0-52A7-465B-BC41-88852FD14BF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Domain.Registration.Tests", "Monitoria.Domain.Registration.Tests\Monitoria.Domain.Registration.Tests.csproj", "{583A1DA0-52A7-465B-BC41-88852FD14BF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.PetCare.Tests", "Monitoria.Domain.PetCare.Tests\Monitoria.Domain.PetCare.Tests.csproj", "{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Domain.PetCare.Tests", "Monitoria.Domain.PetCare.Tests\Monitoria.Domain.PetCare.Tests.csproj", "{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Domain.Shared.Tests", "Monitoria.Domain.Shared.Tests\Monitoria.Domain.Shared.Tests.csproj", "{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Domain.Shared.Tests", "Monitoria.Domain.Shared.Tests\Monitoria.Domain.Shared.Tests.csproj", "{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{67E111B3-4C02-4A35-930B-0C61281AA62B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.API", "Monitoria.API\Monitoria.API.csproj", "{3466BCBB-2657-4505-8172-776523E20200}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +83,10 @@ Global
 		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3466BCBB-2657-4505-8172-776523E20200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3466BCBB-2657-4505-8172-776523E20200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3466BCBB-2657-4505-8172-776523E20200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3466BCBB-2657-4505-8172-776523E20200}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +106,8 @@ Global
 		{583A1DA0-52A7-465B-BC41-88852FD14BF9} = {98C562EA-2BF6-40AB-B7B9-21F32A4E9921}
 		{5E292CAF-8A2F-488A-8DF4-02B6A7FFB1ED} = {98C562EA-2BF6-40AB-B7B9-21F32A4E9921}
 		{F5E05303-AF4B-4C52-9DA3-8F14EFE89D51} = {98C562EA-2BF6-40AB-B7B9-21F32A4E9921}
+		{67E111B3-4C02-4A35-930B-0C61281AA62B} = {0FC31EA0-BD12-4CF3-BEED-C5FFC12399EE}
+		{3466BCBB-2657-4505-8172-776523E20200} = {67E111B3-4C02-4A35-930B-0C61281AA62B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A8EFCC-FC88-4970-9F0F-0B19AADAAA81}
