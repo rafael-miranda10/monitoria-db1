@@ -3,7 +3,7 @@ using Monitoria.Domain.Shared.Interfaces.UoW;
 
 namespace Monitoria.Infra.Data.UoW
 {
-    public class UnitOfWork<TContext> : IUnitOfWork where TContext : DbContext
+    public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : DbContext
     {
         private readonly TContext _context;
 

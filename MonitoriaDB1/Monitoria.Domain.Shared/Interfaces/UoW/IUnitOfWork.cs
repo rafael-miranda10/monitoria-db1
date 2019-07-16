@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Monitoria.Domain.Shared.Interfaces.UoW
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork<TContext> where TContext : DbContext
     {
         /// <summary>
         /// Saves all pending changes

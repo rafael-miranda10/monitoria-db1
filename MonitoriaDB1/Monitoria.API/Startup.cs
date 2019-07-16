@@ -26,6 +26,7 @@ namespace Monitoria.API
             //var connection = @"Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;ConnectRetryCount=0";
             //services.AddDbContext<PetCareContext>(c => c.UseSqlServer(connection));
             services.AddDbContext<PetCareContext>(c => c.UseSqlServer(Configuration.GetConnectionString("MonitoriaSQLServer")));
+            services.AddDbContext<RegistrationContext>(c => c.UseSqlServer(Configuration.GetConnectionString("MonitoriaSQLServer")));
 
             DependencyInjectorPetCare.Registrar(services);
             DependencyInjectorRegistration.Registrar(services);

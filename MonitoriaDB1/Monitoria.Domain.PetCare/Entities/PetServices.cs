@@ -10,9 +10,9 @@ namespace Monitoria.Domain.PetCare.Entities
     {
         private IList<ProfessionalServicesAnimal> _animalServices;
 
-        public PetServices(string descr, CategoryEnum category, string checkList, decimal serviceValue, bool active)
+        public PetServices(string descricao, CategoryEnum category, string checkList, decimal serviceValue, bool active)
         {
-            Description = descr;
+            Description = descricao;
             Category = category;
             CheckList = checkList;
             Active = active;

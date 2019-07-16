@@ -37,7 +37,7 @@ namespace Monitoria.Infra.IoC.Registration
             svcCollection.AddScoped<ICustomerRepository, CustomerRepository>();
 
             //UoW
-            svcCollection.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork<>));
+            svcCollection.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 
         }
     }

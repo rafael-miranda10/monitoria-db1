@@ -12,6 +12,7 @@ namespace Monitoria.Infra.Data.Contexts
 
         }
 
+
         public DbSet<Animal> Animal { get; set; }
         public DbSet<Customer> Customer { get; set; }
 
