@@ -10,6 +10,11 @@ namespace Monitoria.Domain.PetCare.Entities
     {
         private IList<ProfessionalServicesAnimal> _animalServices;
 
+        public RowAnimalCare()
+        {
+
+        }
+
         public RowAnimalCare(AnimalPetCare animal)
         {
             AnimalPetCare = animal;

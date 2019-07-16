@@ -7,6 +7,10 @@ namespace Monitoria.Domain.PetCare.Entities
 {
     public class ProfessionalServicesAnimal : Entity
     {
+        public ProfessionalServicesAnimal()
+        {
+
+        }
 
         public ProfessionalServicesAnimal(Professional prof, PetServices pService, string note)
         {

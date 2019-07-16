@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Flunt.Notifications;
+using Microsoft.EntityFrameworkCore;
 using Monitoria.Domain.PetCare.Entities;
+using Monitoria.Domain.Shared.ValueObjects;
 using Monitoria.Infra.Data.Configurations.PetCareContext;
 
 namespace Monitoria.Infra.Data.Contexts
@@ -26,7 +28,13 @@ namespace Monitoria.Infra.Data.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("PetCare");
+           // modelBuilder.HasDefaultSchema("PetCare");
+
+            modelBuilder.Ignore<Address>();
+            modelBuilder.Ignore<Document>();
+            modelBuilder.Ignore<Email>();
+            modelBuilder.Ignore<Name>();
+            modelBuilder.Ignore<Notification>();
 
             modelBuilder.ApplyConfiguration(new AnimalPetCareConfiguration());
             modelBuilder.ApplyConfiguration(new PetServicesConfiguration());

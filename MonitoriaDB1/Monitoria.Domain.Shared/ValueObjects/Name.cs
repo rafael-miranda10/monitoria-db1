@@ -5,6 +5,11 @@ namespace Monitoria.Domain.Shared.ValueObjects
 {
     public class Name : ValueObject
     {
+        public Name()
+        {
+
+        }
+
         public Name(string firstName, string lastName)
         {
             FirstName = firstName;

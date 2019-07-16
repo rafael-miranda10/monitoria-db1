@@ -10,6 +10,10 @@ namespace Monitoria.Domain.PetCare.Entities
     {
         private IList<ProfessionalServicesAnimal> _animalServices;
 
+        public Professional()
+        {
+
+        }
         public Professional(Name name, Document document, Email email, Address address, ProfessionalEnum jobPosition)
         {
             Name = name;

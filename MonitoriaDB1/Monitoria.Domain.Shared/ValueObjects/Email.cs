@@ -5,6 +5,11 @@ namespace Monitoria.Domain.Shared.ValueObjects
 {
     public class Email : ValueObject
     {
+        public Email()
+        {
+
+        }
+
         public Email(string address)
         {
             Address = address;

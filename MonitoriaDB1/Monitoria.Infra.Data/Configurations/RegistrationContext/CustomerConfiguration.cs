@@ -17,15 +17,18 @@ namespace Monitoria.Infra.Data.Configurations.RegistrationContext
             builder.OwnsOne<Name>(x => x.Name, cb => {
                 cb.Property(x => x.FirstName).HasMaxLength(50).HasColumnName("FirstName").IsRequired();
                 cb.Property(x => x.LastName).HasMaxLength(50).HasColumnName("LastName").IsRequired();
+                cb.ToTable("Customer");
             });
 
             builder.OwnsOne<Document>(x => x.Document, cb => {
                 cb.Property(x => x.Number).HasMaxLength(50).HasColumnName("DocNumber").IsRequired();
                 cb.Property(x => x.Type).HasColumnName("DocType").IsRequired();
+                cb.ToTable("Customer");
             });
 
             builder.OwnsOne<Email>(x => x.Email, cb => {
                 cb.Property(x => x.Address).HasMaxLength(60).HasColumnName("EmailAddress").IsRequired();
+                cb.ToTable("Customer");
             });
 
             builder.OwnsOne<Address>(x => x.Address, cb => {
@@ -36,6 +39,7 @@ namespace Monitoria.Infra.Data.Configurations.RegistrationContext
                 cb.Property(x => x.State).HasMaxLength(50).HasColumnName("AddressState").IsRequired();
                 cb.Property(x => x.Country).HasMaxLength(50).HasColumnName("AddressCountry").IsRequired();
                 cb.Property(x => x.ZipCode).HasMaxLength(8).HasColumnName("AddressZipCode").IsRequired();
+                cb.ToTable("Customer");
             });
 
             //Relacionamento

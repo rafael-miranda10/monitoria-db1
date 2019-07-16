@@ -24,7 +24,8 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
 
             builder.Property(x => x.ServiceValue)
               .IsRequired()
-              .HasColumnName("ServiceValue");
+              .HasColumnName("ServiceValue")
+              .HasColumnType("decimal(5,2)");
 
             builder.Property(x => x.Active)
               .IsRequired()

@@ -8,6 +8,11 @@ namespace Monitoria.Domain.Shared.ValueObjects
 {
     public class Document : ValueObject
     {
+        public Document()
+        {
+
+        }
+
         public Document(string number, DocumentEnum type)
         {
             Number = number;

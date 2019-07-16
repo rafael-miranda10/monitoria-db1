@@ -14,7 +14,8 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
 
             builder.Property(x => x.ValueTotal)
                 .IsRequired()
-                .HasColumnName("ValueTotal");
+                .HasColumnName("ValueTotal")
+                .HasColumnType("decimal(5,2)");
 
             //Relacionamento ProfessionalServicesAnimal
             builder.HasMany(x => x.AnimailServices)

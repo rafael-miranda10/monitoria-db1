@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\Registration\" />
+  </ItemGroup>
+
 </Project>

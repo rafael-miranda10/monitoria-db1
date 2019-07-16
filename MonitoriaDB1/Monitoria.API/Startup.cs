@@ -23,10 +23,12 @@ namespace Monitoria.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //var connection = @"Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;ConnectRetryCount=0";
-            //services.AddDbContext<PetCareContext>(c => c.UseSqlServer(connection));
+
             services.AddDbContext<PetCareContext>(c => c.UseSqlServer(Configuration.GetConnectionString("MonitoriaSQLServer")));
             services.AddDbContext<RegistrationContext>(c => c.UseSqlServer(Configuration.GetConnectionString("MonitoriaSQLServer")));
+
+            //services.AddDbContext<PetCareContext>(c => c.UseMySql(Configuration.GetConnectionString("MonitoriaMYSQL")));
+            //services.AddDbContext<RegistrationContext>(c => c.UseMySql(Configuration.GetConnectionString("MonitoriaMYSQL")));
 
             DependencyInjectorPetCare.Registrar(services);
             DependencyInjectorRegistration.Registrar(services);
