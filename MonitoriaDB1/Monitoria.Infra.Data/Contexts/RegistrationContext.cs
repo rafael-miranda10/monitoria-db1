@@ -26,7 +26,7 @@ namespace Monitoria.Infra.Data.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
-          //  modelBuilder.HasDefaultSchema("Registration");
+            modelBuilder.HasDefaultSchema("Registration");
 
             modelBuilder.Ignore<Address>();
             modelBuilder.Ignore<Document>();

@@ -28,7 +28,7 @@ namespace Monitoria.Infra.Data.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
-           // modelBuilder.HasDefaultSchema("PetCare");
+            modelBuilder.HasDefaultSchema("PetCare");
 
             modelBuilder.Ignore<Address>();
             modelBuilder.Ignore<Document>();
