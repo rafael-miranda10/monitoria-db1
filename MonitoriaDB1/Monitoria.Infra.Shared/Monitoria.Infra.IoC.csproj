@@ -9,6 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Monitoria.Application.PetCare\Monitoria.Application.PetCare.csproj" />
+    <ProjectReference Include="..\Monitoria.Application.Registration\Monitoria.Application.Registration.csproj" />
+    <ProjectReference Include="..\Monitoria.Application.Shared\Monitoria.Application.Shared.csproj" />
     <ProjectReference Include="..\Monitoria.Domain.PetCare\Monitoria.Domain.PetCare.csproj" />
     <ProjectReference Include="..\Monitoria.Domain.Registration\Monitoria.Domain.Registration.csproj" />
     <ProjectReference Include="..\Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj" />

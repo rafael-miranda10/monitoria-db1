@@ -1,4 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Monitoria.Application.Registration.Apps;
+using Monitoria.Application.Registration.Interfaces;
+using Monitoria.Application.Shared.Apps;
+using Monitoria.Application.Shared.Interfaces;
 using Monitoria.Domain.Registration.Interfaces.Repositories;
 using Monitoria.Domain.Registration.Interfaces.Services;
 using Monitoria.Domain.Registration.Services;
@@ -16,8 +20,9 @@ namespace Monitoria.Infra.IoC.Registration
         public static void Registrar(IServiceCollection svcCollection)
         {
             //Aplicação
-            //svcCollection.AddScoped(typeof(IAppBase<,>), typeof(ServicoAppBase<,>));
-            //svcCollection.AddScoped<IPratoApp, PratoApp>();
+            svcCollection.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
+            svcCollection.AddScoped<IAnimalAppService, AnimalAppService>();
+            svcCollection.AddScoped<ICustomerAppService, CustomerAppService>();
 
             //Domínio
             svcCollection.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
