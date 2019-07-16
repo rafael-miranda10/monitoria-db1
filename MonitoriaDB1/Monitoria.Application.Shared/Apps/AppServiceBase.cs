@@ -1,11 +1,12 @@
-﻿using Monitoria.Application.Shared.Interfaces;
+﻿using Flunt.Notifications;
+using Monitoria.Application.Shared.Interfaces;
 using Monitoria.Domain.Shared.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 
 namespace Monitoria.Application.Shared.Apps
 {
-    public class AppServiceBase<TEntity> : IAppServiceBase<TEntity> where TEntity : class
+    public class AppServiceBase<TEntity> : Notifiable, IAppServiceBase<TEntity> where TEntity : class
     {
         private readonly IServiceBase<TEntity> _serviceBase;
 

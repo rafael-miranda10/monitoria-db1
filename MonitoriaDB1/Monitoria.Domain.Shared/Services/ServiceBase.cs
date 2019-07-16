@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Flunt.Notifications;
 using Monitoria.Domain.Shared.Interfaces.Repositories;
 using Monitoria.Domain.Shared.Interfaces.Services;
 
 namespace Monitoria.Domain.Shared.Services
 {
-    public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : class
+    public class ServiceBase<TEntity> : Notifiable, IServiceBase<TEntity> where TEntity : class
     {
 
         private readonly IRepositoryBase<TEntity> _repository;

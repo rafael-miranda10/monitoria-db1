@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Monitoria.Infra.Data.Contexts;
 using Monitoria.Infra.IoC.PetCare;
 using Monitoria.Infra.IoC.Registration;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Monitoria.API
 {
@@ -30,6 +31,11 @@ namespace Monitoria.API
             DependencyInjectorRegistration.Registrar(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //Aplicando documentação com Swagger
+            services.AddSwaggerGen( x => {
+                x.SwaggerDoc("V1", new Info{ Title="Monitoria DB1", Version="V1"});
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +53,11 @@ namespace Monitoria.API
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/V1/swagger.json","Monitoria DB1 - V1");
+            });
+
         }
     }
 }

@@ -2,7 +2,6 @@
 using Monitoria.Domain.Registration.Interfaces.Repositories;
 using Monitoria.Domain.Registration.Interfaces.Services;
 using Monitoria.Domain.Shared.Services;
-using System;
 using System.Collections.Generic;
 
 namespace Monitoria.Domain.Registration.Services
