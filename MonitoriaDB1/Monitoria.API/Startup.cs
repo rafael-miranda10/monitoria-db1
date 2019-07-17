@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Monitoria.Infra.CrossCutting.Mappings;
 using Monitoria.Infra.Data.Contexts;
 using Monitoria.Infra.IoC.PetCare;
 using Monitoria.Infra.IoC.Registration;
@@ -34,6 +36,11 @@ namespace Monitoria.API
             DependencyInjectorRegistration.Registrar(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //Automapper
+            // services.AddAutoMapper();
+            var mapper = AutoMapperConfig.RegisterMappings();
+            services.AddSingleton(mapper);
 
             //Aplicando documentação com Swagger
             services.AddSwaggerGen( x => {

@@ -4,10 +4,6 @@ using Monitoria.Application.PetCare.Interfaces;
 using Monitoria.Domain.PetCare.Interfaces.Repositories;
 using Monitoria.Domain.PetCare.Interfaces.Services;
 using Monitoria.Domain.PetCare.Services;
-using Monitoria.Domain.Shared.Interfaces.Repositories;
-using Monitoria.Domain.Shared.Interfaces.Services;
-using Monitoria.Domain.Shared.Services;
-using Monitoria.Infra.Data.Repositories;
 using Monitoria.Infra.Data.Repositories.PetCare;
 
 namespace Monitoria.Infra.IoC.PetCare
