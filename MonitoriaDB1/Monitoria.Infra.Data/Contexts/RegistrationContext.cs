@@ -1,8 +1,8 @@
 ﻿using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
-using Monitoria.Domain.Registration.Entities;
-using Monitoria.Domain.Shared.ValueObjects;
 using Monitoria.Infra.Data.Configurations.RegistrationContext;
+using Monitoria.Infra.RepModels.Shared.ValueObjects;
+using Monitoria.Infra.RepoModels.Registration.Models;
 
 namespace Monitoria.Infra.Data.Contexts
 {

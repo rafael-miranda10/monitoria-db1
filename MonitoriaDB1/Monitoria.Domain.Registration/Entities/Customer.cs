@@ -10,11 +10,6 @@ namespace Monitoria.Domain.Registration.Entities
     {
         private IList<Animal> _animals;
 
-        public Customer()
-        {
-
-        }
-
         public Customer(Name name, Document document, Email email, Address address)
         {
             Name = name;
@@ -30,7 +25,7 @@ namespace Monitoria.Domain.Registration.Entities
         public Document Document { get; private set; }
         public Email Email { get; private set; }
         public Address Address { get; private set; }
-        public virtual IList<Animal> Animails { get { return _animals.ToArray(); } }
+        public IList<Animal> Animails { get { return _animals.ToArray(); } }
 
         public void AddAnimal(Animal animal)
         {

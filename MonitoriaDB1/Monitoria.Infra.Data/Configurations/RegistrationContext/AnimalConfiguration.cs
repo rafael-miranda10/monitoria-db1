@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Monitoria.Domain.Registration.Entities;
+using Monitoria.Infra.RepoModels.Registration.Models;
 
 namespace Monitoria.Infra.Data.Configurations.RegistrationContext
 {

@@ -49,13 +49,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PetCare", "PetCare", "{2045
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registration", "{5744C1AC-7279-4F5C-AEC1-9EECA443769A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Application.PetCare", "Monitoria.Application.PetCare\Monitoria.Application.PetCare.csproj", "{997B4FC3-B0B9-460B-9850-94A2EA97FFAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Application.PetCare", "Monitoria.Application.PetCare\Monitoria.Application.PetCare.csproj", "{997B4FC3-B0B9-460B-9850-94A2EA97FFAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Application.Registration", "Monitoria.Application.Registration\Monitoria.Application.Registration.csproj", "{1526C706-448E-41A9-B057-F950CA585D17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Application.Registration", "Monitoria.Application.Registration\Monitoria.Application.Registration.csproj", "{1526C706-448E-41A9-B057-F950CA585D17}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{3CE39DFA-FBB8-4161-956E-8B8063DC7549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Application.Shared", "Monitoria.Application.Shared\Monitoria.Application.Shared.csproj", "{E2C3725D-8EF0-47D8-80B4-0325E384CC8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Application.Shared", "Monitoria.Application.Shared\Monitoria.Application.Shared.csproj", "{E2C3725D-8EF0-47D8-80B4-0325E384CC8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RepositoryModels", "RepositoryModels", "{9DED8E49-4923-478F-A6F4-DD37636031F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PetCare", "PetCare", "{74770A1D-0105-4648-8BC8-F19AFF63B263}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registration", "{10C75F60-4EF3-48E5-A9FF-8DD344DC713D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{275B9B7F-82DD-43B5-9962-F0DCC845DBC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.RepModels.Shared", "Monitoria.Infra.RepModels.Shared\Monitoria.Infra.RepModels.Shared.csproj", "{8FF0C183-F595-4821-B3D4-21B842BBB3C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.RepoModels.Registration", "Monitoria.Infra.RepoModels.Registration\Monitoria.Infra.RepoModels.Registration.csproj", "{84E29193-CD3D-4864-BA61-A26CD0A49E02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.RepoModels.PetCare", "Monitoria.Infra.RepoModels.PetCare\Monitoria.Infra.RepoModels.PetCare.csproj", "{8E3EB574-5C10-4A60-B689-1C030D2AFC51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{DA22900C-AD68-499C-9327-DBAB8408668E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.CrossCutting", "Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj", "{D3666858-52D2-43E3-9287-93B910DA0339}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +129,22 @@ Global
 		{E2C3725D-8EF0-47D8-80B4-0325E384CC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2C3725D-8EF0-47D8-80B4-0325E384CC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2C3725D-8EF0-47D8-80B4-0325E384CC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FF0C183-F595-4821-B3D4-21B842BBB3C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FF0C183-F595-4821-B3D4-21B842BBB3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FF0C183-F595-4821-B3D4-21B842BBB3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FF0C183-F595-4821-B3D4-21B842BBB3C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84E29193-CD3D-4864-BA61-A26CD0A49E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E29193-CD3D-4864-BA61-A26CD0A49E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E29193-CD3D-4864-BA61-A26CD0A49E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E29193-CD3D-4864-BA61-A26CD0A49E02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3EB574-5C10-4A60-B689-1C030D2AFC51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3EB574-5C10-4A60-B689-1C030D2AFC51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3EB574-5C10-4A60-B689-1C030D2AFC51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3EB574-5C10-4A60-B689-1C030D2AFC51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3666858-52D2-43E3-9287-93B910DA0339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3666858-52D2-43E3-9287-93B910DA0339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3666858-52D2-43E3-9287-93B910DA0339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3666858-52D2-43E3-9287-93B910DA0339}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +172,15 @@ Global
 		{1526C706-448E-41A9-B057-F950CA585D17} = {5744C1AC-7279-4F5C-AEC1-9EECA443769A}
 		{3CE39DFA-FBB8-4161-956E-8B8063DC7549} = {E8616FF5-1224-4AE1-9C7E-2875B8C9839E}
 		{E2C3725D-8EF0-47D8-80B4-0325E384CC8E} = {3CE39DFA-FBB8-4161-956E-8B8063DC7549}
+		{9DED8E49-4923-478F-A6F4-DD37636031F4} = {A595C0DB-AA04-45BF-84CC-E7DACEEA459C}
+		{74770A1D-0105-4648-8BC8-F19AFF63B263} = {9DED8E49-4923-478F-A6F4-DD37636031F4}
+		{10C75F60-4EF3-48E5-A9FF-8DD344DC713D} = {9DED8E49-4923-478F-A6F4-DD37636031F4}
+		{275B9B7F-82DD-43B5-9962-F0DCC845DBC1} = {9DED8E49-4923-478F-A6F4-DD37636031F4}
+		{8FF0C183-F595-4821-B3D4-21B842BBB3C7} = {275B9B7F-82DD-43B5-9962-F0DCC845DBC1}
+		{84E29193-CD3D-4864-BA61-A26CD0A49E02} = {10C75F60-4EF3-48E5-A9FF-8DD344DC713D}
+		{8E3EB574-5C10-4A60-B689-1C030D2AFC51} = {74770A1D-0105-4648-8BC8-F19AFF63B263}
+		{DA22900C-AD68-499C-9327-DBAB8408668E} = {A595C0DB-AA04-45BF-84CC-E7DACEEA459C}
+		{D3666858-52D2-43E3-9287-93B910DA0339} = {DA22900C-AD68-499C-9327-DBAB8408668E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A8EFCC-FC88-4970-9F0F-0B19AADAAA81}

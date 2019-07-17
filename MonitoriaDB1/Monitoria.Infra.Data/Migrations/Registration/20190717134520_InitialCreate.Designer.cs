@@ -10,7 +10,7 @@ using Monitoria.Infra.Data.Contexts;
 namespace Monitoria.Infra.Data.Migrations.Registration
 {
     [DbContext(typeof(RegistrationContext))]
-    [Migration("20190716174514_InitialCreate")]
+    [Migration("20190717134520_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace Monitoria.Infra.Data.Migrations.Registration
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Monitoria.Domain.Registration.Entities.Animal", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.Registration.Models.Animal", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -50,7 +50,7 @@ namespace Monitoria.Infra.Data.Migrations.Registration
                     b.ToTable("Animal");
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.Registration.Entities.Customer", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.Registration.Models.Customer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -60,17 +60,17 @@ namespace Monitoria.Infra.Data.Migrations.Registration
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.Registration.Entities.Animal", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.Registration.Models.Animal", b =>
                 {
-                    b.HasOne("Monitoria.Domain.Registration.Entities.Customer", "Customer")
+                    b.HasOne("Monitoria.Infra.RepoModels.Registration.Models.Customer", "Customer")
                         .WithMany("Animails")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.Registration.Entities.Customer", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.Registration.Models.Customer", b =>
                 {
-                    b.OwnsOne("Monitoria.Domain.Shared.ValueObjects.Address", "Address", b1 =>
+                    b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.Address", "Address", b1 =>
                         {
                             b1.Property<Guid>("CustomerId");
 
@@ -112,13 +112,13 @@ namespace Monitoria.Infra.Data.Migrations.Registration
 
                             b1.ToTable("Customer","Registration");
 
-                            b1.HasOne("Monitoria.Domain.Registration.Entities.Customer")
+                            b1.HasOne("Monitoria.Infra.RepoModels.Registration.Models.Customer")
                                 .WithOne("Address")
-                                .HasForeignKey("Monitoria.Domain.Shared.ValueObjects.Address", "CustomerId")
+                                .HasForeignKey("Monitoria.Infra.RepModels.Shared.ValueObjects.Address", "CustomerId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("Monitoria.Domain.Shared.ValueObjects.Document", "Document", b1 =>
+                    b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.Document", "Document", b1 =>
                         {
                             b1.Property<Guid>("CustomerId");
 
@@ -134,13 +134,13 @@ namespace Monitoria.Infra.Data.Migrations.Registration
 
                             b1.ToTable("Customer","Registration");
 
-                            b1.HasOne("Monitoria.Domain.Registration.Entities.Customer")
+                            b1.HasOne("Monitoria.Infra.RepoModels.Registration.Models.Customer")
                                 .WithOne("Document")
-                                .HasForeignKey("Monitoria.Domain.Shared.ValueObjects.Document", "CustomerId")
+                                .HasForeignKey("Monitoria.Infra.RepModels.Shared.ValueObjects.Document", "CustomerId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("Monitoria.Domain.Shared.ValueObjects.Email", "Email", b1 =>
+                    b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.Email", "Email", b1 =>
                         {
                             b1.Property<Guid>("CustomerId");
 
@@ -153,13 +153,13 @@ namespace Monitoria.Infra.Data.Migrations.Registration
 
                             b1.ToTable("Customer","Registration");
 
-                            b1.HasOne("Monitoria.Domain.Registration.Entities.Customer")
+                            b1.HasOne("Monitoria.Infra.RepoModels.Registration.Models.Customer")
                                 .WithOne("Email")
-                                .HasForeignKey("Monitoria.Domain.Shared.ValueObjects.Email", "CustomerId")
+                                .HasForeignKey("Monitoria.Infra.RepModels.Shared.ValueObjects.Email", "CustomerId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("Monitoria.Domain.Shared.ValueObjects.Name", "Name", b1 =>
+                    b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.Name", "Name", b1 =>
                         {
                             b1.Property<Guid>("CustomerId");
 
@@ -177,9 +177,9 @@ namespace Monitoria.Infra.Data.Migrations.Registration
 
                             b1.ToTable("Customer","Registration");
 
-                            b1.HasOne("Monitoria.Domain.Registration.Entities.Customer")
+                            b1.HasOne("Monitoria.Infra.RepoModels.Registration.Models.Customer")
                                 .WithOne("Name")
-                                .HasForeignKey("Monitoria.Domain.Shared.ValueObjects.Name", "CustomerId")
+                                .HasForeignKey("Monitoria.Infra.RepModels.Shared.ValueObjects.Name", "CustomerId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
                 });

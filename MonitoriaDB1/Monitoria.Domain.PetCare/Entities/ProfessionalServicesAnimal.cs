@@ -7,11 +7,6 @@ namespace Monitoria.Domain.PetCare.Entities
 {
     public class ProfessionalServicesAnimal : Entity
     {
-        public ProfessionalServicesAnimal()
-        {
-
-        }
-
         public ProfessionalServicesAnimal(Professional prof, PetServices pService, string note)
         {
             Professional = prof;
@@ -27,15 +22,12 @@ namespace Monitoria.Domain.PetCare.Entities
             AddNotifications(prof, pService);
         }
 
-        public Guid professionalId { get; private set; }
-        public virtual Professional Professional { get; private set; }
-        public Guid PetServiceId { get; private set; }
-        public virtual PetServices PetService { get; private set; }
+        public Professional Professional { get; private set; }
+        public PetServices PetService { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public string Note { get; private set; }
-        public Guid RowAnimalCareId { get; private set; }
-        public virtual RowAnimalCare RowAnimalCare { get; private set; }
+        public RowAnimalCare RowAnimalCare { get; private set; }
 
         private bool ValidationOfEndDate(DateTime dateToVerify)
         {

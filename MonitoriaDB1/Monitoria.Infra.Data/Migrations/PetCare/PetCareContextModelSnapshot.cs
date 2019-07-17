@@ -20,7 +20,7 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Monitoria.Domain.PetCare.Entities.AnimalPetCare", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.AnimalPetCare", b =>
                 {
                     b.Property<Guid>("Id");
 
@@ -40,7 +40,7 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                     b.ToTable("AnimalPetCare");
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.PetCare.Entities.PetServices", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.PetServices", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -70,7 +70,7 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                     b.ToTable("PetServices");
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.PetCare.Entities.Professional", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.Professional", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -83,7 +83,7 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                     b.ToTable("Professional");
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.PetCare.Entities.ProfessionalServicesAnimal", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimal", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -115,7 +115,7 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                     b.ToTable("ProfessionalServicesAnimal");
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.PetCare.Entities.RowAnimalCare", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.RowAnimalCare", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -129,17 +129,17 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                     b.ToTable("RowAnimalCare");
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.PetCare.Entities.AnimalPetCare", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.AnimalPetCare", b =>
                 {
-                    b.HasOne("Monitoria.Domain.PetCare.Entities.RowAnimalCare", "RowAnimalCare")
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.RowAnimalCare", "RowAnimalCare")
                         .WithOne("AnimalPetCare")
-                        .HasForeignKey("Monitoria.Domain.PetCare.Entities.AnimalPetCare", "Id")
+                        .HasForeignKey("Monitoria.Infra.RepoModels.PetCare.Models.AnimalPetCare", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.PetCare.Entities.Professional", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.Professional", b =>
                 {
-                    b.OwnsOne("Monitoria.Domain.Shared.ValueObjects.Address", "Address", b1 =>
+                    b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.Address", "Address", b1 =>
                         {
                             b1.Property<Guid>("ProfessionalId");
 
@@ -181,13 +181,13 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
                             b1.ToTable("Professional","PetCare");
 
-                            b1.HasOne("Monitoria.Domain.PetCare.Entities.Professional")
+                            b1.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.Professional")
                                 .WithOne("Address")
-                                .HasForeignKey("Monitoria.Domain.Shared.ValueObjects.Address", "ProfessionalId")
+                                .HasForeignKey("Monitoria.Infra.RepModels.Shared.ValueObjects.Address", "ProfessionalId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("Monitoria.Domain.Shared.ValueObjects.Document", "Document", b1 =>
+                    b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.Document", "Document", b1 =>
                         {
                             b1.Property<Guid>("ProfessionalId");
 
@@ -203,13 +203,13 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
                             b1.ToTable("Professional","PetCare");
 
-                            b1.HasOne("Monitoria.Domain.PetCare.Entities.Professional")
+                            b1.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.Professional")
                                 .WithOne("Document")
-                                .HasForeignKey("Monitoria.Domain.Shared.ValueObjects.Document", "ProfessionalId")
+                                .HasForeignKey("Monitoria.Infra.RepModels.Shared.ValueObjects.Document", "ProfessionalId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("Monitoria.Domain.Shared.ValueObjects.Email", "Email", b1 =>
+                    b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.Email", "Email", b1 =>
                         {
                             b1.Property<Guid>("ProfessionalId");
 
@@ -222,13 +222,13 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
                             b1.ToTable("Professional","PetCare");
 
-                            b1.HasOne("Monitoria.Domain.PetCare.Entities.Professional")
+                            b1.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.Professional")
                                 .WithOne("Email")
-                                .HasForeignKey("Monitoria.Domain.Shared.ValueObjects.Email", "ProfessionalId")
+                                .HasForeignKey("Monitoria.Infra.RepModels.Shared.ValueObjects.Email", "ProfessionalId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("Monitoria.Domain.Shared.ValueObjects.Name", "Name", b1 =>
+                    b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.Name", "Name", b1 =>
                         {
                             b1.Property<Guid>("ProfessionalId");
 
@@ -246,26 +246,26 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
                             b1.ToTable("Professional","PetCare");
 
-                            b1.HasOne("Monitoria.Domain.PetCare.Entities.Professional")
+                            b1.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.Professional")
                                 .WithOne("Name")
-                                .HasForeignKey("Monitoria.Domain.Shared.ValueObjects.Name", "ProfessionalId")
+                                .HasForeignKey("Monitoria.Infra.RepModels.Shared.ValueObjects.Name", "ProfessionalId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
                 });
 
-            modelBuilder.Entity("Monitoria.Domain.PetCare.Entities.ProfessionalServicesAnimal", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimal", b =>
                 {
-                    b.HasOne("Monitoria.Domain.PetCare.Entities.PetServices", "PetService")
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.PetServices", "PetService")
                         .WithMany("AnimailServices")
                         .HasForeignKey("PetServiceId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Monitoria.Domain.PetCare.Entities.RowAnimalCare", "RowAnimalCare")
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.RowAnimalCare", "RowAnimalCare")
                         .WithMany("AnimailServices")
                         .HasForeignKey("RowAnimalCareId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Monitoria.Domain.PetCare.Entities.Professional", "Professional")
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.Professional", "Professional")
                         .WithMany("AnimailServices")
                         .HasForeignKey("professionalId")
                         .OnDelete(DeleteBehavior.Cascade);

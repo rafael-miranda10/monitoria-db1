@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Monitoria.Domain.PetCare.Entities;
+using Monitoria.Infra.RepoModels.PetCare.Models;
 
 namespace Monitoria.Infra.Data.Configurations.PetCareContext
 {

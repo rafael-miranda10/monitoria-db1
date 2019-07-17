@@ -10,11 +10,6 @@ namespace Monitoria.Domain.PetCare.Entities
     {
         private IList<ProfessionalServicesAnimal> _animalServices;
 
-        public PetServices()
-        {
-
-        }
-
         public PetServices(string descricao, CategoryEnum category, string checkList, decimal serviceValue, bool active)
         {
             Description = descricao;
@@ -40,8 +35,7 @@ namespace Monitoria.Domain.PetCare.Entities
         public string CheckList { get; private set; }
         public decimal ServiceValue { get; private set; }
         public bool Active { get; private set; }
-
-        public virtual IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
+        public IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
 
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Flunt.Notifications;
 using Monitoria.Domain.Shared.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,24 +9,18 @@ namespace Monitoria.Domain.PetCare.Entities
     {
         private IList<ProfessionalServicesAnimal> _animalServices;
 
-        public RowAnimalCare()
-        {
-
-        }
-
         public RowAnimalCare(AnimalPetCare animal)
         {
             AnimalPetCare = animal;
             ValueTotal = 0;
             _animalServices = new List<ProfessionalServicesAnimal>();
 
-
             AddNotifications(AnimalPetCare);
         }
 
         public AnimalPetCare AnimalPetCare { get; private set; }
         public decimal ValueTotal { get; private set; }
-        public virtual IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
+        public IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
 
         public void CalculatePriceTotal()
         {

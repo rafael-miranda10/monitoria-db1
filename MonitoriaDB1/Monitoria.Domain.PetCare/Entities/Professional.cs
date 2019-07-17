@@ -10,10 +10,6 @@ namespace Monitoria.Domain.PetCare.Entities
     {
         private IList<ProfessionalServicesAnimal> _animalServices;
 
-        public Professional()
-        {
-
-        }
         public Professional(Name name, Document document, Email email, Address address, ProfessionalEnum jobPosition)
         {
             Name = name;
@@ -31,8 +27,7 @@ namespace Monitoria.Domain.PetCare.Entities
         public Email Email { get; private set; }
         public Address Address { get; private set; }
         public ProfessionalEnum JobPosition { get; private set; }
-
-        public virtual IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
+        public IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
 
     }
 }

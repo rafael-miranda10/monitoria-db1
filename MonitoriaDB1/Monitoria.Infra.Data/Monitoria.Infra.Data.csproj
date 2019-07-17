@@ -19,10 +19,9 @@
     <ProjectReference Include="..\Monitoria.Domain.PetCare\Monitoria.Domain.PetCare.csproj" />
     <ProjectReference Include="..\Monitoria.Domain.Registration\Monitoria.Domain.Registration.csproj" />
     <ProjectReference Include="..\Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\Registration\" />
+    <ProjectReference Include="..\Monitoria.Infra.RepModels.Shared\Monitoria.Infra.RepModels.Shared.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.RepoModels.PetCare\Monitoria.Infra.RepoModels.PetCare.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.RepoModels.Registration\Monitoria.Infra.RepoModels.Registration.csproj" />
   </ItemGroup>
 
 </Project>
