@@ -4,13 +4,13 @@ using System;
 
 namespace Monitoria.Infra.RepoModels.Registration.Models
 {
-    public class Animal : Entity
+    public class AnimalRepModel : Entity
     {
-        public Animal()
+        public AnimalRepModel()
         {
 
         }
-        public Animal(string name, int age, SpeciesEnum specie, bool isAlive)
+        public AnimalRepModel(string name, int age, SpeciesEnum specie, bool isAlive)
         {
             Name = name;
             Age = age;
@@ -23,6 +23,6 @@ namespace Monitoria.Infra.RepoModels.Registration.Models
         public SpeciesEnum Specie { get; private set; }
         public bool IsAlive { get; private set; }
         public Guid CustomerId { get; private set; }
-        public virtual Customer Customer { get; private set; }
+        public virtual CustomerRepModel Customer { get; private set; }
     }
 }

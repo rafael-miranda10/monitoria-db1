@@ -15,27 +15,27 @@ namespace Monitoria.Infra.Data.Repositories
             _context = context;
         }
 
-        public void Add(TEntity obj)
+        public virtual void Add(TEntity obj)
         {
             _context.Add(obj);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return _context.Set<TEntity>().ToList();
         }
 
-        public TEntity GetById(Guid id)
+        public virtual TEntity GetById(Guid id)
         {
             return _context.Set<TEntity>().Find(id);
         }
 
-        public void Remove(TEntity obj)
+        public virtual void Remove(TEntity obj)
         {
             _context.Set<TEntity>().Remove(obj);
         }
 
-        public void Update(TEntity obj)
+        public virtual void Update(TEntity obj)
         {
             _context.Set<TEntity>().Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
@@ -46,7 +46,7 @@ namespace Monitoria.Infra.Data.Repositories
             _context.Dispose();
         }
 
-        public void RemoveById(Guid id)
+        public virtual void RemoveById(Guid id)
         {
             var result = GetById(id);
 
@@ -54,19 +54,19 @@ namespace Monitoria.Infra.Data.Repositories
               _context.Set<TEntity>().Remove(result);
         }
 
-        public bool ExistingEntity(TEntity obj)
+        public virtual bool ExistingEntity(TEntity obj)
         {
             var existing = GetEntityEqualTo(obj);
             return existing != null;
         }
 
-        public TEntity ExistingReturnEntity(TEntity obj)
+        public virtual TEntity ExistingReturnEntity(TEntity obj)
         {
             var existing = GetEntityEqualTo(obj);
             return existing;
         }
 
-        private TEntity GetEntityEqualTo(TEntity obj)
+        public virtual TEntity GetEntityEqualTo(TEntity obj)
         {
             var query = (from entity in _context.Set<TEntity>().AsEnumerable()
                          where entity.Equals(obj)

@@ -1,11 +1,11 @@
 ﻿namespace Monitoria.Infra.RepModels.Shared.ValueObjects
 {
-    public class Address
+    public class AddressRepModel
     {
-        public Address()
+        public AddressRepModel()
         {
         }
-        public Address(string street, string number, string neighborhood, string city, string state, string country, string zipCode)
+        public AddressRepModel(string street, string number, string neighborhood, string city, string state, string country, string zipCode)
         {
             Street = street;
             Number = number;

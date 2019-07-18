@@ -5,33 +5,33 @@ using Monitoria.Infra.RepoModels.Registration.Models;
 
 namespace Monitoria.Infra.Data.Configurations.RegistrationContext
 {
-    public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
+    public class CustomerConfiguration : IEntityTypeConfiguration<CustomerRepModel>
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
+        public void Configure(EntityTypeBuilder<CustomerRepModel> builder)
         {
             builder.ToTable("Customer");
 
             builder.HasKey(x => x.Id);
 
             //Mapeando objetos de valor
-            builder.OwnsOne<Name>(x => x.Name, cb => {
+            builder.OwnsOne<NameRepModel>(x => x.Name, cb => {
                 cb.Property(x => x.FirstName).HasMaxLength(50).HasColumnName("FirstName").IsRequired();
                 cb.Property(x => x.LastName).HasMaxLength(50).HasColumnName("LastName").IsRequired();
                 cb.ToTable("Customer");
             });
 
-            builder.OwnsOne<Document>(x => x.Document, cb => {
+            builder.OwnsOne<DocumentRepModel>(x => x.Document, cb => {
                 cb.Property(x => x.Number).HasMaxLength(50).HasColumnName("DocNumber").IsRequired();
                 cb.Property(x => x.Type).HasColumnName("DocType").IsRequired();
                 cb.ToTable("Customer");
             });
 
-            builder.OwnsOne<Email>(x => x.Email, cb => {
+            builder.OwnsOne<EmailRepModel>(x => x.Email, cb => {
                 cb.Property(x => x.Address).HasMaxLength(60).HasColumnName("EmailAddress").IsRequired();
                 cb.ToTable("Customer");
             });
 
-            builder.OwnsOne<Address>(x => x.Address, cb => {
+            builder.OwnsOne<AddressRepModel>(x => x.Address, cb => {
                 cb.Property(x => x.Street).HasMaxLength(50).HasColumnName("AddressStreet").IsRequired();
                 cb.Property(x => x.Number).HasColumnName("AddressNumber").IsRequired();
                 cb.Property(x => x.Neighborhood).HasMaxLength(50).HasColumnName("AddressNeighborhood").IsRequired();

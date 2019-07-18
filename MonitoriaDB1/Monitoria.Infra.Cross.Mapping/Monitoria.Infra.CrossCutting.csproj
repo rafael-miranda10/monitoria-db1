@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Monitoria.Domain.PetCare\Monitoria.Domain.PetCare.csproj" />
+    <ProjectReference Include="..\Monitoria.Domain.Registration\Monitoria.Domain.Registration.csproj" />
+    <ProjectReference Include="..\Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.RepoModels.Registration\Monitoria.Infra.RepoModels.Registration.csproj" />
   </ItemGroup>
 
 </Project>

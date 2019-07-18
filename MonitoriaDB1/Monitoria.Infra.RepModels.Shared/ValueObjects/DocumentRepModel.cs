@@ -2,12 +2,12 @@
 
 namespace Monitoria.Infra.RepModels.Shared.ValueObjects
 {
-    public class Document
+    public class DocumentRepModel
     {
-        public Document()
+        public DocumentRepModel()
         {
         }
-        public Document(string number, DocumentEnum type)
+        public DocumentRepModel(string number, DocumentEnum type)
         {
             Number = number;
             Type = type;

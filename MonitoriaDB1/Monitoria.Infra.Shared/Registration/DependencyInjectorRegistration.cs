@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using Monitoria.Application.Registration.Apps;
 using Monitoria.Application.Registration.Interfaces;
 using Monitoria.Application.Shared.Apps;
@@ -38,6 +39,8 @@ namespace Monitoria.Infra.IoC.Registration
 
             //UoW
             svcCollection.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+            //AutoMapper
+            //svcCollection.AddScoped<IMapper>();
 
         }
     }

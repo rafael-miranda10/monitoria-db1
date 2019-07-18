@@ -10,7 +10,7 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public Professional()
         {
         }
-        public Professional(Name name, Document document, Email email, Address address, ProfessionalEnum jobPosition, List<ProfessionalServicesAnimal> animalservices)
+        public Professional(NameRepModel name, DocumentRepModel document, EmailRepModel email, AddressRepModel address, ProfessionalEnum jobPosition, List<ProfessionalServicesAnimal> animalservices)
         {
             Name = name;
             Document = document;
@@ -20,10 +20,10 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
             AnimailServices = animalservices;
         }
 
-        public Name Name { get; private set; }
-        public Document Document { get; private set; }
-        public Email Email { get; private set; }
-        public Address Address { get; private set; }
+        public NameRepModel Name { get; private set; }
+        public DocumentRepModel Document { get; private set; }
+        public EmailRepModel Email { get; private set; }
+        public AddressRepModel Address { get; private set; }
         public ProfessionalEnum JobPosition { get; private set; }
         public IList<ProfessionalServicesAnimal> AnimailServices { get; private set; }
     }

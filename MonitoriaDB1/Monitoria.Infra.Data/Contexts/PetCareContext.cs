@@ -30,10 +30,10 @@ namespace Monitoria.Infra.Data.Contexts
 
             modelBuilder.HasDefaultSchema("PetCare");
 
-            modelBuilder.Ignore<Address>();
-            modelBuilder.Ignore<Document>();
-            modelBuilder.Ignore<Email>();
-            modelBuilder.Ignore<Name>();
+            modelBuilder.Ignore<AddressRepModel>();
+            modelBuilder.Ignore<DocumentRepModel>();
+            modelBuilder.Ignore<EmailRepModel>();
+            modelBuilder.Ignore<NameRepModel>();
             modelBuilder.Ignore<Notification>();
 
             modelBuilder.ApplyConfiguration(new AnimalPetCareConfiguration());

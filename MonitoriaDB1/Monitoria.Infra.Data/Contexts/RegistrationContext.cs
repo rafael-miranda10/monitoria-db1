@@ -14,8 +14,8 @@ namespace Monitoria.Infra.Data.Contexts
         }
 
 
-        public DbSet<Animal> Animal { get; set; }
-        public DbSet<Customer> Customer { get; set; }
+        public DbSet<AnimalRepModel> Animal { get; set; }
+        public DbSet<CustomerRepModel> Customer { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,10 +28,10 @@ namespace Monitoria.Infra.Data.Contexts
 
             modelBuilder.HasDefaultSchema("Registration");
 
-            modelBuilder.Ignore<Address>();
-            modelBuilder.Ignore<Document>();
-            modelBuilder.Ignore<Email>();
-            modelBuilder.Ignore<Name>();
+            modelBuilder.Ignore<AddressRepModel>();
+            modelBuilder.Ignore<DocumentRepModel>();
+            modelBuilder.Ignore<EmailRepModel>();
+            modelBuilder.Ignore<NameRepModel>();
             modelBuilder.Ignore<Notification>();
 
             modelBuilder.ApplyConfiguration(new AnimalConfiguration());

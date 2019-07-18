@@ -65,15 +65,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registratio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{275B9B7F-82DD-43B5-9962-F0DCC845DBC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.RepModels.Shared", "Monitoria.Infra.RepModels.Shared\Monitoria.Infra.RepModels.Shared.csproj", "{8FF0C183-F595-4821-B3D4-21B842BBB3C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.RepModels.Shared", "Monitoria.Infra.RepModels.Shared\Monitoria.Infra.RepModels.Shared.csproj", "{8FF0C183-F595-4821-B3D4-21B842BBB3C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.RepoModels.Registration", "Monitoria.Infra.RepoModels.Registration\Monitoria.Infra.RepoModels.Registration.csproj", "{84E29193-CD3D-4864-BA61-A26CD0A49E02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.RepoModels.Registration", "Monitoria.Infra.RepoModels.Registration\Monitoria.Infra.RepoModels.Registration.csproj", "{84E29193-CD3D-4864-BA61-A26CD0A49E02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.RepoModels.PetCare", "Monitoria.Infra.RepoModels.PetCare\Monitoria.Infra.RepoModels.PetCare.csproj", "{8E3EB574-5C10-4A60-B689-1C030D2AFC51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.RepoModels.PetCare", "Monitoria.Infra.RepoModels.PetCare\Monitoria.Infra.RepoModels.PetCare.csproj", "{8E3EB574-5C10-4A60-B689-1C030D2AFC51}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{DA22900C-AD68-499C-9327-DBAB8408668E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Infra.CrossCutting", "Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj", "{D3666858-52D2-43E3-9287-93B910DA0339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.CrossCutting", "Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj", "{D3666858-52D2-43E3-9287-93B910DA0339}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

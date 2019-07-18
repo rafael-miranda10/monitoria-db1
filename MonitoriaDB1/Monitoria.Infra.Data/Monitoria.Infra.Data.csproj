@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
@@ -19,6 +21,7 @@
     <ProjectReference Include="..\Monitoria.Domain.PetCare\Monitoria.Domain.PetCare.csproj" />
     <ProjectReference Include="..\Monitoria.Domain.Registration\Monitoria.Domain.Registration.csproj" />
     <ProjectReference Include="..\Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\Monitoria.Infra.RepModels.Shared\Monitoria.Infra.RepModels.Shared.csproj" />
     <ProjectReference Include="..\Monitoria.Infra.RepoModels.PetCare\Monitoria.Infra.RepoModels.PetCare.csproj" />
     <ProjectReference Include="..\Monitoria.Infra.RepoModels.Registration\Monitoria.Infra.RepoModels.Registration.csproj" />

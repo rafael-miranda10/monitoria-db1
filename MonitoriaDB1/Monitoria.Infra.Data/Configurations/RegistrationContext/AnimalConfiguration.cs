@@ -4,9 +4,9 @@ using Monitoria.Infra.RepoModels.Registration.Models;
 
 namespace Monitoria.Infra.Data.Configurations.RegistrationContext
 {
-    public class AnimalConfiguration : IEntityTypeConfiguration<Animal>
+    public class AnimalConfiguration : IEntityTypeConfiguration<AnimalRepModel>
     {
-        public void Configure(EntityTypeBuilder<Animal> builder)
+        public void Configure(EntityTypeBuilder<AnimalRepModel> builder)
         {
             builder.ToTable("Animal");
 

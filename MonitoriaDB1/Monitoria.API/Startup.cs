@@ -10,6 +10,7 @@ using Monitoria.Infra.Data.Contexts;
 using Monitoria.Infra.IoC.PetCare;
 using Monitoria.Infra.IoC.Registration;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace Monitoria.API
 {
@@ -38,8 +39,18 @@ namespace Monitoria.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //Automapper
-            // services.AddAutoMapper();
-            var mapper = AutoMapperConfig.RegisterMappings();
+            //var mapper = AutoMapperConfig.RegisterMappings();
+            //services.AddSingleton(mapper);
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new ViewModelToDomainMappingProfile());
+                mc.AddProfile(new RepositoryToDomainMappingProfile());
+                mc.AddProfile(new DomainToRepositoryMappingProfile());
+                mc.AddProfile(new DomainToViewModelMappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
             //Aplicando documentação com Swagger

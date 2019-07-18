@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Monitoria.Domain.Shared\Monitoria.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.RepoModels.Registration\Monitoria.Infra.RepoModels.Registration.csproj" />
   </ItemGroup>
 
 </Project>

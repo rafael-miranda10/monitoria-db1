@@ -1,11 +1,11 @@
 ﻿namespace Monitoria.Infra.RepModels.Shared.ValueObjects
 {
-    public class Email
+    public class EmailRepModel
     {
-        public Email()
+        public EmailRepModel()
         {
         }
-        public Email(string address)
+        public EmailRepModel(string address)
         {
             Address = address;
         }

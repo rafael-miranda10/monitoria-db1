@@ -1,11 +1,11 @@
 ﻿namespace Monitoria.Infra.RepModels.Shared.ValueObjects
 {
-    public class Name
+    public class NameRepModel
     {
-        public Name()
+        public NameRepModel()
         {
         }
-        public Name(string firstName, string lastName)
+        public NameRepModel(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
