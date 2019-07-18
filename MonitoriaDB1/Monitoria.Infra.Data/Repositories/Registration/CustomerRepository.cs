@@ -32,14 +32,33 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             var customerRepModel = _mapper.Map<Customer,CustomerRepModel>(customer);
             _context.Set<CustomerRepModel>().Attach(customerRepModel);
             _context.Entry(customerRepModel).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public override void Remove(Customer customer)
+        {
+            var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
+            _context.Set<CustomerRepModel>().Remove(customerRepModel);
+            _context.SaveChanges();
+        }
+
+        public override IEnumerable<Customer> GetAll()
+        {
+            var query = _context.Customer
+                         .Include(x => x.Animails)
+                         .AsEnumerable();
+            var list = _mapper.Map<IEnumerable<CustomerRepModel>, IEnumerable<Customer>>(query);
+            return list;
         }
 
         public IEnumerable<Customer> GetByCustomerName(string name)
         {
-
             var query = _context.Customer
                           .Include(x => x.Animails)
                           .Include(x => x.Name)
+                          .Include(x => x.Address)
+                          .Include(x => x.Email)
+                          .Include(x => x.Document)
                           .Where(x => x.Name.FirstName == name)
                           .AsEnumerable();
            var listCustomers = _mapper.Map<IEnumerable<CustomerRepModel>,IEnumerable<Customer>>(query);

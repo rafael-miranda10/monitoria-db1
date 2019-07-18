@@ -1,6 +1,7 @@
 ﻿using Flunt.Validations;
 using Monitoria.Domain.Shared.Entities;
 using Monitoria.Domain.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace Monitoria.Domain.Registration.Entities
 {
@@ -25,6 +26,7 @@ namespace Monitoria.Domain.Registration.Entities
         public int Age { get; private set; }
         public SpeciesEnum Specie { get; private set; }
         public bool IsAlive { get; private set; }
+        [JsonIgnore]
         public Customer Customer {get; private set;}
     }
 }
