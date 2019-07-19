@@ -24,6 +24,8 @@ namespace Monitoria.Infra.CrossCutting.Mappings
             CreateMap<Document, DocumentRepModel>();
             CreateMap<Address, AddressRepModel>();
             CreateMap<Professional, ProfessionalRepModel>();
+            CreateMap<Animal, AnimalPetCareRepModel>()
+                .ForMember(d => d.CustomerId, m => m.MapFrom(s => s.Customer.Id));
         }
     }
 }

@@ -1,11 +1,14 @@
 ﻿using Monitoria.Domain.Registration.Entities;
-using Monitoria.Domain.Shared.Interfaces.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace Monitoria.Domain.Registration.Interfaces.Repositories
 {
-    public interface IAnimalRepository: IRepositoryBase<Animal>
+    public interface IAnimalRepository 
     {
         IEnumerable<Animal> GetByAnimalName(string name);
+        IEnumerable<Animal> GetByCustomerId(Guid customerId);
+        IEnumerable<Animal> GetAll();
+        Animal GetById(Guid id);
     }
 }
