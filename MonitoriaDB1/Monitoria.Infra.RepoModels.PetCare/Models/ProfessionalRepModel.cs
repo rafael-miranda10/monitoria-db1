@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace Monitoria.Infra.RepoModels.PetCare.Models
 {
-    public class Professional : Entity
+    public class ProfessionalRepModel : Entity
     {
-        public Professional()
+        public ProfessionalRepModel()
         {
         }
-        public Professional(NameRepModel name, DocumentRepModel document, EmailRepModel email, AddressRepModel address, ProfessionalEnum jobPosition, List<ProfessionalServicesAnimal> animalservices)
+        public ProfessionalRepModel(NameRepModel name, DocumentRepModel document, EmailRepModel email, AddressRepModel address, ProfessionalEnum jobPosition, List<ProfessionalServicesAnimalRepModel> animalservices)
         {
             Name = name;
             Document = document;
@@ -25,6 +25,6 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public EmailRepModel Email { get; private set; }
         public AddressRepModel Address { get; private set; }
         public ProfessionalEnum JobPosition { get; private set; }
-        public IList<ProfessionalServicesAnimal> AnimailServices { get; private set; }
+        public IList<ProfessionalServicesAnimalRepModel> AnimailServices { get; private set; }
     }
 }

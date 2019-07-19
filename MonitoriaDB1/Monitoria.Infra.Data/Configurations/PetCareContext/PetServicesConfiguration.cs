@@ -4,9 +4,9 @@ using Monitoria.Infra.RepoModels.PetCare.Models;
 
 namespace Monitoria.Infra.Data.Configurations.PetCareContext
 {
-    public class PetServicesConfiguration : IEntityTypeConfiguration<PetServices>
+    public class PetServicesConfiguration : IEntityTypeConfiguration<PetServicesRepModel>
     {
-        public void Configure(EntityTypeBuilder<PetServices> builder)
+        public void Configure(EntityTypeBuilder<PetServicesRepModel> builder)
         {
             builder.ToTable("PetServices");
 

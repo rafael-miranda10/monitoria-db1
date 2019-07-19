@@ -3,12 +3,12 @@ using System;
 
 namespace Monitoria.Infra.RepoModels.PetCare.Models
 {
-    public class ProfessionalServicesAnimal : Entity
+    public class ProfessionalServicesAnimalRepModel : Entity
     {
-        public ProfessionalServicesAnimal()
+        public ProfessionalServicesAnimalRepModel()
         {
         }
-        public ProfessionalServicesAnimal(Professional prof, PetServices pService, string note)
+        public ProfessionalServicesAnimalRepModel(ProfessionalRepModel prof, PetServicesRepModel pService, string note)
         {
             Professional = prof;
             PetService = pService;
@@ -17,13 +17,13 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         }
 
         public Guid professionalId { get; private set; }
-        public virtual Professional Professional { get; private set; }
+        public virtual ProfessionalRepModel Professional { get; private set; }
         public Guid PetServiceId { get; private set; }
-        public virtual PetServices PetService { get; private set; }
+        public virtual PetServicesRepModel PetService { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public string Note { get; private set; }
         public Guid RowAnimalCareId { get; private set; }
-        public virtual RowAnimalCare RowAnimalCare { get; private set; }
+        public virtual RowAnimalCareRepModel RowAnimalCare { get; private set; }
     }
 }

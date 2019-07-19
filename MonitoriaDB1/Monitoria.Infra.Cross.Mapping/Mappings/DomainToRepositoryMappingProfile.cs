@@ -3,6 +3,8 @@ using Monitoria.Infra.RepoModels.Registration.Models;
 using Monitoria.Domain.Registration.Entities;
 using Monitoria.Infra.RepModels.Shared.ValueObjects;
 using Monitoria.Domain.Shared.ValueObjects;
+using Monitoria.Domain.PetCare.Entities;
+using Monitoria.Infra.RepoModels.PetCare.Models;
 
 namespace Monitoria.Infra.CrossCutting.Mappings
 {
@@ -21,6 +23,7 @@ namespace Monitoria.Infra.CrossCutting.Mappings
             CreateMap<Email, EmailRepModel>();
             CreateMap<Document, DocumentRepModel>();
             CreateMap<Address, AddressRepModel>();
+            CreateMap<Professional, ProfessionalRepModel>();
         }
     }
 }

@@ -4,9 +4,9 @@ using Monitoria.Infra.RepoModels.PetCare.Models;
 
 namespace Monitoria.Infra.Data.Configurations.PetCareContext
 {
-    public class RowAnimalCareConfiguration : IEntityTypeConfiguration<RowAnimalCare>
+    public class RowAnimalCareConfiguration : IEntityTypeConfiguration<RowAnimalCareRepModel>
     {
-        public void Configure(EntityTypeBuilder<RowAnimalCare> builder)
+        public void Configure(EntityTypeBuilder<RowAnimalCareRepModel> builder)
         {
             builder.ToTable("RowAnimalCare");
 
@@ -26,8 +26,8 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
             //Relacionamento AnimalPetCare
             builder.HasOne(x => x.AnimalPetCare)
                 .WithOne(c => c.RowAnimalCare)
-                .HasForeignKey<AnimalPetCare>(k => k.Id)
-                .HasPrincipalKey<RowAnimalCare>(p => p.Id);
+                .HasForeignKey<AnimalPetCareRepModel>(k => k.Id)
+                .HasPrincipalKey<RowAnimalCareRepModel>(p => p.Id);
         }
     }
 }

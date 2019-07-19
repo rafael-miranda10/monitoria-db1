@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace Monitoria.Infra.RepoModels.PetCare.Models
 {
-    public class PetServices : Entity
+    public class PetServicesRepModel : Entity
     {
-        public PetServices()
+        public PetServicesRepModel()
         {
         }
-        public PetServices(string descricao, CategoryEnum category, string checkList, decimal serviceValue, bool active, List<ProfessionalServicesAnimal> animalservices )
+        public PetServicesRepModel(string descricao, CategoryEnum category, string checkList, decimal serviceValue, bool active, List<ProfessionalServicesAnimalRepModel> animalservices )
         {
             Description = descricao;
             Category = category;
@@ -24,6 +24,6 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public string CheckList { get; private set; }
         public decimal ServiceValue { get; private set; }
         public bool Active { get; private set; }
-        public virtual IList<ProfessionalServicesAnimal> AnimailServices { get; private set; }
+        public virtual IList<ProfessionalServicesAnimalRepModel> AnimailServices { get; private set; }
     }
 }

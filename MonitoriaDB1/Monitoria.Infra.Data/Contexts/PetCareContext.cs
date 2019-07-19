@@ -13,11 +13,11 @@ namespace Monitoria.Infra.Data.Contexts
 
         }
 
-        public DbSet<AnimalPetCare> AnimalPetCare { get; set; }
-        public DbSet<PetServices> PetServices { get; set; }
-        public DbSet<Professional> Professional { get; set; }
-        public DbSet<ProfessionalServicesAnimal> ProfessionalServicesAnimal { get; set; }
-        public DbSet<RowAnimalCare> RowAnimalCare { get; set; }
+        public DbSet<AnimalPetCareRepModel> AnimalPetCare { get; set; }
+        public DbSet<PetServicesRepModel> PetServices { get; set; }
+        public DbSet<ProfessionalRepModel> Professional { get; set; }
+        public DbSet<ProfessionalServicesAnimalRepModel> ProfessionalServicesAnimal { get; set; }
+        public DbSet<RowAnimalCareRepModel> RowAnimalCare { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

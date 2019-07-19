@@ -5,9 +5,9 @@ using Monitoria.Infra.RepoModels.PetCare.Models;
 
 namespace Monitoria.Infra.Data.Configurations.PetCareContext
 {
-    public class ProfessionalConfiguration : IEntityTypeConfiguration<Professional>
+    public class ProfessionalConfiguration : IEntityTypeConfiguration<ProfessionalRepModel>
     {
-        public void Configure(EntityTypeBuilder<Professional> builder)
+        public void Configure(EntityTypeBuilder<ProfessionalRepModel> builder)
         {
             builder.ToTable("Professional");
 

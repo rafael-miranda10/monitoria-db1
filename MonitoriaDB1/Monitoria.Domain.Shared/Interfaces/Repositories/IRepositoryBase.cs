@@ -12,6 +12,6 @@ namespace Monitoria.Domain.Shared.Interfaces.Repositories
         void Remove(TEntity obj);
         void RemoveById(Guid id);
         bool ExistingEntity(TEntity obj);
-        TEntity ExistingReturnEntity(TEntity obj);
+        TEntity GetEntityEqualTo(TEntity obj);
     }
 }

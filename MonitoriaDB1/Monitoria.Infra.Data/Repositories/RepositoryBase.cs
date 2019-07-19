@@ -60,12 +60,6 @@ namespace Monitoria.Infra.Data.Repositories
             return existing != null;
         }
 
-        public virtual TEntity ExistingReturnEntity(TEntity obj)
-        {
-            var existing = GetEntityEqualTo(obj);
-            return existing;
-        }
-
         public virtual TEntity GetEntityEqualTo(TEntity obj)
         {
             var query = (from entity in _context.Set<TEntity>().AsEnumerable()

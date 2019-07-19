@@ -4,6 +4,7 @@ using Monitoria.Domain.Registration.Entities;
 using Monitoria.Domain.Registration.Interfaces.Repositories;
 using Monitoria.Infra.Data.Contexts;
 using Monitoria.Infra.RepoModels.Registration.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,8 +62,37 @@ namespace Monitoria.Infra.Data.Repositories.Registration
                           .Include(x => x.Document)
                           .Where(x => x.Name.FirstName == name)
                           .AsEnumerable();
-           var listCustomers = _mapper.Map<IEnumerable<CustomerRepModel>,IEnumerable<Customer>>(query);
-           return listCustomers;
+           var list = _mapper.Map<IEnumerable<CustomerRepModel>,IEnumerable<Customer>>(query);
+           return list;
+        }
+
+        public override Customer GetById(Guid id)
+        {
+            var result = _context.Customer.Find(id);
+            var customer = _mapper.Map<CustomerRepModel,Customer>(result);
+            return customer;
+        }
+
+        public override void RemoveById(Guid id)
+        {
+            var result = _context.Customer.Find(id);
+            if (result != null)
+                _context.Customer.Remove(result);
+        }
+
+        public override Customer GetEntityEqualTo(Customer customer)
+        {
+            var query = (from entity in _context.Customer.AsEnumerable()
+                         where entity.Equals(customer)
+                         select entity).FirstOrDefault();
+            var result = _mapper.Map<CustomerRepModel, Customer>(query);
+            return result;
+        }
+
+        public override bool ExistingEntity(Customer customer)
+        {
+            var existing = GetEntityEqualTo(customer);
+            return existing != null;
         }
     }
 }
