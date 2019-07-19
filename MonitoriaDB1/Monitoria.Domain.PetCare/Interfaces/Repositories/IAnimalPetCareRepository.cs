@@ -1,11 +1,14 @@
 ﻿using Monitoria.Domain.PetCare.Entities;
-using Monitoria.Domain.Shared.Interfaces.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace Monitoria.Domain.PetCare.Interfaces.Repositories
 {
-    public interface IAnimalPetCareRepository : IRepositoryBase<AnimalPetCare>
+    public interface IAnimalPetCareRepository 
     {
         IEnumerable<AnimalPetCare> GetByAnimalPetCareName(string Name);
+        IEnumerable<AnimalPetCare> GetByCustomerId(Guid customerId);
+        IEnumerable<AnimalPetCare> GetAllAnimal();
+        AnimalPetCare GetAnimalPetCareById(Guid id);
     }
 }

@@ -1,16 +1,15 @@
 ﻿using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Interfaces.Repositories;
 using Monitoria.Domain.PetCare.Interfaces.Services;
-using Monitoria.Domain.Shared.Services;
 using System.Collections.Generic;
 
 namespace Monitoria.Domain.PetCare.Services
 {
-    public class AnimalPetCareService : ServiceBase<AnimalPetCare>, IAnimalPetCareService
+    public class AnimalPetCareService :  IAnimalPetCareService
     {
         private readonly IAnimalPetCareRepository _animalPetCareRepository;
 
-        public AnimalPetCareService(IAnimalPetCareRepository animalPetCareRepository) : base(animalPetCareRepository)
+        public AnimalPetCareService(IAnimalPetCareRepository animalPetCareRepository) 
         {
             _animalPetCareRepository = animalPetCareRepository;
         }

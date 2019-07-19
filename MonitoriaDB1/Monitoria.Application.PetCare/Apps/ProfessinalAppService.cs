@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 namespace Monitoria.Application.PetCare.Apps
 {
-    public class ProfessinalAppService : AppServiceBase<Professional>, IProfessinalAppService
+    public class ProfessinalAppService : IProfessinalAppService
     {
         private readonly IProfessionalService _professionalService;
 
-        public ProfessinalAppService(IProfessionalService professionalService) : base(professionalService)
+        public ProfessinalAppService(IProfessionalService professionalService) 
         {
             _professionalService = professionalService;
         }

@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace Monitoria.Application.PetCare.Apps
 {
-    public class AnimalPetCareAppService : AppServiceBase<AnimalPetCare>, IAnimalPetCareAppService
+    public class AnimalPetCareAppService :  IAnimalPetCareAppService
     {
         private readonly IAnimalPetCareService _animalPetCareService;
 
-        public AnimalPetCareAppService(IAnimalPetCareService animalPetCareService) : base(animalPetCareService)
+        public AnimalPetCareAppService(IAnimalPetCareService animalPetCareService) 
         {
             _animalPetCareService = animalPetCareService;
         }

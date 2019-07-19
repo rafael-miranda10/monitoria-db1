@@ -8,7 +8,7 @@ namespace Monitoria.Domain.Registration.Interfaces.Repositories
     {
         IEnumerable<Animal> GetByAnimalName(string name);
         IEnumerable<Animal> GetByCustomerId(Guid customerId);
-        IEnumerable<Animal> GetAll();
-        Animal GetById(Guid id);
+        IEnumerable<Animal> GetAllAnimal();
+        Animal GetAnimalById(Guid id);
     }
 }

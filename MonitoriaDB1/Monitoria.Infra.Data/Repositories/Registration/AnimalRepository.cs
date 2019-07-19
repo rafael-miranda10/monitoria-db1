@@ -19,13 +19,13 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             _context = context;
             _mapper = mapper;
         }
-        public IEnumerable<Animal> GetAll()
+        public IEnumerable<Animal> GetAllAnimal()
         {
             var query = _context.Animal.AsEnumerable();
             var list = _mapper.Map<IEnumerable<AnimalRepModel>, IEnumerable<Animal>>(query);
             return list;
         }
-        public Animal GetById(Guid id)
+        public Animal GetAnimalById(Guid id)
         {
             var result = _context.Animal.Find(id);
             var animal = _mapper.Map<AnimalRepModel, Animal>(result);

@@ -12,10 +12,11 @@ namespace Monitoria.Infra.CrossCutting.Mappings
     {
         public RepositoryToDomainMappingProfile()
         {
-            ModelRepositoryToDomain();
+            ModelRepositoryToDomainRegistration();
+            ModelRepositoryToDomainPetCare();
         }
 
-        private void ModelRepositoryToDomain()
+        private void ModelRepositoryToDomainRegistration()
         {
             CreateMap<AnimalRepModel, Animal>();
             CreateMap<CustomerRepModel,Customer>()
@@ -25,6 +26,14 @@ namespace Monitoria.Infra.CrossCutting.Mappings
             CreateMap<DocumentRepModel,Document>();
             CreateMap<AddressRepModel,Address>();
             CreateMap<ProfessionalRepModel, Professional>();
+        }
+        private void ModelRepositoryToDomainPetCare()
+        {
+            CreateMap<AnimalPetCareRepModel,AnimalPetCare>();
+            CreateMap<PetServicesRepModel,PetServices>();
+            CreateMap<ProfessionalRepModel,Professional>();
+            CreateMap<ProfessionalServicesAnimalRepModel,ProfessionalServicesAnimal>();
+            CreateMap<RowAnimalCareRepModel,RowAnimalCare>();
         }
     }
 }

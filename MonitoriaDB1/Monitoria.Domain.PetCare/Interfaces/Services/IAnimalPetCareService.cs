@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Monitoria.Domain.PetCare.Interfaces.Services
 {
-    public interface IAnimalPetCareService : IServiceBase<AnimalPetCare>
+    public interface IAnimalPetCareService 
     {
         IEnumerable<AnimalPetCare> GetByAnimalPetCareName(string Name);
     }

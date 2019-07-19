@@ -5,11 +5,11 @@ using Monitoria.Domain.Shared.Services;
 
 namespace Monitoria.Domain.PetCare.Services
 {
-    public class PetServicesService: ServiceBase<PetServices>, IPetServicesService
+    public class PetServicesService:  IPetServicesService
     {
         private readonly IPetServicesRepository _petServicesRepository; 
 
-        public PetServicesService(IPetServicesRepository petServicesRepository) : base(petServicesRepository)
+        public PetServicesService(IPetServicesRepository petServicesRepository) 
         {
             _petServicesRepository = petServicesRepository;
         }

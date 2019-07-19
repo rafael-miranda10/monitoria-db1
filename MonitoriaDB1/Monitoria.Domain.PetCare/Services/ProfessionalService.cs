@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 namespace Monitoria.Domain.PetCare.Services
 {
-    public class ProfessionalService : ServiceBase<Professional>, IProfessionalService
+    public class ProfessionalService : IProfessionalService
     {
         private readonly IProfessionalRepository _professionalRepository;
 
-        public ProfessionalService(IProfessionalRepository professionalRepository): base(professionalRepository)
+        public ProfessionalService(IProfessionalRepository professionalRepository)
         {
             _professionalRepository = professionalRepository;
         }

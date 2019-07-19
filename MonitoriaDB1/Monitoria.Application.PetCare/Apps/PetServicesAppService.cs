@@ -5,11 +5,11 @@ using Monitoria.Domain.PetCare.Interfaces.Services;
 
 namespace Monitoria.Application.PetCare.Apps
 {
-    public class PetServicesAppService : AppServiceBase<PetServices>, IPetServicesAppService
+    public class PetServicesAppService :  IPetServicesAppService
     {
         private readonly IPetServicesService _petServicesService;
 
-        public PetServicesAppService(IPetServicesService petServicesService) : base(petServicesService)
+        public PetServicesAppService(IPetServicesService petServicesService) 
         {
         }
     }
