@@ -22,23 +22,23 @@ namespace Monitoria.API.Controllers
         }
 
         // GET api/animal
-        [HttpGet]
-        public ActionResult<IEnumerable<Animal>> Get()
-        {
-            // return new string[] { "maradona","Astor", "Sad", "Greg" };
+        //[HttpGet]
+        //public ActionResult<IEnumerable<Animal>> Get()
+        //{
+        //    // return new string[] { "maradona","Astor", "Sad", "Greg" };
 
-            //var json = JsonConvert.SerializeObject(aList);
-            return _animalAppService.GetAll().ToArray();
-        }
+        //    //var json = JsonConvert.SerializeObject(aList);
+        //    return _animalAppService.GetAll().ToArray();
+        //}
 
-        // POST api/animal
-        [Route("adicionar")]
-        [HttpPost]
-        public void Post()
-        {
-            var animal = new Animal("Greg", 2,SpeciesEnum.Canine, true);
-            _animalAppService.Add(animal);
+        //// POST api/animal
+        //[Route("adicionar")]
+        //[HttpPost]
+        //public void Post()
+        //{
+        //    var animal = new Animal("Greg", 2,SpeciesEnum.Canine, true);
+        //    _animalAppService.Add(animal);
 
-        }
+        //}
     }
 }

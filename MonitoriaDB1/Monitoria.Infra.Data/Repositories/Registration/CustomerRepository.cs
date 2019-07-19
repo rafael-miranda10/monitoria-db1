@@ -19,14 +19,14 @@ namespace Monitoria.Infra.Data.Repositories.Registration
         private readonly PetCareContext _contextPetCare;
         private readonly IMapper _mapper;
 
-        public CustomerRepository(RegistrationContext context, IMapper mapper, PetCareContext contextPetCare) : base(context)
+        public CustomerRepository(RegistrationContext context, IMapper mapper, PetCareContext contextPetCare) 
         {
             _context = context;
             _mapper = mapper;
             _contextPetCare = contextPetCare;
         }
 
-        public void Add(Customer customer)
+        public void AddCustomer(Customer customer)
         {
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
             _context.Customer.Add(customerRepModel);
@@ -39,7 +39,7 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             _context.SaveChanges();
             _contextPetCare.SaveChanges();
         }
-        public void Update(Customer customer)
+        public void UpdateCustomer(Customer customer)
         {
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
             _context.Set<CustomerRepModel>().Attach(customerRepModel);
@@ -47,7 +47,7 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             _context.SaveChanges();
         }
 
-        public void Remove(Customer customer)
+        public void RemoveCustomer(Customer customer)
         {
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
             _context.Set<CustomerRepModel>().Remove(customerRepModel);
@@ -56,7 +56,7 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             _contextPetCare.SaveChanges();
         }
 
-        public IEnumerable<Customer> GetAll()
+        public IEnumerable<Customer> GetAllCustomer()
         {
             var query = _context.Customer
                          .Include(x => x.Animails)
@@ -79,14 +79,14 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             return list;
         }
 
-        public Customer GetById(Guid id)
+        public Customer GetCostomerById(Guid id)
         {
             var result = _context.Customer.Find(id);
             var customer = _mapper.Map<CustomerRepModel, Customer>(result);
             return customer;
         }
 
-        public void RemoveById(Guid id)
+        public void RemoveCostomerById(Guid id)
         {
             var result = _context.Customer.Find(id);
             if (result != null)

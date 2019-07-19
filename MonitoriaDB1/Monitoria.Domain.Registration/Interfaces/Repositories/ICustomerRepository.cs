@@ -6,13 +6,13 @@ namespace Monitoria.Domain.Registration.Interfaces.Repositories
 {
     public interface ICustomerRepository 
     {
-        void Add(Customer customer);
-        void Update(Customer customer);
-        void Remove(Customer customer);
-        IEnumerable<Customer> GetAll();
+        void AddCustomer(Customer customer);
+        void UpdateCustomer(Customer customer);
+        void RemoveCustomer(Customer customer);
+        IEnumerable<Customer> GetAllCustomer();
         IEnumerable<Customer> GetByCustomerName(string name);
-        Customer GetById(Guid id);
-        void RemoveById(Guid id);
+        Customer GetCostomerById(Guid id);
+        void RemoveCostomerById(Guid id);
         Customer GetEntityEqualTo(Customer customer);
         bool ExistingEntity(Customer customer);
 

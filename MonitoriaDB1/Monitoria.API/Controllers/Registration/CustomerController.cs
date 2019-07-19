@@ -22,10 +22,10 @@ namespace Monitoria.API.Controllers.Registration
         [HttpPost]
         public IActionResult Post()
         {
-            var animal = new Animal("Pipoca", 2, SpeciesEnum.Canine, true);
-            var customer = new Customer(new Name("Djalma Jorge Celestino", "De Oliveira"), new Document("09052751013", DocumentEnum.CPF), new Email("djalma.jorge@gmail.com"), new Address("Rua Nochete", "450", "Vila Operária", "Presidente Prudente", "São Paulo", "Brasil", "19033040"));
+            var animal = new Animal("Cindy", 2, SpeciesEnum.Canine, true);
+            var customer = new Customer(new Name("Enzo Cirilo", "De Oliveira"), new Document("09052751013", DocumentEnum.CPF), new Email("enzo.cirilo@gmail.com"), new Address("Rua Nochete", "450", "Vila Operária", "Presidente Prudente", "São Paulo", "Brasil", "19033040"));
             customer.AddAnimal(animal);
-            _customerAppService.Add(customer);
+            _customerAppService.AddCustomer(customer);
 
             return Ok(customer);
         }
@@ -40,7 +40,7 @@ namespace Monitoria.API.Controllers.Registration
         [HttpGet]
         public ActionResult<IEnumerable<Customer>> Get()
         {
-            var result = _customerAppService.GetAll().ToList();
+            var result = _customerAppService.GetAllCustomer().ToList();
             return result;
         }
     }
