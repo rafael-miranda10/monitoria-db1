@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Monitoria.API.ViewModels.PetCare;
 using Monitoria.API.ViewModels.Registration;
+using Monitoria.API.ViewModels.ValueObjects;
 using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.Registration.Entities;
+using Monitoria.Domain.Shared.ValueObjects;
 
 namespace Monitoria.API.Mapping
 {
@@ -16,8 +18,13 @@ namespace Monitoria.API.Mapping
 
         private void ViewToDomainRegistration()
         {
+            CreateMap<NameViewModel, Name>();
+            CreateMap<EmailViewModel, Email>();
+            CreateMap<AddressViewModel, Address>();
+            CreateMap<DocumentViewModel, Document>();
             CreateMap<AnimalViewModel, Animal>();
-            CreateMap<CustomerViewModel, Customer>();
+            CreateMap<CustomerViewModel, Customer>()
+                .ForMember(d => d.Animails, m => m.MapFrom(s => s.Animails)); 
 
         }
         private void ViewToDomainPetCare()

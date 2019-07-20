@@ -1,9 +1,12 @@
 ﻿using Flunt.Notifications;
 using Monitoria.API.ViewModels.ValueObjects;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Monitoria.API.ViewModels.Registration
 {
+    
     public class CustomerViewModel : Notifiable
     {
         public CustomerViewModel()
@@ -21,10 +24,12 @@ namespace Monitoria.API.ViewModels.Registration
             AddNotifications(name, document, email, address);
         }
 
+        public Guid? CustomerId { get; set; }
         public NameViewModel Name { get; set; }
         public DocumentViewModel Document { get; set; }
         public EmailViewModel Email { get; set; }
         public AddressViewModel Address { get; set; }
+        [JsonIgnore]
         public IList<AnimalViewModel> Animails { get; set; }
     }
 }

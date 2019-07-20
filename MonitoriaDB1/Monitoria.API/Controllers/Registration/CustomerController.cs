@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using Flunt.Notifications;
 using Microsoft.AspNetCore.Mvc;
 using Monitoria.API.ViewModels.Registration;
 using Monitoria.Application.Registration.Interfaces;
 using Monitoria.Domain.Registration.Entities;
-using Monitoria.Domain.Shared.Enum;
-using Monitoria.Domain.Shared.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,38 +16,134 @@ namespace Monitoria.API.Controllers.Registration
     {
         private readonly ICustomerAppService _customerAppService;
         private readonly IMapper _mapper;
-        //_mapper.Map<IEnumerable<AnimalRepModel>, IEnumerable<Animal>>(query);
+
         public CustomerController(ICustomerAppService customerAppService, IMapper mapper)
         {
             _customerAppService = customerAppService;
             _mapper = mapper;
         }
 
-        [Route("adicionar")]
+        [Route("addCustomer")]
         [HttpPost]
-        public IActionResult Post(CustomerViewModel customerVM)
+        public IActionResult AddCustomer(CustomerViewModel customerVM)
         {
-            //var animal = new Animal("Cindy", 2, SpeciesEnum.Canine, true);
-            //var customer = new Customer(new Name("Enzo Cirilo", "De Oliveira"), new Document("09052751013", DocumentEnum.CPF), new Email("enzo.cirilo@gmail.com"), new Address("Rua Nochete", "450", "Vila Operária", "Presidente Prudente", "São Paulo", "Brasil", "19033040"));
-            //customer.AddAnimal(animal);
             var customer = _mapper.Map<CustomerViewModel, Customer>(customerVM);
-            _customerAppService.AddCustomer(customer);
 
-            return Ok(customer);
+            if (!customer.Notifications.Any())
+            {
+                try
+                {
+                    _customerAppService.AddCustomer(customer);
+                    customerVM.CustomerId = customer.Id;
+                    return Ok(customerVM);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+                }
+            }
+            else
+            {
+                return BadRequest(new { errors = customer.Notifications });
+            }
         }
-        [Route("pesquisar")]
-        [HttpGet]
-        public ActionResult<IEnumerable<Customer>> Get(string name)
+
+        [Route("addAnimalCustomer")]
+        [HttpPost]
+        public IActionResult addAnimalCustomer(AnimalViewModel animalVM)
         {
-            //"Djalma Jorge"
-            return _customerAppService.GetByCustomerName(name).ToList();
+            var animal = _mapper.Map<AnimalViewModel, Animal>(animalVM);
+
+            if (!animal.Notifications.Any())
+            {
+                try
+                {
+                    var customer = _customerAppService.GetCostomerById(animalVM.CustomerId.Value);
+                    if (customer != null)
+                    {
+                        customer.AddAnimal(animal);
+                        if (!customer.Notifications.Any())
+                            _customerAppService.UpdateCustomer(customer);
+                    }
+                    else
+                    {
+                        animal.AddNotification(new Notification("Customer", $"O cliente não foi encontrado"));
+                    }
+
+                    if (customer.Notifications.Any())
+                        return BadRequest(new { errors = animal.Notifications });
+
+
+                    return Ok(animalVM);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+                }
+            }
+            else
+            {
+                return BadRequest(new { errors = animal.Notifications });
+            }
         }
-        [Route("pesquisar-todos")]
+
+
+        [Route("GetCustomersByFirstName")]
         [HttpGet]
-        public ActionResult<IEnumerable<Customer>> Get()
+        public ActionResult<IEnumerable<CustomerViewModel>> Get(string name)
         {
-            var result = _customerAppService.GetAllCustomer().ToList();
-            return result;
+            try
+            {
+                var customer = _customerAppService.GetByCustomerName(name);
+                if (customer != null)
+                {
+                    var customerVM = _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewModel>>(customer);
+                    return Ok(customerVM);
+                }
+
+                return BadRequest($"Não foi possivel encontrar resultados para {name}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+            }
+
+        }
+        [Route("GetAllcustomers")]
+        [HttpGet]
+        public ActionResult<IEnumerable<CustomerViewModel>> GetAllcustomers()
+        {
+            try
+            {
+                var customer = _customerAppService.GetAllCustomer();
+                if (customer != null)
+                {
+                    var customerVM = _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewModel>>(customer);
+                    return Ok(customerVM);
+                }
+
+                return BadRequest($"Não foi possivel encontrar resultados ");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+            }
+        }
+        [Route("RemoveCustomer")]
+        [HttpPost]
+        public IActionResult RemoveCustomer(Guid customerId)
+        {
+
+            try
+            {
+                _customerAppService.RemoveCostomerById(customerId);
+                return Ok($"Customer com o ID: { customerId} removido com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+            }
+
         }
     }
 }

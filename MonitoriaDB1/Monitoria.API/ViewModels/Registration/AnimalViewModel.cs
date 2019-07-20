@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using Newtonsoft.Json;
+using System;
 
 namespace Monitoria.API.ViewModels.Registration
 {
@@ -16,6 +17,7 @@ namespace Monitoria.API.ViewModels.Registration
         public int Age { get;  set; }
         public int Specie { get; set; }
         public bool IsAlive { get; set; }
+        public Guid? CustomerId { get; set; }
         [JsonIgnore]
         public CustomerViewModel Customer { get; set; }
     }
