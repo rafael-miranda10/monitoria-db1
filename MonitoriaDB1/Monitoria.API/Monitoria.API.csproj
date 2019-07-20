@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AutoMaper\**" />
+    <Content Remove="AutoMaper\**" />
+    <EmbeddedResource Remove="AutoMaper\**" />
+    <None Remove="AutoMaper\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -16,13 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj" />
-    <ProjectReference Include="..\Monitoria.Infra.Shared\Monitoria.Infra.IoC.csproj" />
+    <Folder Include="Controllers\PetCare\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AutoMaper\" />
-    <Folder Include="Controllers\PetCare\" />
+    <ProjectReference Include="..\Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.Shared\Monitoria.Infra.IoC.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,26 +1,30 @@
-﻿using Monitoria.API.ViewModels.ValueObjects;
+﻿using Flunt.Notifications;
+using Monitoria.API.ViewModels.ValueObjects;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Monitoria.API.ViewModels.Registration
 {
-    public class CustomerViewModel
+    public class CustomerViewModel : Notifiable
     {
-        private IList<AnimalViewModel> _animals;
+        public CustomerViewModel()
+        {
 
-        public CustomerViewModel(Name name, Document document, Email email, Address address)
+        }
+        public CustomerViewModel(NameViewModel name, DocumentViewModel document, EmailViewModel email, AddressViewModel address)
         {
             Name = name;
             Document = document;
             Email = email;
             Address = address;
-            _animals = new List<AnimalViewModel>();
+            Animails = new List<AnimalViewModel>();
+
+            AddNotifications(name, document, email, address);
         }
 
-        public Name Name { get; private set; }
-        public Document Document { get; private set; }
-        public Email Email { get; private set; }
-        public Address Address { get; private set; }
-        public IList<AnimalViewModel> Animails { get { return _animals.ToArray(); } }
+        public NameViewModel Name { get; set; }
+        public DocumentViewModel Document { get; set; }
+        public EmailViewModel Email { get; set; }
+        public AddressViewModel Address { get; set; }
+        public IList<AnimalViewModel> Animails { get; set; }
     }
 }

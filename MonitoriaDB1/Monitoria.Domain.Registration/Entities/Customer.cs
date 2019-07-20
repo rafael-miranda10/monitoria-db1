@@ -8,8 +8,6 @@ namespace Monitoria.Domain.Registration.Entities
 {
     public class Customer : Entity
     {
-        private IList<Animal> _animals;
-
         public Customer()
         {
 
@@ -21,7 +19,6 @@ namespace Monitoria.Domain.Registration.Entities
             Email = email;
             Address = address;
             Animails = new List<Animal>();
-            //_animals = new List<Animal>();
 
             AddNotifications(name, document, email, address);
         }
@@ -30,12 +27,10 @@ namespace Monitoria.Domain.Registration.Entities
         public Document Document { get; private set; }
         public Email Email { get; private set; }
         public Address Address { get; private set; }
-        //public IList<Animal> Animails { get { return _animals.ToArray(); } }
         public IList<Animal> Animails { get; private set; }
 
         public void AddAnimal(Animal animal)
         {
-            //var hasSameName = _animals.SingleOrDefault(x => x.Name == animal.Name);
             var hasSameName = Animails.SingleOrDefault(x => x.Name == animal.Name);
 
             if (hasSameName != null)

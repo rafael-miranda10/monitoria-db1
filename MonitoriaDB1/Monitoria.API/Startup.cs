@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Monitoria.API.Mapping;
 using Monitoria.Infra.CrossCutting.Mappings;
 using Monitoria.Infra.Data.Contexts;
 using Monitoria.Infra.IoC.PetCare;

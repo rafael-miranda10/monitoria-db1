@@ -10,7 +10,7 @@ namespace Monitoria.API.ViewModels.PetCare
     {
         private IList<ProfessionalServicesAnimalViewModel> _animalServices;
 
-        public ProfessionalViewModel(Name name, Document document, Email email, Address address, int jobPosition)
+        public ProfessionalViewModel(NameViewModel name, DocumentViewModel document, EmailViewModel email, AddressViewModel address, int jobPosition)
         {
             Name = name;
             Document = document;
@@ -20,10 +20,10 @@ namespace Monitoria.API.ViewModels.PetCare
             _animalServices = new List<ProfessionalServicesAnimalViewModel>();
         }
 
-        public Name Name { get; private set; }
-        public Document Document { get; private set; }
-        public Email Email { get; private set; }
-        public Address Address { get; private set; }
+        public NameViewModel Name { get; private set; }
+        public DocumentViewModel Document { get; private set; }
+        public EmailViewModel Email { get; private set; }
+        public AddressViewModel Address { get; private set; }
         public int JobPosition { get; private set; }
         public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get { return _animalServices.ToArray(); } }
     }
