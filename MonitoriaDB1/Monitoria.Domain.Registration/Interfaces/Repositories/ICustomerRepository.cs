@@ -15,6 +15,5 @@ namespace Monitoria.Domain.Registration.Interfaces.Repositories
         void RemoveCostomerById(Guid id);
         Customer GetEntityEqualTo(Customer customer);
         bool ExistingEntity(Customer customer);
-
     }
 }

@@ -1,11 +1,20 @@
 ﻿using Monitoria.Domain.PetCare.Entities;
-using Monitoria.Domain.Shared.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Monitoria.Domain.PetCare.Interfaces.Services
 {
-    public interface IProfessionalServicesAnimalService : IServiceBase<ProfessionalServicesAnimal>
+    public interface IProfessionalServicesAnimalService 
     {
+        void AddProfissionalServiceAnimal(ProfessionalServicesAnimal profissionalServiceAnimal);
+        void UpdateProfissionalServiceAnimal(ProfessionalServicesAnimal profissionalServiceAnimal);
+        void RemoveProfissionalServiceAnimal(ProfessionalServicesAnimal profissionalServiceAnimal);
+        void RemoveProfissionalServiceAnimalById(Guid id);
+        IEnumerable<ProfessionalServicesAnimal> GetAllProfissionalServiceAnimal();
         IEnumerable<ProfessionalServicesAnimal> GetAllServicesByProfessional(Professional profissional);
+        IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(AnimalPetCare animal);
+        ProfessionalServicesAnimal GetProfissionalServiceAnimalById(Guid id);
+        ProfessionalServicesAnimal GetEntityEqualTo(ProfessionalServicesAnimal profissionalServiceAnimal);
+        bool ExistingEntity(ProfessionalServicesAnimal profissionalServiceAnimal);
     }
 }

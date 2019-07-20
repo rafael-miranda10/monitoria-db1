@@ -1,11 +1,19 @@
 ﻿using Monitoria.Domain.PetCare.Entities;
-using Monitoria.Domain.Shared.Interfaces.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace Monitoria.Domain.PetCare.Interfaces.Repositories
 {
-    public interface IRowAnimalCareRepository: IRepositoryBase<RowAnimalCare>
+    public interface IRowAnimalCareRepository
     {
-        IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(AnimalPetCare animal);
+        void AddRowAnimalCare(RowAnimalCare rowAnimalCare);
+        void UpdateRowAnimalCare(RowAnimalCare rowAnimalCare);
+        void RemoveRowAnimalCare(RowAnimalCare rowAnimalCare);
+        void RemoveRowAnimalCareById(Guid id);
+        IEnumerable<RowAnimalCare> GetAllRowAnimalCare();
+        IEnumerable<RowAnimalCare> GetAllServicesOfAnimal(AnimalPetCare animal);
+        RowAnimalCare GetRowAnimalCareById(Guid id);
+        RowAnimalCare GetEntityEqualTo(RowAnimalCare rowAnimalCare);
+        bool ExistingEntity(RowAnimalCare rowAnimalCare);
     }
 }
