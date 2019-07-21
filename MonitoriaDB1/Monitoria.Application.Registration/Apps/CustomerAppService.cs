@@ -20,6 +20,11 @@ namespace Monitoria.Application.Registration.Apps
             _customerService.AddCustomer(customer);
         }
 
+        public void AddCustomerAnimals(Customer customer)
+        {
+            _customerService.AddCustomerAnimals(customer);
+        }
+
         public bool ExistingEntity(Customer customer)
         {
             return _customerService.ExistingEntity(customer);
@@ -57,7 +62,7 @@ namespace Monitoria.Application.Registration.Apps
 
         public void UpdateCustomer(Customer customer)
         {
-            _customerService.RemoveCustomer(customer);
+            _customerService.UpdateCustomer(customer);
         }
     }
 }

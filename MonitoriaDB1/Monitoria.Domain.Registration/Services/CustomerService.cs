@@ -20,6 +20,11 @@ namespace Monitoria.Domain.Registration.Services
             _customerRepository.AddCustomer(customer);
         }
 
+        public void AddCustomerAnimals(Customer customer)
+        {
+            _customerRepository.AddCustomerAnimals(customer);
+        }
+
         public bool ExistingEntity(Customer customer)
         {
           return _customerRepository.ExistingEntity(customer);
@@ -59,5 +64,6 @@ namespace Monitoria.Domain.Registration.Services
         {
             _customerRepository.UpdateCustomer(customer);
         }
+       
     }
 }

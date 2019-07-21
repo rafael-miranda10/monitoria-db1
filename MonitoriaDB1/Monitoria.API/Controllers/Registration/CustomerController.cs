@@ -34,8 +34,8 @@ namespace Monitoria.API.Controllers.Registration
                 try
                 {
                     _customerAppService.AddCustomer(customer);
-                    customerVM.CustomerId = customer.Id;
-                    return Ok(customerVM);
+                    //return Ok(customerVM);
+                    return Ok(new { success = true });
                 }
                 catch (Exception ex)
                 {
@@ -50,7 +50,7 @@ namespace Monitoria.API.Controllers.Registration
 
         [Route("addAnimalCustomer")]
         [HttpPost]
-        public IActionResult addAnimalCustomer(AnimalViewModel animalVM)
+        public IActionResult addAnimalCustomer(AnimalViewModel animalVM, Guid IdToSearch)
         {
             var animal = _mapper.Map<AnimalViewModel, Animal>(animalVM);
 
@@ -58,12 +58,12 @@ namespace Monitoria.API.Controllers.Registration
             {
                 try
                 {
-                    var customer = _customerAppService.GetCostomerById(animalVM.CustomerId.Value);
+                    var customer = _customerAppService.GetCostomerById(IdToSearch);
                     if (customer != null)
                     {
                         customer.AddAnimal(animal);
                         if (!customer.Notifications.Any())
-                            _customerAppService.UpdateCustomer(customer);
+                            _customerAppService.AddCustomerAnimals(customer);
                     }
                     else
                     {
@@ -74,7 +74,7 @@ namespace Monitoria.API.Controllers.Registration
                         return BadRequest(new { errors = animal.Notifications });
 
 
-                    return Ok(animalVM);
+                    return Ok(new { success = true });
                 }
                 catch (Exception ex)
                 {

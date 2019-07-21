@@ -7,6 +7,7 @@ namespace Monitoria.Application.Registration.Interfaces
     public interface ICustomerAppService 
     {
         void AddCustomer(Customer customer);
+        void AddCustomerAnimals(Customer customer);
         void UpdateCustomer(Customer customer);
         void RemoveCustomer(Customer customer);
         IEnumerable<Customer> GetAllCustomer();

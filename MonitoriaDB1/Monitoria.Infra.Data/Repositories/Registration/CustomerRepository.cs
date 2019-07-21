@@ -19,7 +19,7 @@ namespace Monitoria.Infra.Data.Repositories.Registration
         private readonly PetCareContext _contextPetCare;
         private readonly IMapper _mapper;
 
-        public CustomerRepository(RegistrationContext context, IMapper mapper, PetCareContext contextPetCare) 
+        public CustomerRepository(RegistrationContext context, IMapper mapper, PetCareContext contextPetCare)
         {
             _context = context;
             _mapper = mapper;
@@ -31,7 +31,19 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
             _context.Customer.Add(customerRepModel);
             RemoveAnimalPetCareById(customer.Id);
-            AddAnimalPetCare(customer.Animails, customer.Id);
+            AddAnimalPetCare(customerRepModel.Animails, customer.Id);
+            _context.SaveChanges();
+            _contextPetCare.SaveChanges();
+        }
+
+        public void AddCustomerAnimals(Customer customer)
+        {
+            var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
+
+            RemoveAnimalPetCareById(customer.Id);
+            //_context.SaveChanges();
+           // _contextPetCare.SaveChanges();
+            AddAnimalPetCare(customerRepModel.Animails, customer.Id);
             _context.SaveChanges();
             _contextPetCare.SaveChanges();
         }
@@ -40,29 +52,27 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
             _context.Customer.Attach(customerRepModel);
             _context.Entry(customerRepModel).State = EntityState.Modified;
-
-            RemoveAnimalPetCareById(customer.Id);
-            AddAnimalPetCare(customer.Animails, customer.Id);
             _context.SaveChanges();
-            _contextPetCare.SaveChanges();
         }
-    
-        private void AddAnimalPetCare(IList<Animal> list, Guid customerId)
+
+        private void AddAnimalPetCare(IList<AnimalRepModel> list, Guid customerId)
         {
             foreach (var item in list)
             {
-                var animal = new AnimalPetCareRepModel(customerId, item.Name, item.Age, (SpeciesEnum)item.Specie);
-                _contextPetCare.AnimalPetCare.Add(animal);
+                var animalpc = new AnimalPetCareRepModel(customerId, item.Name, item.Age, (SpeciesEnum)item.Specie);
+                _contextPetCare.AnimalPetCare.Add(animalpc);
             }
+
+            _context.Animal.AddRange(list);
         }
 
         public void RemoveCustomer(Customer customer)
         {
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
             _context.Customer.Remove(customerRepModel);
-           // RemoveAnimalPetCareById(customer.Id);
+            // RemoveAnimalPetCareById(customer.Id);
             _context.SaveChanges();
-           // _contextPetCare.SaveChanges();
+            // _contextPetCare.SaveChanges();
         }
 
         public IEnumerable<Customer> GetAllCustomer()
@@ -90,7 +100,7 @@ namespace Monitoria.Infra.Data.Repositories.Registration
 
         public Customer GetCostomerById(Guid id)
         {
-            var result = _context.Customer.AsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+            var result = _context.Customer.Include(x => x.Animails).AsNoTracking().Where(x => x.Id == id).FirstOrDefault();
             var customer = _mapper.Map<CustomerRepModel, Customer>(result);
             return customer;
         }
@@ -102,7 +112,7 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             {
                 _context.Customer.Remove(result);
                 //RemoveAnimalPetCareById(id);
-               // _contextPetCare.SaveChanges();
+                // _contextPetCare.SaveChanges();
                 _context.SaveChanges();
             }
         }
@@ -124,9 +134,15 @@ namespace Monitoria.Infra.Data.Repositories.Registration
 
         private void RemoveAnimalPetCareById(Guid id)
         {
-            var result = _contextPetCare.AnimalPetCare.Where(x => x.CustomerId.Equals(id)).FirstOrDefault();
+            var resultPC = _contextPetCare.AnimalPetCare.Where(x => x.CustomerId.Equals(id)).AsEnumerable();
+            if (resultPC != null)
+                _contextPetCare.AnimalPetCare.RemoveRange(resultPC);
+
+            var result = _context.Animal.Where(x => x.CustomerId.Equals(id)).AsEnumerable();
             if (result != null)
-                _contextPetCare.AnimalPetCare.Remove(result);
+                _context.Animal.RemoveRange(result);
+
+
         }
     }
 }

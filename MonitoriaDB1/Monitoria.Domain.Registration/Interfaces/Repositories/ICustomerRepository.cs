@@ -7,6 +7,7 @@ namespace Monitoria.Domain.Registration.Interfaces.Repositories
     public interface ICustomerRepository 
     {
         void AddCustomer(Customer customer);
+        void AddCustomerAnimals(Customer customer);
         void UpdateCustomer(Customer customer);
         void RemoveCustomer(Customer customer);
         IEnumerable<Customer> GetAllCustomer();

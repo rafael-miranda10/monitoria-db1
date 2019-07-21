@@ -24,8 +24,7 @@ namespace Monitoria.API.Mapping
             CreateMap<Document, DocumentViewModel>();
             CreateMap<Animal,AnimalViewModel>();
             CreateMap<Customer, CustomerViewModel>()
-                .ForMember(d => d.Animails, m => m.MapFrom(s => s.Animails))
-                .ForMember(d => d.CustomerId, m => m.MapFrom(s => s.Id)); 
+                .ForMember(d => d.Animails, m => m.MapFrom(s => s.Animails)); 
 
         }
         private void DomainToViewPetCare()
