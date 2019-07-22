@@ -38,14 +38,23 @@ namespace Monitoria.Infra.Data.Repositories.Registration
 
         public void AddCustomerAnimals(Customer customer)
         {
-            var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
+            // var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
+            //RemoveAnimalPetCareById(customer.Id);
+            ////_context.SaveChanges();
+            //// _contextPetCare.SaveChanges();
+            //AddAnimalPetCare(customerRepModel.Animails, customer.Id);
+            //_context.SaveChanges();
+            //_contextPetCare.SaveChanges();
+
+            // var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
 
             RemoveAnimalPetCareById(customer.Id);
+            RemoveCostomerById(customer.Id);
+            AddCustomer(customer);
+
+            //_context.Customer.Attach(customerRepModel);
+            //_context.Entry(customerRepModel).State = EntityState.Modified;
             //_context.SaveChanges();
-           // _contextPetCare.SaveChanges();
-            AddAnimalPetCare(customerRepModel.Animails, customer.Id);
-            _context.SaveChanges();
-            _contextPetCare.SaveChanges();
         }
         public void UpdateCustomer(Customer customer)
         {
@@ -69,10 +78,10 @@ namespace Monitoria.Infra.Data.Repositories.Registration
         public void RemoveCustomer(Customer customer)
         {
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
+            RemoveAnimalPetCareById(customer.Id);
             _context.Customer.Remove(customerRepModel);
-            // RemoveAnimalPetCareById(customer.Id);
+            _contextPetCare.SaveChanges();
             _context.SaveChanges();
-            // _contextPetCare.SaveChanges();
         }
 
         public IEnumerable<Customer> GetAllCustomer()
@@ -110,9 +119,9 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             var result = _context.Customer.Include(x => x.Animails).Where(x => x.Id == id).FirstOrDefault();
             if (result != null)
             {
+                RemoveAnimalPetCareById(id);
                 _context.Customer.Remove(result);
-                //RemoveAnimalPetCareById(id);
-                // _contextPetCare.SaveChanges();
+                _contextPetCare.SaveChanges();
                 _context.SaveChanges();
             }
         }

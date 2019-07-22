@@ -22,8 +22,10 @@ namespace Monitoria.API.Mapping
             CreateMap<Email, EmailViewModel>();
             CreateMap<Address, AddressViewModel>();
             CreateMap<Document, DocumentViewModel>();
-            CreateMap<Animal,AnimalViewModel>();
+            CreateMap<Animal,AnimalViewModel>()
+            .ForMember(d => d.Id, m => m.MapFrom(s =>  s.Id));
             CreateMap<Customer, CustomerViewModel>()
+                .ForMember(d => d.Id, m => m.MapFrom(s => s.Id))
                 .ForMember(d => d.Animails, m => m.MapFrom(s => s.Animails)); 
 
         }

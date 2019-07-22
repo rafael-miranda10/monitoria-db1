@@ -129,15 +129,33 @@ namespace Monitoria.API.Controllers.Registration
                 return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
             }
         }
-        [Route("RemoveCustomer")]
+        [Route("RemoveCustomerById")]
         [HttpPost]
-        public IActionResult RemoveCustomer(Guid customerId)
+        public IActionResult RemoveCustomerById(Guid customerId)
         {
 
             try
             {
                 _customerAppService.RemoveCostomerById(customerId);
                 return Ok($"Customer com o ID: { customerId} removido com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+            }
+
+        }
+
+        [Route("RemoveCustomer")]
+        [HttpPost]
+        public IActionResult RemoveCustomer(CustomerViewModel customerVM)
+        {
+
+            try
+            {
+                var customer = _mapper.Map<CustomerViewModel, Customer>(customerVM);
+                _customerAppService.RemoveCustomer(customer);
+                return Ok($"Customer com o ID: { customer.Id.ToString()} removido com sucesso!");
             }
             catch (Exception ex)
             {

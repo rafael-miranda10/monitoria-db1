@@ -9,7 +9,7 @@ namespace Monitoria.API.ViewModels.Shared
         {
         }
 
-        public Guid Id { get; private set; }
+        public Guid? Id { get; set; }
 
         public void NewIdEntity()
         {
