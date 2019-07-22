@@ -30,8 +30,7 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
         public void UpdatePetServices(PetServices petServices)
         {
             var petServicesRepModel = _mapper.Map<PetServices, PetServicesRepModel>(petServices);
-            _context.PetServices.Attach(petServicesRepModel);
-            _context.Entry(petServicesRepModel).State = EntityState.Modified;
+            _context.PetServices.Update(petServicesRepModel);
             _context.SaveChanges();
         }
 
@@ -44,9 +43,11 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public void RemovePetServicesById(Guid id)
         {
-            var result = _context.PetServices.Find(id);
+            var result = _context.PetServices.Include(x => x.AnimailServices).Where(x => x.Id == id).FirstOrDefault();
             if (result != null)
                 _context.PetServices.Remove(result);
+
+            _context.SaveChanges();
         }
 
         public IEnumerable<PetServices> GetAllPetServices()

@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Monitoria.API.ViewModels.Shared;
+using System.Collections.Generic;
 
 namespace Monitoria.API.ViewModels.PetCare
 {
-    public class PetServicesViewModel
+    public class PetServicesViewModel : Entity
     {
-        private IList<ProfessionalServicesAnimalViewModel> _animalServices;
+        public PetServicesViewModel()
+        {
 
+        }
         public PetServicesViewModel(string descricao, int category, string checkList, decimal serviceValue, bool active)
         {
             Description = descricao;
@@ -14,14 +16,14 @@ namespace Monitoria.API.ViewModels.PetCare
             CheckList = checkList;
             Active = active;
             ServiceValue = serviceValue;
-            _animalServices = new List<ProfessionalServicesAnimalViewModel>();
+            AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
         }
 
-        public string Description { get; private set; }
-        public int Category { get; private set; }
-        public string CheckList { get; private set; }
-        public decimal ServiceValue { get; private set; }
-        public bool Active { get; private set; }
-        public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get { return _animalServices.ToArray(); } }
+        public string Description { get; set; }
+        public int Category { get; set; }
+        public string CheckList { get; set; }
+        public decimal ServiceValue { get; set; }
+        public bool Active { get; set; }
+        public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get; set; }
     }
 }

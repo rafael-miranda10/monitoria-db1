@@ -33,7 +33,8 @@ namespace Monitoria.API.Mapping
         private void ViewToDomainPetCare()
         {
             CreateMap<AnimalPetCareViewModel,AnimalPetCare>();
-            CreateMap<PetServicesViewModel, PetServices>();
+            CreateMap<PetServicesViewModel, PetServices>()
+                .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
             CreateMap<ProfessionalViewModel, Professional>()
                 .ForMember(d => d.AnimailServices, m => m.MapFrom(s => (s.AnimailServices.Count > 0) ? s.AnimailServices : null))
                 .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
