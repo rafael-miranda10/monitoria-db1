@@ -13,7 +13,7 @@ namespace Monitoria.Application.PetCare.Interfaces
         void RemoveProfessionalById(Guid id);
         IEnumerable<Professional> GetAllProfessional();
         IEnumerable<Professional> GetByProfessionalName(string name);
-        IEnumerable<Professional> GetAllProfessionalByEnum(ProfessionalEnum type);
+        IEnumerable<Professional> GetAllProfessionalByEnum(int type);
         Professional GetProfessionalById(Guid id);
         Professional GetEntityEqualTo(Professional professional);
         bool ExistingEntity(Professional professional);

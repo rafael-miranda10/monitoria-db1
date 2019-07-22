@@ -25,7 +25,7 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public IEnumerable<Professional> GetAllProfessionalByEnum(ProfessionalEnum type)
         {
-            var query = _context.Professional.Where(x => x.JobPosition.Equals(type)).AsEnumerable();
+            var query = _context.Professional.Where(x => (int)x.JobPosition == (int)type).AsEnumerable();
             var list = _mapper.Map<IEnumerable<ProfessionalRepModel>, IEnumerable<Professional>>(query);
             return list;
         }
@@ -55,8 +55,9 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
         public void UpdateProfessional(Professional professional)
         {
             var professionalRepModel = _mapper.Map<Professional, ProfessionalRepModel>(professional);
-            _context.Professional.Attach(professionalRepModel);
-            _context.Entry(professionalRepModel).State = EntityState.Modified;
+            // _context.Professional.Attach(professionalRepModel);
+            // _context.Entry(professionalRepModel).State = EntityState.Modified;
+            _context.Professional.Update(professionalRepModel);
             _context.SaveChanges();
         }
 
@@ -69,9 +70,11 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public void RemoveProfessionalById(Guid id)
         {
-            var result = _context.Professional.Find(id);
+            var result = _context.Professional.Include(x => x.AnimailServices).Where(x => x.Id == id).FirstOrDefault();
             if (result != null)
                 _context.Professional.Remove(result);
+
+            _context.SaveChanges();
         }
 
         public IEnumerable<Professional> GetAllProfessional()

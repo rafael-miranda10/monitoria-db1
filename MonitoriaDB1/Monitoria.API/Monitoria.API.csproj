@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\PetCare\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\Monitoria.Infra.Shared\Monitoria.Infra.IoC.csproj" />
   </ItemGroup>

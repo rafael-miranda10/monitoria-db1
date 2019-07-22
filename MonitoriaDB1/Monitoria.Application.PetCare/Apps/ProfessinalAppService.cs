@@ -31,9 +31,9 @@ namespace Monitoria.Application.PetCare.Apps
             return _professionalService.GetAllProfessional();
         }
 
-        public IEnumerable<Professional> GetAllProfessionalByEnum(ProfessionalEnum type)
+        public IEnumerable<Professional> GetAllProfessionalByEnum(int type)
         {
-            return _professionalService.GetAllProfessionalByEnum(type);
+            return _professionalService.GetAllProfessionalByEnum((ProfessionalEnum)type);
         }
 
         public IEnumerable<Professional> GetByProfessionalName(string name)

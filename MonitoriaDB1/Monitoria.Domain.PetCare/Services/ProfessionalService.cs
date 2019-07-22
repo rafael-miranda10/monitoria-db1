@@ -58,12 +58,12 @@ namespace Monitoria.Domain.PetCare.Services
 
         public void RemoveProfessionalById(Guid id)
         {
-            throw new NotImplementedException();
+            _professionalRepository.RemoveProfessionalById(id);
         }
 
         public void UpdateProfessional(Professional professional)
         {
-            throw new NotImplementedException();
+            _professionalRepository.UpdateProfessional(professional);
         }
     }
 }
