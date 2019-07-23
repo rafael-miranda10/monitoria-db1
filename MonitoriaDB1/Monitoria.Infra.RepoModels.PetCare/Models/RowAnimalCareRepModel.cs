@@ -1,4 +1,5 @@
 ﻿using Monitoria.Infra.RepModels.Shared.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace Monitoria.Infra.RepoModels.PetCare.Models
@@ -15,6 +16,7 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
             AnimailServices = animailservices;
         }
 
+        public Guid AnimalPetCareId { get; private set; }
         public AnimalPetCareRepModel AnimalPetCare { get; private set; }
         public decimal ValueTotal { get; private set; }
         public virtual IList<ProfessionalServicesAnimalRepModel> AnimailServices { get; private set; }

@@ -25,6 +25,6 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public int Age { get; private set; }
         public SpeciesEnum Specie { get; private set; }
         public RowAnimalCareRepModel RowAnimalCare { get; private set; }
-        public Guid CustomerId { get; set; }
+        public Guid CustomerId { get; private set; }
     }
 }

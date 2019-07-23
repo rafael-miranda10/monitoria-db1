@@ -17,7 +17,6 @@ namespace Monitoria.Domain.PetCare.Entities
             Email = email;
             Address = address;
             JobPosition = jobPosition;
-            ProfessionalServicesAnimal = new ProfessionalServicesAnimal();
 
             AddNotifications(name, document, email, address);
         }

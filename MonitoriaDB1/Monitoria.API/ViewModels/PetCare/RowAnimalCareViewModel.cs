@@ -13,7 +13,7 @@ namespace Monitoria.API.ViewModels.PetCare
         {
             AnimalPetCare = animal;
             ValueTotal = 0;
-            AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
+            //AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
         }
 
         public AnimalPetCareViewModel AnimalPetCare { get; set; }
