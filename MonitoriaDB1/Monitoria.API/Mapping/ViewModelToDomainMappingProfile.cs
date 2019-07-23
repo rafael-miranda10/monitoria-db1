@@ -38,8 +38,10 @@ namespace Monitoria.API.Mapping
             CreateMap<ProfessionalViewModel, Professional>()
                 .ForMember(d => d.AnimailServices, m => m.MapFrom(s => (s.AnimailServices.Count > 0) ? s.AnimailServices : null))
                 .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
-            CreateMap<ProfessionalServicesAnimalViewModel, ProfessionalServicesAnimal>();
-            CreateMap<RowAnimalCareViewModel, RowAnimalCare>();
+            CreateMap<ProfessionalServicesAnimalViewModel, ProfessionalServicesAnimal>()
+                .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
+            CreateMap<RowAnimalCareViewModel, RowAnimalCare>()
+                .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
         }
     }
 }

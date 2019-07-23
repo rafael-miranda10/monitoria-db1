@@ -1,9 +1,14 @@
-﻿using System;
+﻿using Monitoria.API.ViewModels.Shared;
+using System;
 
 namespace Monitoria.API.ViewModels.PetCare
 {
-    public class ProfessionalServicesAnimalViewModel
+    public class ProfessionalServicesAnimalViewModel : Entity
     {
+        public ProfessionalServicesAnimalViewModel()
+        {
+
+        }
         public ProfessionalServicesAnimalViewModel(ProfessionalViewModel prof, PetServicesViewModel pService, string note)
         {
             Professional = prof;

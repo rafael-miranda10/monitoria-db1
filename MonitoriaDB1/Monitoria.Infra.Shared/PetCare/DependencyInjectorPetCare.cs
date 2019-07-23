@@ -33,7 +33,7 @@ namespace Monitoria.Infra.IoC.PetCare
             svcCollection.AddScoped<IPetServicesRepository, PetServicesRepository>();
             svcCollection.AddScoped<IProfessionalRepository, ProfessionalRepository>();
             svcCollection.AddScoped<IProfessionalServicesAnimalRepository, ProfessionalServicesAnimalRepository>();
-            svcCollection.AddScoped<IRowAnimalCareService, RowAnimalCareService>();
+            svcCollection.AddScoped<IRowAnimalCareRepository, RowAnimalCareRepository>();
 
         }
     }

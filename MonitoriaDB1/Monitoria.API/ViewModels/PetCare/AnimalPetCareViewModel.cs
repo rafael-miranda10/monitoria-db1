@@ -1,7 +1,13 @@
-﻿namespace Monitoria.API.ViewModels.PetCare
+﻿using Monitoria.API.ViewModels.Shared;
+
+namespace Monitoria.API.ViewModels.PetCare
 {
-    public class AnimalPetCareViewModel
+    public class AnimalPetCareViewModel : Entity
     {
+        public AnimalPetCareViewModel()
+        {
+
+        }
         public AnimalPetCareViewModel(string name, int age, int specie)
         {
             Name = name;
@@ -9,9 +15,9 @@
             Specie = specie;
         }
 
-        public string Name { get; private set; }
-        public int Age { get; private set; }
-        public int Specie { get; private set; }
-        public RowAnimalCareViewModel RowAnimalCare { get; private set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Specie { get; set; }
+        public RowAnimalCareViewModel RowAnimalCare { get; set; }
     }
 }

@@ -1,21 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Monitoria.API.ViewModels.Shared;
+using System.Collections.Generic;
 
 namespace Monitoria.API.ViewModels.PetCare
 {
-    public class RowAnimalCareViewModel
+    public class RowAnimalCareViewModel : Entity
     {
-        private IList<ProfessionalServicesAnimalViewModel> _animalServices;
+        public RowAnimalCareViewModel()
+        {
 
+        }
         public RowAnimalCareViewModel(AnimalPetCareViewModel animal)
         {
             AnimalPetCare = animal;
             ValueTotal = 0;
-            _animalServices = new List<ProfessionalServicesAnimalViewModel>();
+            AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
         }
 
-        public AnimalPetCareViewModel AnimalPetCare { get; private set; }
-        public decimal ValueTotal { get; private set; }
-        public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get { return _animalServices.ToArray(); } }
+        public AnimalPetCareViewModel AnimalPetCare { get; set; }
+        public decimal ValueTotal { get; set; }
+        public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get; set;}
     }
 }

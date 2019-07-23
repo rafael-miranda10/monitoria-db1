@@ -7,25 +7,27 @@ namespace Monitoria.Domain.PetCare.Entities
 {
     public class RowAnimalCare : Entity
     {
-        private IList<ProfessionalServicesAnimal> _animalServices;
+        public RowAnimalCare()
+        {
 
+        }
         public RowAnimalCare(AnimalPetCare animal)
         {
             AnimalPetCare = animal;
             ValueTotal = 0;
-            _animalServices = new List<ProfessionalServicesAnimal>();
+            AnimailServices = new List<ProfessionalServicesAnimal>();
 
             AddNotifications(AnimalPetCare);
         }
 
         public AnimalPetCare AnimalPetCare { get; private set; }
         public decimal ValueTotal { get; private set; }
-        public IList<ProfessionalServicesAnimal> AnimailServices { get { return _animalServices.ToArray(); } }
+        public IList<ProfessionalServicesAnimal> AnimailServices { get; private set; }
 
         public void CalculatePriceTotal()
         {
-            if (_animalServices.Count > 0)
-                ValueTotal = _animalServices.Sum(x => x.PetService.ServiceValue);
+            if (AnimailServices.Count > 0)
+                ValueTotal = AnimailServices.Sum(x => x.PetService.ServiceValue);
         }
 
         public void AddProfessionalService(ProfessionalServicesAnimal profService)
@@ -40,7 +42,7 @@ namespace Monitoria.Domain.PetCare.Entities
             }
 
             if (profService.Valid)
-                _animalServices.Add(profService);
+                AnimailServices.Add(profService);
         }
     }
 }
