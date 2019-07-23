@@ -70,7 +70,7 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public void RemoveProfessionalById(Guid id)
         {
-            var result = _context.Professional.Include(x => x.AnimailServices).Where(x => x.Id == id).FirstOrDefault();
+            var result = _context.Professional.Where(x => x.Id == id).FirstOrDefault();
             if (result != null)
                 _context.Professional.Remove(result);
 

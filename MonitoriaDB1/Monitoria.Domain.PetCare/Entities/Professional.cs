@@ -1,7 +1,6 @@
 ﻿using Monitoria.Domain.PetCare.Enum;
 using Monitoria.Domain.Shared.Entities;
 using Monitoria.Domain.Shared.ValueObjects;
-using System.Collections.Generic;
 
 namespace Monitoria.Domain.PetCare.Entities
 {
@@ -18,7 +17,18 @@ namespace Monitoria.Domain.PetCare.Entities
             Email = email;
             Address = address;
             JobPosition = jobPosition;
-            AnimailServices = new List<ProfessionalServicesAnimal>();
+            ProfessionalServicesAnimal = new ProfessionalServicesAnimal();
+
+            AddNotifications(name, document, email, address);
+        }
+        public Professional(Name name, Document document, Email email, Address address, ProfessionalEnum jobPosition, ProfessionalServicesAnimal professionalServicesAnimal)
+        {
+            Name = name;
+            Document = document;
+            Email = email;
+            Address = address;
+            JobPosition = jobPosition;
+            ProfessionalServicesAnimal = professionalServicesAnimal;
 
             AddNotifications(name, document, email, address);
         }
@@ -28,7 +38,6 @@ namespace Monitoria.Domain.PetCare.Entities
         public Email Email { get; private set; }
         public Address Address { get; private set; }
         public ProfessionalEnum JobPosition { get; private set; }
-        public IList<ProfessionalServicesAnimal> AnimailServices { get;private set; }
-
+        public ProfessionalServicesAnimal ProfessionalServicesAnimal { get; private set; }
     }
 }

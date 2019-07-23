@@ -1,5 +1,5 @@
 ﻿using Monitoria.API.ViewModels.Shared;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Monitoria.API.ViewModels.PetCare
 {
@@ -16,7 +16,7 @@ namespace Monitoria.API.ViewModels.PetCare
             CheckList = checkList;
             Active = active;
             ServiceValue = serviceValue;
-            AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
+            //ProfessionalServicesAnimalViewModel = new ProfessionalServicesAnimalViewModel();
         }
 
         public string Description { get; set; }
@@ -24,6 +24,7 @@ namespace Monitoria.API.ViewModels.PetCare
         public string CheckList { get; set; }
         public decimal ServiceValue { get; set; }
         public bool Active { get; set; }
-        public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get; set; }
+        //[JsonIgnore]
+        //public ProfessionalServicesAnimalViewModel ProfessionalServicesAnimalViewModel { get; set; }
     }
 }

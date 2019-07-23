@@ -15,7 +15,14 @@ namespace Monitoria.Domain.PetCare.Entities
         {
             AnimalPetCare = animal;
             ValueTotal = 0;
-            AnimailServices = new List<ProfessionalServicesAnimal>();
+
+            AddNotifications(AnimalPetCare);
+        }
+        public RowAnimalCare(AnimalPetCare animal,List<ProfessionalServicesAnimal> animalsServices)
+        {
+            AnimalPetCare = animal;
+            ValueTotal = 0;
+            AnimailServices = animalsServices;
 
             AddNotifications(AnimalPetCare);
         }

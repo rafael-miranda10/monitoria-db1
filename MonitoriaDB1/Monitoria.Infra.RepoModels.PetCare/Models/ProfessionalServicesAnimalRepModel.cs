@@ -17,9 +17,9 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         }
 
         public Guid professionalId { get; private set; }
-        public virtual ProfessionalRepModel Professional { get; private set; }
+        public ProfessionalRepModel Professional { get; private set; }
         public Guid PetServiceId { get; private set; }
-        public virtual PetServicesRepModel PetService { get; private set; }
+        public PetServicesRepModel PetService { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public string Note { get; private set; }

@@ -17,11 +17,11 @@ namespace Monitoria.API.ViewModels.PetCare
             Note = note;
         }
 
-        public ProfessionalViewModel Professional { get; private set; }
-        public PetServicesViewModel PetService { get; private set; }
-        public DateTime StartDate { get; private set; }
-        public DateTime EndDate { get; private set; }
-        public string Note { get; private set; }
-        public RowAnimalCareViewModel RowAnimalCare { get; private set; }
+        public ProfessionalViewModel Professional { get;  set; }
+        public PetServicesViewModel PetService { get;  set; }
+        public DateTime StartDate { get;  set; }
+        public DateTime EndDate { get;  set; }
+        public string Note { get;  set; }
+        public RowAnimalCareViewModel RowAnimalCare { get; set; }
     }
 }

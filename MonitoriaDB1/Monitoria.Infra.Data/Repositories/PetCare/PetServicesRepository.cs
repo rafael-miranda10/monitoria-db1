@@ -43,7 +43,7 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public void RemovePetServicesById(Guid id)
         {
-            var result = _context.PetServices.Include(x => x.AnimailServices).Where(x => x.Id == id).FirstOrDefault();
+            var result = _context.PetServices.Where(x => x.Id == id).FirstOrDefault();
             if (result != null)
                 _context.PetServices.Remove(result);
 

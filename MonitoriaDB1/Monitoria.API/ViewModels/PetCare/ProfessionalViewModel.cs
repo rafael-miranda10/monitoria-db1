@@ -1,6 +1,5 @@
 ﻿using Monitoria.API.ViewModels.Shared;
 using Monitoria.API.ViewModels.ValueObjects;
-using System.Collections.Generic;
 
 namespace Monitoria.API.ViewModels.PetCare
 {
@@ -10,14 +9,14 @@ namespace Monitoria.API.ViewModels.PetCare
         {
 
         }
-        public ProfessionalViewModel(NameViewModel name, DocumentViewModel document, EmailViewModel email, AddressViewModel address, int jobPosition)
+        public ProfessionalViewModel(NameViewModel name, DocumentViewModel document, EmailViewModel email, AddressViewModel address, int jobPosition, ProfessionalServicesAnimalViewModel professionalServicesAnimalViewModel)
         {
             Name = name;
             Document = document;
             Email = email;
             Address = address;
             JobPosition = jobPosition;
-            AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
+            ProfessionalServicesAnimalViewModel = professionalServicesAnimalViewModel;
         }
 
         public NameViewModel Name { get; set; }
@@ -25,6 +24,6 @@ namespace Monitoria.API.ViewModels.PetCare
         public EmailViewModel Email { get; set; }
         public AddressViewModel Address { get; set; }
         public int JobPosition { get; set; }
-        public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get; set; }
+        public ProfessionalServicesAnimalViewModel ProfessionalServicesAnimalViewModel { get; set; }
     }
 }

@@ -46,11 +46,6 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
                 cb.ToTable("Professional");
             });
 
-            //Relacionamento
-            builder.HasMany(x => x.AnimailServices)
-                .WithOne(c => c.Professional)
-                .HasForeignKey(k => k.professionalId)
-                .HasPrincipalKey(p => p.Id);
         }
     }
 }

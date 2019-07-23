@@ -10,7 +10,8 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
         {
             builder.ToTable("ProfessionalServicesAnimal");
 
-            builder.HasKey(x => x.Id);
+            // builder.HasKey(x => x.Id);
+            builder.HasKey(x => new { x.Id, x.PetServiceId, x.professionalId});
 
             builder.Property(x => x.Note)
                 .IsRequired()
@@ -27,19 +28,17 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
                 .HasForeignKey(k => k.RowAnimalCareId)
                 .HasPrincipalKey(p => p.Id);
 
-            //Relacionamento Profissional
-            builder.HasOne(x => x.Professional)
-                .WithMany(c => c.AnimailServices)
-                .HasForeignKey(k => k.professionalId)
-                .HasPrincipalKey(p => p.Id);
 
-            //Relacionamento PetService
-            builder.HasOne(x => x.PetService)
-                .WithMany(c => c.AnimailServices)
-                .HasForeignKey(k => k.PetServiceId)
-                .HasPrincipalKey(p => p.Id);
+            ////Relacionamento
+            //builder.HasOne(x => x.Professional)
+            //   .WithOne(c => c.ProfessionalServicesAnimal)
+            //   .HasForeignKey(k => k.);
+            ////.HasForeignKey<ProfessionalRepModel>(k => k.Id);
 
-
+            ////Relacionamento
+            //builder.HasOne(x => x.PetService)
+            //   .WithOne(c => c.ProfessionalServicesAnimal)
+            //   .HasForeignKey<PetServicesRepModel>(k => k.Id);
 
         }
     }

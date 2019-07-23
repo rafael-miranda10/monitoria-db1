@@ -1,6 +1,5 @@
 ﻿using Monitoria.Infra.RepModels.Shared.Entity;
 using Monitoria.Infra.RepoModels.PetCare.Enum;
-using System.Collections.Generic;
 
 namespace Monitoria.Infra.RepoModels.PetCare.Models
 {
@@ -9,14 +8,14 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public PetServicesRepModel()
         {
         }
-        public PetServicesRepModel(string descricao, CategoryEnum category, string checkList, decimal serviceValue, bool active, List<ProfessionalServicesAnimalRepModel> animalservices )
+        public PetServicesRepModel(string descricao, CategoryEnum category, string checkList, decimal serviceValue, bool active, ProfessionalServicesAnimalRepModel professionalServicesAnimal)
         {
             Description = descricao;
             Category = category;
             CheckList = checkList;
             Active = active;
             ServiceValue = serviceValue;
-            AnimailServices = animalservices;
+            ProfessionalServicesAnimal = professionalServicesAnimal;
         }
 
         public string Description { get; private set; }
@@ -24,6 +23,6 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public string CheckList { get; private set; }
         public decimal ServiceValue { get; private set; }
         public bool Active { get; private set; }
-        public virtual IList<ProfessionalServicesAnimalRepModel> AnimailServices { get; private set; }
+        public ProfessionalServicesAnimalRepModel ProfessionalServicesAnimal { get; private set; }
     }
 }

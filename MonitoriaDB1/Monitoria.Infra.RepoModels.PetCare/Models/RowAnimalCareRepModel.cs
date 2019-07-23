@@ -8,10 +8,10 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public RowAnimalCareRepModel()
         {
         }
-        public RowAnimalCareRepModel(AnimalPetCareRepModel animal, List<ProfessionalServicesAnimalRepModel> animailservices)
+        public RowAnimalCareRepModel(AnimalPetCareRepModel animal,decimal valueTotal ,List<ProfessionalServicesAnimalRepModel> animailservices)
         {
             AnimalPetCare = animal;
-            ValueTotal = 0;
+            ValueTotal = valueTotal;
             AnimailServices = animailservices;
         }
 
