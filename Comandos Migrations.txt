@@ -1,0 +1,6 @@
+Add-Migration InitialCreate -Context RegistrationContext -o Migrations/Registration -verbose
+Add-Migration InitialCreate -Context PetCareContext -o Migrations/PetCare -verbose
+
+ 
+Update-Database -Context RegistrationContext
+Update-Database -Context PetCareContext

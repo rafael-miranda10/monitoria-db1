@@ -23,6 +23,7 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public string Note { get; private set; }
+        public int ExecutionOrder { get; private set; }
         public Guid RowAnimalCareId { get; private set; }
         public virtual RowAnimalCareRepModel RowAnimalCare { get; private set; }
     }
