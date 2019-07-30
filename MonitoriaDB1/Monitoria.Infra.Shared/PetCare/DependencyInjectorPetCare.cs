@@ -13,7 +13,6 @@ namespace Monitoria.Infra.IoC.PetCare
         public static void Registrar(IServiceCollection svcCollection)
         {
             //Aplicação
-            svcCollection.AddScoped<IAnimalPetCareAppService, AnimalPetCareAppService>();
             svcCollection.AddScoped<IPetServicesAppService, PetServicesAppService>();
             svcCollection.AddScoped<IProfessinalAppService, ProfessinalAppService>();
             svcCollection.AddScoped<IProfessionalServicesAnimalAppService, ProfessionalServicesAnimalAppService>();
@@ -21,7 +20,6 @@ namespace Monitoria.Infra.IoC.PetCare
 
             //Domínio
             //svcCollection.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
-            svcCollection.AddScoped<IAnimalPetCareService, AnimalPetCareService>();
             svcCollection.AddScoped<IPetServicesService, PetServicesService>();
             svcCollection.AddScoped<IProfessionalService, ProfessionalService>();
             svcCollection.AddScoped<IProfessionalServicesAnimalService, ProfessionalServicesAnimalService>();
@@ -29,7 +27,6 @@ namespace Monitoria.Infra.IoC.PetCare
 
             //Repositorio
             //svcCollection.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<,>));
-            svcCollection.AddScoped<IAnimalPetCareRepository, AnimalPetCareRepository>();
             svcCollection.AddScoped<IPetServicesRepository, PetServicesRepository>();
             svcCollection.AddScoped<IProfessionalRepository, ProfessionalRepository>();
             svcCollection.AddScoped<IProfessionalServicesAnimalRepository, ProfessionalServicesAnimalRepository>();

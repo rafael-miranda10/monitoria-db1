@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Monitoria.Infra.RepModels.Shared\Monitoria.Infra.RepModels.Shared.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.RepoModels.Registration\Monitoria.Infra.RepoModels.Registration.csproj" />
   </ItemGroup>
 
 </Project>

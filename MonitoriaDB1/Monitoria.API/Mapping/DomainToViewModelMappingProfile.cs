@@ -31,7 +31,6 @@ namespace Monitoria.API.Mapping
         }
         private void DomainToViewPetCare()
         {
-            CreateMap<AnimalPetCare,AnimalPetCareViewModel>();
             CreateMap<PetServices, PetServicesViewModel>();
             CreateMap<Professional, ProfessionalViewModel>();
             CreateMap<ProfessionalServicesAnimal, ProfessionalServicesAnimalViewModel>();

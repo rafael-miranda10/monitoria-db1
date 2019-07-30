@@ -27,12 +27,11 @@ namespace Monitoria.Infra.CrossCutting.Mappings
         }
         private void DomainToModelRepositoryPetCare()
         {
-            CreateMap<AnimalPetCare, AnimalPetCareRepModel>();
             CreateMap<PetServices, PetServicesRepModel>();
             CreateMap<Professional, ProfessionalRepModel>();
             CreateMap<ProfessionalServicesAnimal, ProfessionalServicesAnimalRepModel>();
             CreateMap<RowAnimalCare, RowAnimalCareRepModel>()
-                .ForMember(d => d.AnimalPetCare, m => m.MapFrom(s => s.AnimalPetCare))
+                .ForMember(d => d.Animal, m => m.MapFrom(s => s.Animal))
                 .ForMember(d => d.AnimailServices, m => m.MapFrom(s => s.AnimailServices));
         }
     }

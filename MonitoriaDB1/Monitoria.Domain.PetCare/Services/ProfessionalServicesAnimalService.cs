@@ -1,6 +1,7 @@
 ﻿using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Interfaces.Repositories;
 using Monitoria.Domain.PetCare.Interfaces.Services;
+using Monitoria.Domain.Registration.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -35,7 +36,7 @@ namespace Monitoria.Domain.PetCare.Services
             return _professionalServicesAnimalRepository.GetAllServicesByProfessional(profissional);
         }
 
-        public IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(AnimalPetCare animal)
+        public IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(Animal animal)
         {
             return _professionalServicesAnimalRepository.GetAllServicesOfAnimal(animal);
         }

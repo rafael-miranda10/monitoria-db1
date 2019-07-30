@@ -13,7 +13,6 @@ namespace Monitoria.Infra.Data.Contexts
 
         }
 
-        public DbSet<AnimalPetCareRepModel> AnimalPetCare { get; set; }
         public DbSet<PetServicesRepModel> PetServices { get; set; }
         public DbSet<ProfessionalRepModel> Professional { get; set; }
         public DbSet<ProfessionalServicesAnimalRepModel> ProfessionalServicesAnimal { get; set; }
@@ -36,7 +35,6 @@ namespace Monitoria.Infra.Data.Contexts
             modelBuilder.Ignore<NameRepModel>();
             modelBuilder.Ignore<Notification>();
 
-            modelBuilder.ApplyConfiguration(new AnimalPetCareConfiguration());
             modelBuilder.ApplyConfiguration(new PetServicesConfiguration());
             modelBuilder.ApplyConfiguration(new ProfessionalConfiguration());
             modelBuilder.ApplyConfiguration(new ProfessionalServicesAnimalConfiguration());

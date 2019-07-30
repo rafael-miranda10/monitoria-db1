@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Interfaces.Repositories;
+using Monitoria.Domain.Registration.Entities;
 using Monitoria.Infra.Data.Contexts;
 using Monitoria.Infra.RepoModels.PetCare.Models;
 using System;
@@ -83,9 +84,9 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
             _context.Entry(profissionalServiceAnimalRepModel).State = EntityState.Modified;
             _context.SaveChanges();
         }
-        public IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(AnimalPetCare animal)
+        public IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(Animal animal)
         {
-            return _context.Set<ProfessionalServicesAnimal>().Where(x => x.RowAnimalCare.AnimalPetCare.Equals(animal)).AsEnumerable();
+            return _context.Set<ProfessionalServicesAnimal>().Where(x => x.RowAnimalCare.Animal.Equals(animal)).AsEnumerable();
         }
     }
 }

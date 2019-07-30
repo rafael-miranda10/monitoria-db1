@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Monitoria.Application.PetCare.Interfaces;
 using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Interfaces.Services;
+using Monitoria.Domain.Registration.Entities;
 
 namespace Monitoria.Application.PetCare.Apps
 {
@@ -35,7 +36,7 @@ namespace Monitoria.Application.PetCare.Apps
             return _professionalServicesAnimalService.GetAllServicesByProfessional(profissional);
         }
 
-        public IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(AnimalPetCare animal)
+        public IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(Animal animal)
         {
             return _professionalServicesAnimalService.GetAllServicesOfAnimal(animal);
         }

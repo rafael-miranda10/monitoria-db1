@@ -1,4 +1,5 @@
 ﻿using Monitoria.Domain.PetCare.Entities;
+using Monitoria.Domain.Registration.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace Monitoria.Application.PetCare.Interfaces
         void RemoveRowAnimalCare(RowAnimalCare rowAnimalCare);
         void RemoveRowAnimalCareById(Guid id);
         IEnumerable<RowAnimalCare> GetAllRowAnimalCare();
-        IEnumerable<RowAnimalCare> GetAllServicesOfAnimal(AnimalPetCare animal);
+        IEnumerable<RowAnimalCare> GetAllServicesOfAnimal(Animal animal);
         RowAnimalCare GetRowAnimalCareById(Guid id);
         RowAnimalCare GetEntityEqualTo(RowAnimalCare rowAnimalCare);
         bool ExistingEntity(RowAnimalCare rowAnimalCare);

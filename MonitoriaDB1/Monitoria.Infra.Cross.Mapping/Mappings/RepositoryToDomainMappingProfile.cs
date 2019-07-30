@@ -29,7 +29,6 @@ namespace Monitoria.Infra.CrossCutting.Mappings
         }
         private void ModelRepositoryToDomainPetCare()
         {
-            CreateMap<AnimalPetCareRepModel,AnimalPetCare>();
             CreateMap<PetServicesRepModel,PetServices>();
             CreateMap<ProfessionalRepModel,Professional>();
             CreateMap<ProfessionalServicesAnimalRepModel,ProfessionalServicesAnimal>();

@@ -1,4 +1,6 @@
-﻿using Monitoria.API.ViewModels.Shared;
+﻿using Monitoria.API.ViewModels.Registration;
+using Monitoria.API.ViewModels.Shared;
+using System;
 using System.Collections.Generic;
 
 namespace Monitoria.API.ViewModels.PetCare
@@ -9,14 +11,14 @@ namespace Monitoria.API.ViewModels.PetCare
         {
 
         }
-        public RowAnimalCareViewModel(AnimalPetCareViewModel animal)
+        public RowAnimalCareViewModel(AnimalViewModel animal)
         {
-            AnimalPetCare = animal;
+            Animal = animal;
             ValueTotal = 0;
-            //AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
         }
 
-        public AnimalPetCareViewModel AnimalPetCare { get; set; }
+        public Guid AnimalId { get; private set; }
+        public virtual AnimalViewModel Animal { get; set; }
         public decimal ValueTotal { get; set; }
         public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get; set;}
     }

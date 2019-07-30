@@ -68,8 +68,8 @@ namespace Monitoria.Infra.Data.Repositories.Registration
         {
             foreach (var item in list)
             {
-                var animalpc = new AnimalPetCareRepModel(customerId, item.Name, item.Age, (SpeciesEnum)item.Specie);
-                _contextPetCare.AnimalPetCare.Add(animalpc);
+               // var animalpc = new AnimalPetCareRepModel(customerId, item.Name, item.Age, (SpeciesEnum)item.Specie);
+                //_contextPetCare.AnimalPetCare.Add(animalpc);
             }
 
             _context.Animal.AddRange(list);
@@ -143,15 +143,9 @@ namespace Monitoria.Infra.Data.Repositories.Registration
 
         private void RemoveAnimalPetCareById(Guid id)
         {
-            var resultPC = _contextPetCare.AnimalPetCare.Where(x => x.CustomerId.Equals(id)).AsEnumerable();
-            if (resultPC != null)
-                _contextPetCare.AnimalPetCare.RemoveRange(resultPC);
-
             var result = _context.Animal.Where(x => x.CustomerId.Equals(id)).AsEnumerable();
             if (result != null)
                 _context.Animal.RemoveRange(result);
-
-
         }
     }
 }

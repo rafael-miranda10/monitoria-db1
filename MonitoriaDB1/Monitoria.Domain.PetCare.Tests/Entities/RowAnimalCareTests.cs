@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Enum;
+using Monitoria.Domain.Registration.Entities;
 using Monitoria.Domain.Shared.Enum;
 using Monitoria.Domain.Shared.ValueObjects;
 using System;
@@ -17,7 +18,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         private readonly Email _email;
         private readonly Document _document;
         private readonly Address _address;
-        private readonly AnimalPetCare _animal;
+        private readonly Animal _animal;
 
 
         public RowAnimalCareTests()
@@ -29,7 +30,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             _professional = new Professional(_name, _document, _email, _address, ProfessionalEnum.Veterinary);
             _petServicesConsult = new PetServices("Consulta Veterinária", CategoryEnum.VeterinaryProcedure, "Examinar o animal para o diagnóstico inicial", (decimal)70.5, true);
             _petServicesHairCut = new PetServices("Banho e Tosa", CategoryEnum.AnimalEsthetics, "Examinar o animal em busca de pequenos ferimentos", (decimal)35.0, true);
-            _animal = new AnimalPetCare("Greg", 2, SpeciesEnum.Canine);
+            _animal = new Animal("Greg", 2, SpeciesEnum.Canine, true);
 
         }
 

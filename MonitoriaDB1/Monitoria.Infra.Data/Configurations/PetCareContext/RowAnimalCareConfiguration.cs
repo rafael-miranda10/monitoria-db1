@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Monitoria.Domain.Registration.Entities;
 using Monitoria.Infra.RepoModels.PetCare.Models;
 
 namespace Monitoria.Infra.Data.Configurations.PetCareContext
@@ -24,10 +25,10 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
                 .HasPrincipalKey(p => p.Id);
 
             //Relacionamento AnimalPetCare
-            builder.HasOne(x => x.AnimalPetCare)
-                .WithOne(c => c.RowAnimalCare)
-                .HasForeignKey<AnimalPetCareRepModel>(k => k.Id)
-                .HasPrincipalKey<RowAnimalCareRepModel>(p => p.Id);
+            //builder.HasOne(x => x.Animal)
+            //    .WithOne(c => c.RowAnimalCare)
+            //    .HasForeignKey<Animal>(k => k.Id)
+            //    .HasPrincipalKey<RowAnimalCareRepModel>(p => p.Id);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Monitoria.Application.PetCare.Interfaces;
 using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Interfaces.Services;
+using Monitoria.Domain.Registration.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -30,7 +31,7 @@ namespace Monitoria.Application.PetCare.Apps
             return _rowAnimalCareService.GetAllRowAnimalCare();
         }
 
-        public IEnumerable<RowAnimalCare> GetAllServicesOfAnimal(AnimalPetCare animal)
+        public IEnumerable<RowAnimalCare> GetAllServicesOfAnimal(Animal animal)
         {
             return _rowAnimalCareService.GetAllServicesOfAnimal(animal);
         }
@@ -60,7 +61,7 @@ namespace Monitoria.Application.PetCare.Apps
             _rowAnimalCareService.UpdateRowAnimalCare(rowAnimalCare);
         }
 
-        IEnumerable<RowAnimalCare> IRowAnimalCareAppService.GetAllServicesOfAnimal(AnimalPetCare animal)
+        IEnumerable<RowAnimalCare> IRowAnimalCareAppService.GetAllServicesOfAnimal(Animal animal)
         {
             return _rowAnimalCareService.GetAllServicesOfAnimal(animal);
         }
