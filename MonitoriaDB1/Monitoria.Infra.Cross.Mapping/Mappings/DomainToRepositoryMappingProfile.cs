@@ -29,10 +29,10 @@ namespace Monitoria.Infra.CrossCutting.Mappings
         {
             CreateMap<PetServices, PetServicesRepModel>();
             CreateMap<Professional, ProfessionalRepModel>();
-            CreateMap<ProfessionalServicesAnimal, ProfessionalServicesAnimalRepModel>()
-                .ForMember(d => d.PetServiceId, m => m.MapFrom(s => s.PetService.Id))
-                .ForMember(d => d.professionalId, m => m.MapFrom(s => s.Professional.Id))
-                .ForMember(d => d.RowAnimalCareId, m => m.MapFrom(s => s.RowAnimalCare.Id));
+            CreateMap<ProfessionalServicesAnimal, ProfessionalServicesAnimalRepModel>();
+                //.ForMember(d => d.PetServiceId, m => m.MapFrom(s => s.PetService.Id))
+                //.ForMember(d => d.professionalId, m => m.MapFrom(s => s.Professional.Id))
+                //.ForMember(d => d.RowAnimalCareId, m => m.MapFrom(s => s.RowAnimalCare.Id));
             CreateMap<RowAnimalCare, RowAnimalCareRepModel>()
                 //.ForMember(d => d.Animal, m => m.MapFrom(s => s.Animal))
                 .ForMember(d => d.AnimailServices, m => m.MapFrom(s => s.AnimailServices));
