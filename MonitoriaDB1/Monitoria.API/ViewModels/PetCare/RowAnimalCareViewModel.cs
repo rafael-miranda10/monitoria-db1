@@ -11,14 +11,14 @@ namespace Monitoria.API.ViewModels.PetCare
         {
 
         }
-        public RowAnimalCareViewModel(AnimalViewModel animal)
+        public RowAnimalCareViewModel(Guid animalId)
         {
-            Animal = animal;
+            AnimalId = animalId;
             ValueTotal = 0;
+            AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
         }
 
         public Guid AnimalId { get; private set; }
-        public virtual AnimalViewModel Animal { get; set; }
         public decimal ValueTotal { get; set; }
         public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get; set;}
     }

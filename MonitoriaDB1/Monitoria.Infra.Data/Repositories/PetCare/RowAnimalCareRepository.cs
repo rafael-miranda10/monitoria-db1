@@ -44,7 +44,7 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public IEnumerable<RowAnimalCare> GetAllServicesOfAnimal(Animal animal)
         {
-            var query = _context.RowAnimalCare.Where(x => x.Animal.Equals(animal)).AsEnumerable();
+            var query = _context.RowAnimalCare.Where(x => x.AnimalId.Equals(animal.Id)).AsEnumerable();
             var list = _mapper.Map<IEnumerable<RowAnimalCareRepModel>, IEnumerable<RowAnimalCare>>(query);
             return list;
         }

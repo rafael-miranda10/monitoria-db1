@@ -40,7 +40,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             var _servicesAnimal = new ProfessionalServicesAnimal(_professional, _petServicesConsult, "O animal ficará em observação");
             _servicesAnimal.FinalizeThePetService(DateTime.Now.AddDays(-2));
 
-            var rowAnimalCare = new RowAnimalCare(_animal);
+            var rowAnimalCare = new RowAnimalCare(_animal.Id);
             rowAnimalCare.AddProfessionalService(_servicesAnimal);
             Assert.IsTrue(rowAnimalCare.Invalid);
         }
@@ -54,7 +54,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             var _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut, "O animal apresenta pequenos ferimentos sugerindo alergia");
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
-            var rowAnimalCare = new RowAnimalCare(_animal);
+            var rowAnimalCare = new RowAnimalCare(_animal.Id);
             rowAnimalCare.AddProfessionalService(_SAConsult);
             rowAnimalCare.AddProfessionalService(_SAHairCut);
             Assert.IsTrue(rowAnimalCare.Valid);
@@ -69,7 +69,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             var _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut, "O animal apresenta pequenos ferimentos sugerindo alergia");
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
-            var rowAnimalCare = new RowAnimalCare(_animal);
+            var rowAnimalCare = new RowAnimalCare(_animal.Id);
             rowAnimalCare.AddProfessionalService(_SAConsult);
             rowAnimalCare.AddProfessionalService(_SAHairCut);
 

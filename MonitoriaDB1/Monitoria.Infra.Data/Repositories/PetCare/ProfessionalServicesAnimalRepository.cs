@@ -86,7 +86,7 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
         }
         public IEnumerable<ProfessionalServicesAnimal> GetAllServicesOfAnimal(Animal animal)
         {
-            return _context.Set<ProfessionalServicesAnimal>().Where(x => x.RowAnimalCare.Animal.Equals(animal)).AsEnumerable();
+            return _context.Set<ProfessionalServicesAnimal>().Where(x => x.RowAnimalCare.AnimalId.Equals(animal.Id)).AsEnumerable();
         }
     }
 }

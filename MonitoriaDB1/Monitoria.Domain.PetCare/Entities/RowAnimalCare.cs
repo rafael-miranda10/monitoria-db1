@@ -13,23 +13,20 @@ namespace Monitoria.Domain.PetCare.Entities
         {
 
         }
-        public RowAnimalCare(Animal animal)
+        public RowAnimalCare( Guid animalId )
         {
-            Animal = animal;
+            AnimalId = animalId;
             ValueTotal = 0;
-
-            AddNotifications(Animal);
+            AnimailServices = new List<ProfessionalServicesAnimal>();
         }
-        public RowAnimalCare(Animal animal,List<ProfessionalServicesAnimal> animalsServices)
+        public RowAnimalCare(Guid animalId, List<ProfessionalServicesAnimal> animalsServices)
         {
-            Animal = animal;
+            AnimalId = animalId;
             ValueTotal = 0;
             AnimailServices = animalsServices;
-
-            AddNotifications(Animal);
         }
 
-        public  Animal Animal { get; private set; }
+        public Guid AnimalId { get; private set; }
         public decimal ValueTotal { get; private set; }
         public IList<ProfessionalServicesAnimal> AnimailServices { get; private set; }
 
