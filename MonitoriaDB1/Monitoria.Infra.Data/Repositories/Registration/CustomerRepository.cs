@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Monitoria.Domain.Registration.Entities;
 using Monitoria.Domain.Registration.Interfaces.Repositories;
 using Monitoria.Infra.Data.Contexts;
-using Monitoria.Infra.RepModels.Shared.Enum;
-using Monitoria.Infra.RepoModels.PetCare.Models;
 using Monitoria.Infra.RepoModels.Registration.Models;
 using System;
 using System.Collections.Generic;
@@ -16,45 +14,27 @@ namespace Monitoria.Infra.Data.Repositories.Registration
     public class CustomerRepository : ICustomerRepository
     {
         private readonly RegistrationContext _context;
-        private readonly PetCareContext _contextPetCare;
         private readonly IMapper _mapper;
 
-        public CustomerRepository(RegistrationContext context, IMapper mapper, PetCareContext contextPetCare)
+        public CustomerRepository(RegistrationContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _contextPetCare = contextPetCare;
         }
 
         public void AddCustomer(Customer customer)
         {
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
             _context.Customer.Add(customerRepModel);
-            RemoveAnimalPetCareById(customer.Id);
-            AddAnimalPetCare(customerRepModel.Animails, customer.Id);
             _context.SaveChanges();
-            _contextPetCare.SaveChanges();
         }
 
         public void AddCustomerAnimals(Customer customer)
         {
-            // var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
-            //RemoveAnimalPetCareById(customer.Id);
-            ////_context.SaveChanges();
-            //// _contextPetCare.SaveChanges();
-            //AddAnimalPetCare(customerRepModel.Animails, customer.Id);
-            //_context.SaveChanges();
-            //_contextPetCare.SaveChanges();
-
-            // var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
-
-            RemoveAnimalPetCareById(customer.Id);
+            RemoveAnimalById(customer.Id);
             RemoveCostomerById(customer.Id);
             AddCustomer(customer);
 
-            //_context.Customer.Attach(customerRepModel);
-            //_context.Entry(customerRepModel).State = EntityState.Modified;
-            //_context.SaveChanges();
         }
         public void UpdateCustomer(Customer customer)
         {
@@ -64,23 +44,10 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             _context.SaveChanges();
         }
 
-        private void AddAnimalPetCare(IList<AnimalRepModel> list, Guid customerId)
-        {
-            foreach (var item in list)
-            {
-               // var animalpc = new AnimalPetCareRepModel(customerId, item.Name, item.Age, (SpeciesEnum)item.Specie);
-                //_contextPetCare.AnimalPetCare.Add(animalpc);
-            }
-
-            _context.Animal.AddRange(list);
-        }
-
         public void RemoveCustomer(Customer customer)
         {
             var customerRepModel = _mapper.Map<Customer, CustomerRepModel>(customer);
-            RemoveAnimalPetCareById(customer.Id);
             _context.Customer.Remove(customerRepModel);
-            _contextPetCare.SaveChanges();
             _context.SaveChanges();
         }
 
@@ -119,10 +86,8 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             var result = _context.Customer.Include(x => x.Animails).Where(x => x.Id == id).FirstOrDefault();
             if (result != null)
             {
-                RemoveAnimalPetCareById(id);
                 _context.Customer.Remove(result);
-                _contextPetCare.SaveChanges();
-                _context.SaveChanges();
+                 _context.SaveChanges();
             }
         }
 
@@ -141,7 +106,7 @@ namespace Monitoria.Infra.Data.Repositories.Registration
             return existing != null;
         }
 
-        private void RemoveAnimalPetCareById(Guid id)
+        private void RemoveAnimalById(Guid id)
         {
             var result = _context.Animal.Where(x => x.CustomerId.Equals(id)).AsEnumerable();
             if (result != null)

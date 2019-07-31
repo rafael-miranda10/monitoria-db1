@@ -20,7 +20,7 @@ namespace Monitoria.API.ViewModels.PetCare
         public ProfessionalViewModel Professional { get;  set; }
         public PetServicesViewModel PetService { get;  set; }
         public DateTime StartDate { get;  set; }
-        public DateTime EndDate { get;  set; }
+        public DateTime? EndDate { get;  set; }
         public string Note { get;  set; }
         public int ExecutionOrder { get; set; }
         public RowAnimalCareViewModel RowAnimalCare { get; set; }

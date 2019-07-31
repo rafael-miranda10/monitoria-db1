@@ -29,7 +29,7 @@ namespace Monitoria.Domain.PetCare.Entities
         public Professional Professional { get; private set; }
         public PetServices PetService { get; private set; }
         public DateTime StartDate { get; private set; }
-        public DateTime EndDate { get; private set; }
+        public DateTime? EndDate { get; private set; }
         public string Note { get; private set; }
         public int ExecutionOrder { get; private set; }
         public RowAnimalCare RowAnimalCare { get; private set; }

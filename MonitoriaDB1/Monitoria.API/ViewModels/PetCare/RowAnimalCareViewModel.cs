@@ -18,7 +18,7 @@ namespace Monitoria.API.ViewModels.PetCare
             AnimailServices = new List<ProfessionalServicesAnimalViewModel>();
         }
 
-        public Guid AnimalId { get; private set; }
+        public Guid AnimalId { get; set; }
         public decimal ValueTotal { get; set; }
         public IList<ProfessionalServicesAnimalViewModel> AnimailServices { get; set;}
     }
