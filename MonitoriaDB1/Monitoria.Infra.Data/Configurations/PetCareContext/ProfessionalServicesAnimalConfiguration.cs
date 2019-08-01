@@ -18,6 +18,8 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
                 .HasColumnName("Note")
                 .HasMaxLength(150);
 
+            builder.Property(x => x.EndDate).HasDefaultValue();
+
             builder.Property(x => x.StartDate)
                .IsRequired()
                .HasColumnName("StartDate");
@@ -27,18 +29,6 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
                 .WithMany(c => c.AnimailServices)
                 .HasForeignKey(k => k.RowAnimalCareId)
                 .HasPrincipalKey(p => p.Id);
-
-
-            ////Relacionamento
-            //builder.HasOne(x => x.Professional)
-            //   .WithOne(c => c.ProfessionalServicesAnimal)
-            //   .HasForeignKey(k => k.);
-            ////.HasForeignKey<ProfessionalRepModel>(k => k.Id);
-
-            ////Relacionamento
-            //builder.HasOne(x => x.PetService)
-            //   .WithOne(c => c.ProfessionalServicesAnimal)
-            //   .HasForeignKey<PetServicesRepModel>(k => k.Id);
 
         }
     }
