@@ -23,5 +23,6 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public string Note { get; private set; }
         public int ExecutionOrder { get; private set; }
         public Guid RowAnimalCareId { get; private set; }
+        public RowAnimalCareRepModel RowAnimalCare { get; private set; }
     }
 }

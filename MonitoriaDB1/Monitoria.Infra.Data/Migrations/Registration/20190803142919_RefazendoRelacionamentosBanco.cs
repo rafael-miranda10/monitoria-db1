@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Monitoria.Infra.Data.Migrations.Registration
 {
-    public partial class InitialCreate : Migration
+    public partial class RefazendoRelacionamentosBanco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

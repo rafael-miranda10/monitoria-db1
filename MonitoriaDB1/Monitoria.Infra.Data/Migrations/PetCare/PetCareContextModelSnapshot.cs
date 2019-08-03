@@ -87,27 +87,22 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
                     b.Property<Guid>("ProfessionalId");
 
-                    b.Property<DateTime?>("EndDate")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValue(null);
+                    b.Property<DateTime?>("EndDate");
 
                     b.Property<int>("ExecutionOrder");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasColumnName("Note")
-                        .HasMaxLength(150);
+                        .HasMaxLength(200);
 
                     b.Property<Guid>("RowAnimalCareId");
-
-                    b.Property<Guid?>("RowAnimalCareRepModelId");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnName("StartDate");
 
                     b.HasKey("Id", "PetServiceId", "ProfessionalId");
 
-                    b.HasIndex("RowAnimalCareRepModelId");
+                    b.HasIndex("RowAnimalCareId");
 
                     b.ToTable("ProfessionalServicesAnimal");
                 });
@@ -257,9 +252,10 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
             modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimalRepModel", b =>
                 {
-                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.RowAnimalCareRepModel")
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.RowAnimalCareRepModel", "RowAnimalCare")
                         .WithMany("AnimailServices")
-                        .HasForeignKey("RowAnimalCareRepModelId");
+                        .HasForeignKey("RowAnimalCareId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

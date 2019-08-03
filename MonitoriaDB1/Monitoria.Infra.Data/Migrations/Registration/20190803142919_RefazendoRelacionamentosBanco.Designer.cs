@@ -10,8 +10,8 @@ using Monitoria.Infra.Data.Contexts;
 namespace Monitoria.Infra.Data.Migrations.Registration
 {
     [DbContext(typeof(RegistrationContext))]
-    [Migration("20190731000126_MapeamentoAnimalRefeito")]
-    partial class MapeamentoAnimalRefeito
+    [Migration("20190803142919_RefazendoRelacionamentosBanco")]
+    partial class RefazendoRelacionamentosBanco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

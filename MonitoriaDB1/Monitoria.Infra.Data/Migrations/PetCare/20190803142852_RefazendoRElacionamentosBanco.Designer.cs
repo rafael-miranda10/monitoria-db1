@@ -10,8 +10,8 @@ using Monitoria.Infra.Data.Contexts;
 namespace Monitoria.Infra.Data.Migrations.PetCare
 {
     [DbContext(typeof(PetCareContext))]
-    [Migration("20190728150031_OrdemServiçosPrestados")]
-    partial class OrdemServiçosPrestados
+    [Migration("20190803142852_RefazendoRElacionamentosBanco")]
+    partial class RefazendoRElacionamentosBanco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,28 +21,6 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.AnimalPetCareRepModel", b =>
-                {
-                    b.Property<Guid>("Id");
-
-                    b.Property<int>("Age")
-                        .HasColumnName("Age");
-
-                    b.Property<Guid>("CustomerId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnName("Name")
-                        .HasMaxLength(40);
-
-                    b.Property<int>("Specie")
-                        .HasColumnName("Specie");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AnimalPetCare");
-                });
 
             modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.PetServicesRepModel", b =>
                 {
@@ -65,11 +43,19 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                         .HasColumnName("Description")
                         .HasMaxLength(50);
 
+                    b.Property<Guid?>("ProfessionalServicesAnimalId");
+
+                    b.Property<Guid?>("ProfessionalServicesAnimalPetServiceId");
+
+                    b.Property<Guid?>("ProfessionalServicesAnimalProfessionalId");
+
                     b.Property<decimal>("ServiceValue")
                         .HasColumnName("ServiceValue")
                         .HasColumnType("decimal(5,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProfessionalServicesAnimalId", "ProfessionalServicesAnimalPetServiceId", "ProfessionalServicesAnimalProfessionalId");
 
                     b.ToTable("PetServices");
                 });
@@ -82,7 +68,15 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                     b.Property<int>("JobPosition")
                         .HasColumnName("JobPosition");
 
+                    b.Property<Guid?>("ProfessionalServicesAnimalId");
+
+                    b.Property<Guid?>("ProfessionalServicesAnimalPetServiceId");
+
+                    b.Property<Guid?>("ProfessionalServicesAnimalProfessionalId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProfessionalServicesAnimalId", "ProfessionalServicesAnimalPetServiceId", "ProfessionalServicesAnimalProfessionalId");
 
                     b.ToTable("Professional");
                 });
@@ -93,31 +87,24 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
                     b.Property<Guid>("PetServiceId");
 
-                    b.Property<Guid>("professionalId");
+                    b.Property<Guid>("ProfessionalId");
 
-                    b.Property<DateTime>("EndDate");
+                    b.Property<DateTime?>("EndDate");
 
                     b.Property<int>("ExecutionOrder");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasColumnName("Note")
-                        .HasMaxLength(150);
+                        .HasMaxLength(200);
 
                     b.Property<Guid>("RowAnimalCareId");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnName("StartDate");
 
-                    b.HasKey("Id", "PetServiceId", "professionalId");
-
-                    b.HasIndex("PetServiceId")
-                        .IsUnique();
+                    b.HasKey("Id", "PetServiceId", "ProfessionalId");
 
                     b.HasIndex("RowAnimalCareId");
-
-                    b.HasIndex("professionalId")
-                        .IsUnique();
 
                     b.ToTable("ProfessionalServicesAnimal");
                 });
@@ -127,7 +114,7 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("AnimalPetCareId");
+                    b.Property<Guid>("AnimalId");
 
                     b.Property<decimal>("ValueTotal")
                         .HasColumnName("ValueTotal")
@@ -138,16 +125,19 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
                     b.ToTable("RowAnimalCare");
                 });
 
-            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.AnimalPetCareRepModel", b =>
+            modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.PetServicesRepModel", b =>
                 {
-                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.RowAnimalCareRepModel", "RowAnimalCare")
-                        .WithOne("AnimalPetCare")
-                        .HasForeignKey("Monitoria.Infra.RepoModels.PetCare.Models.AnimalPetCareRepModel", "Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimalRepModel", "ProfessionalServicesAnimal")
+                        .WithMany()
+                        .HasForeignKey("ProfessionalServicesAnimalId", "ProfessionalServicesAnimalPetServiceId", "ProfessionalServicesAnimalProfessionalId");
                 });
 
             modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalRepModel", b =>
                 {
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimalRepModel", "ProfessionalServicesAnimal")
+                        .WithMany()
+                        .HasForeignKey("ProfessionalServicesAnimalId", "ProfessionalServicesAnimalPetServiceId", "ProfessionalServicesAnimalProfessionalId");
+
                     b.OwnsOne("Monitoria.Infra.RepModels.Shared.ValueObjects.AddressRepModel", "Address", b1 =>
                         {
                             b1.Property<Guid>("ProfessionalRepModelId");
@@ -264,19 +254,9 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
             modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimalRepModel", b =>
                 {
-                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.PetServicesRepModel", "PetService")
-                        .WithOne("ProfessionalServicesAnimal")
-                        .HasForeignKey("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimalRepModel", "PetServiceId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.RowAnimalCareRepModel", "RowAnimalCare")
                         .WithMany("AnimailServices")
                         .HasForeignKey("RowAnimalCareId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalRepModel", "Professional")
-                        .WithOne("ProfessionalServicesAnimal")
-                        .HasForeignKey("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimalRepModel", "professionalId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

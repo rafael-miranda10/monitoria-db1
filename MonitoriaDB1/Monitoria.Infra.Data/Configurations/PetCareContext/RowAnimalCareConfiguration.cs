@@ -20,10 +20,10 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
                 .HasColumnType("decimal(5,2)");
 
             ////Relacionamento ProfessionalServicesAnimal
-            //builder.HasMany(x => x.AnimailServices)
-            //    .WithOne(c => c.RowAnimalCare)
-            //    .HasForeignKey(k => k.RowAnimalCareId)
-            //    .HasPrincipalKey(p => p.Id);
+            builder.HasMany(x => x.AnimailServices)
+                .WithOne(c => c.RowAnimalCare)
+                .HasForeignKey(k => k.RowAnimalCareId)
+                .HasPrincipalKey(p => p.Id);
 
         }
     }
