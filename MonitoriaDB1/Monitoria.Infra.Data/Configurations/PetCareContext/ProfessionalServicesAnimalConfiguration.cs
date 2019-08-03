@@ -11,7 +11,7 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
             builder.ToTable("ProfessionalServicesAnimal");
 
             // builder.HasKey(x => x.Id);
-            builder.HasKey(x => new { x.Id, x.PetServiceId, x.professionalId});
+            builder.HasKey(x => new { x.Id, x.PetServiceId, x.ProfessionalId});
 
             builder.Property(x => x.Note)
                 .IsRequired()
@@ -24,11 +24,11 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
                .IsRequired()
                .HasColumnName("StartDate");
 
-            //Relacionamento RowAnimalCare
-            builder.HasOne(x => x.RowAnimalCare)
-                .WithMany(c => c.AnimailServices)
-                .HasForeignKey(k => k.RowAnimalCareId)
-                .HasPrincipalKey(p => p.Id);
+            ////Relacionamento RowAnimalCare
+            //builder.HasOne(x => x.RowAnimalCare)
+            //    .WithMany(c => c.AnimailServices)
+            //    .HasForeignKey(k => k.RowAnimalCareId)
+            //    .HasPrincipalKey(p => p.Id);
 
         }
     }
