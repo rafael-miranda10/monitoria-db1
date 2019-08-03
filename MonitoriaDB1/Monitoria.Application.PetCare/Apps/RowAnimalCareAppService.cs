@@ -11,7 +11,7 @@ namespace Monitoria.Application.PetCare.Apps
     {
         private readonly IRowAnimalCareService _rowAnimalCareService;
 
-        public RowAnimalCareAppService(IRowAnimalCareService rowAnimalCareService) 
+        public RowAnimalCareAppService(IRowAnimalCareService rowAnimalCareService)
         {
             _rowAnimalCareService = rowAnimalCareService;
         }
@@ -64,6 +64,22 @@ namespace Monitoria.Application.PetCare.Apps
         IEnumerable<RowAnimalCare> IRowAnimalCareAppService.GetAllServicesOfAnimal(Animal animal)
         {
             return _rowAnimalCareService.GetAllServicesOfAnimal(animal);
+        }
+
+        public void StartPetCareServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId)
+        {
+            var RowAnimal = _rowAnimalCareService.GetRowAnimalCareById(rowAnimalCareId);
+            _rowAnimalCareService.StartPetCareServiceOnRow(RowAnimal, petCareServiceId);
+        }
+        public void EndPetCareServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId)
+        {
+            var RowAnimal = _rowAnimalCareService.GetRowAnimalCareById(rowAnimalCareId);
+            _rowAnimalCareService.EndPetCareServiceOnRow(RowAnimal, petCareServiceId);
+        }
+        public void calculateValueTotalOnRow(Guid rowAnimalCareId)
+        {
+            var RowAnimal = _rowAnimalCareService.GetRowAnimalCareById(rowAnimalCareId);
+            _rowAnimalCareService.calculateValueTotalOnRow(RowAnimal);
         }
     }
 }

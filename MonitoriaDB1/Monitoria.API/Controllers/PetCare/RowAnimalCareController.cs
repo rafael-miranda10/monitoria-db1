@@ -44,5 +44,48 @@ namespace Monitoria.API.Controllers.PetCare
                 return BadRequest(new { errors = rowAnimalCare.Notifications });
             }
         }
+
+        [Route("startServiceOnRow")]
+        [HttpPost]
+        public IActionResult startServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId)
+        {
+                try
+                {
+                    _rowAnimalCareAppService.StartPetCareServiceOnRow(rowAnimalCareId, petCareServiceId);
+                    return Ok(new { success = true });
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+                }
+        }
+        [Route("endServiceOnRow")]
+        [HttpPost]
+        public IActionResult endServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId)
+        {
+            try
+            {
+                _rowAnimalCareAppService.EndPetCareServiceOnRow(rowAnimalCareId, petCareServiceId);
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+            }
+        }
+        [Route("calculateValueTotalOnRow")]
+        [HttpPost]
+        public IActionResult calculateValueTotalOnRow(Guid rowAnimalCareId)
+        {
+            try
+            {
+                _rowAnimalCareAppService.calculateValueTotalOnRow(rowAnimalCareId);
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+            }
+        }
     }
 }

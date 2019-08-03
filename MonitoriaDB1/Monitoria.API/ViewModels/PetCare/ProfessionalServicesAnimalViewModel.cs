@@ -9,20 +9,18 @@ namespace Monitoria.API.ViewModels.PetCare
         {
 
         }
-        public ProfessionalServicesAnimalViewModel(ProfessionalViewModel prof, PetServicesViewModel pService, string note)
+        public ProfessionalServicesAnimalViewModel(Guid profissionalId, Guid petServiceId, int Order, string note)
         {
-            Professional = prof;
-            PetService = pService;
-            StartDate = DateTime.Now;
+            ProfissionalId = profissionalId;
+            PetServiceId = petServiceId;
+            ExecutionOrder = Order;
             Note = note;
         }
 
-        public ProfessionalViewModel Professional { get;  set; }
-        public PetServicesViewModel PetService { get;  set; }
-        public DateTime StartDate { get;  set; }
-        public DateTime? EndDate { get;  set; }
+        public Guid ProfissionalId { get;  set; }
+        public Guid PetServiceId { get;  set; }
         public string Note { get;  set; }
         public int ExecutionOrder { get; set; }
-        public RowAnimalCareViewModel RowAnimalCare { get; set; }
+        public Guid RowAnimalCareId { get; set; }
     }
 }

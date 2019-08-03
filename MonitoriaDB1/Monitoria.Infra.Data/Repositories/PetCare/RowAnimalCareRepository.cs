@@ -60,7 +60,10 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public RowAnimalCare GetRowAnimalCareById(Guid id)
         {
-            var result = _context.RowAnimalCare.Find(id);
+            // var result = _context.RowAnimalCare.Find(id);
+            var result = _context.RowAnimalCare.AsNoTracking().Where(x => x.Id.Equals(id))
+                .Include(x => x.AnimailServices)
+                .FirstOrDefault();
             var rowAnimalCareRepModel = _mapper.Map<RowAnimalCareRepModel, RowAnimalCare>(result);
             return rowAnimalCareRepModel;
         }

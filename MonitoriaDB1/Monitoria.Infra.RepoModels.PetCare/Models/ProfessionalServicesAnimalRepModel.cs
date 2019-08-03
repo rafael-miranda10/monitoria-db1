@@ -12,7 +12,6 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         {
             ProfessionalId = professionalId;
             PetServiceId = petServiceId;
-            StartDate = DateTime.Now;
             Note = note;
         }
 
