@@ -55,5 +55,10 @@ namespace Monitoria.Domain.PetCare.Entities
         public decimal ServiceValue { get; private set; }
         public bool Active { get; private set; }
         public ProfessionalServicesAnimal ProfessionalServicesAnimal { get; private set; }
+
+        public void addServiceValue(decimal value)
+        {
+            ServiceValue = value;
+        }
     }
 }

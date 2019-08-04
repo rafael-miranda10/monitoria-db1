@@ -63,10 +63,10 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         [TestMethod]
         public void ReturnSuccessWhenProfessionalServiceValueTotalIsEqualsThe10550()
         {
-            var _SAConsult = new ProfessionalServicesAnimal(_professional, _petServicesConsult, "O animal ficará em observação");
+            var _SAConsult = new ProfessionalServicesAnimal(_professional, _petServicesConsult,1 ,"O animal ficará em observação");
             _SAConsult.FinalizeThePetService(DateTime.Now.AddDays(2));
 
-            var _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut, "O animal apresenta pequenos ferimentos sugerindo alergia");
+            var _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut,2 ,"O animal apresenta pequenos ferimentos sugerindo alergia");
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
             var rowAnimalCare = new RowAnimalCare(_animal.Id);

@@ -16,7 +16,7 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
         private readonly PetCareContext _context;
         private readonly IMapper _mapper;
 
-        public RowAnimalCareRepository(PetCareContext context, IMapper mapper) 
+        public RowAnimalCareRepository(PetCareContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -60,10 +60,12 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public RowAnimalCare GetRowAnimalCareById(Guid id)
         {
-            // var result = _context.RowAnimalCare.Find(id);
+            // var result = _context.RowAnimalCare.Find(id); -*- .AsNoTracking()
             var result = _context.RowAnimalCare.AsNoTracking().Where(x => x.Id.Equals(id))
-                .Include(x => x.AnimailServices)
+                .Include(x => x.AnimailServices).AsNoTracking()
                 .FirstOrDefault();
+            //_context.Entry(result).State = EntityState.Detached;
+            //_context.Entry(result.AnimailServices).State = EntityState.Detached;
             var rowAnimalCareRepModel = _mapper.Map<RowAnimalCareRepModel, RowAnimalCare>(result);
             return rowAnimalCareRepModel;
         }
@@ -82,11 +84,59 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
                 _context.RowAnimalCare.Remove(result);
         }
 
+        private void RemoveProfessionalServicesAnimal(IEnumerable<ProfessionalServicesAnimalRepModel> list)
+        {
+            _context.ProfessionalServicesAnimal.RemoveRange(list);
+        }
+        private void AddProfessionalServicesAnimal(IEnumerable<ProfessionalServicesAnimalRepModel> list)
+        {
+            _context.ProfessionalServicesAnimal.AddRange(list);
+        }
+
         public void UpdateRowAnimalCare(RowAnimalCare rowAnimalCare)
         {
-            var rowAnimalCareRepModel = _mapper.Map<RowAnimalCare, RowAnimalCareRepModel>(rowAnimalCare);
-            _context.RowAnimalCare.Attach(rowAnimalCareRepModel);
-            _context.Entry(rowAnimalCareRepModel).State = EntityState.Modified;
+            try
+            {
+                var rowAnimalCareRepModel = _mapper.Map<RowAnimalCare, RowAnimalCareRepModel>(rowAnimalCare);
+                var tracked = GetRowAnimalCareByIdTracked(rowAnimalCareRepModel.Id);
+                RemoveProfessionalServicesAnimal(tracked.AnimailServices);
+                ModifiedStateEntity(tracked);
+                _context.SaveChanges();
+
+
+                _context.RowAnimalCare.Attach(rowAnimalCareRepModel);
+                _context.Entry(rowAnimalCareRepModel).State = EntityState.Modified;
+                AddProfessionalServicesAnimal(rowAnimalCareRepModel.AnimailServices);
+                _context.SaveChanges();
+
+                // ModifiedStateEntity(rowAnimalCareRepModel);
+                // var tracked = GetRowAnimalCareByIdTracked(rowAnimalCareRepModel.Id);
+                //tracked = rowAnimalCareRepModel;
+                //_context.Entry(tracked).State = EntityState.Modified;
+
+                //_context.RowAnimalCare.Attach(rowAnimalCareRepModel);
+                //_context.Entry(rowAnimalCareRepModel).State = EntityState.Modified;
+                //_context.ProfessionalServicesAnimal.Attach(rowAnimalCareRepModel.AnimailServices.FirstOrDefault());
+                //_context.Entry(rowAnimalCareRepModel.AnimailServices.FirstOrDefault()).State = EntityState.Modified;
+
+
+                _context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                int z = 0;
+            }
+        }
+        private RowAnimalCareRepModel GetRowAnimalCareByIdTracked(Guid id)
+        {
+            var result = _context.RowAnimalCare.Where(x => x.Id.Equals(id))
+                .Include(x => x.AnimailServices)
+                .FirstOrDefault();
+            return result;
+        }
+        private void ModifiedStateEntity(RowAnimalCareRepModel rowAnimalCare)
+        {
+            _context.Entry(rowAnimalCare).State = EntityState.Detached;
             _context.SaveChanges();
         }
     }

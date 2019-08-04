@@ -85,14 +85,19 @@ namespace Monitoria.Domain.PetCare.Services
 
         public void EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
         {
+            //var noTracking = _rowAnimalCareRepository.ModifiedStateEntity(rowAnimalCare);
+
             var PetCareService = (from p in rowAnimalCare.AnimailServices
                                   where p.Id.Equals(petCareServiceId)
                                   select p).FirstOrDefault();
 
-            rowAnimalCare.AnimailServices.Remove(PetCareService);
+            //rowAnimalCare.AnimailServices.Remove(PetCareService);
             PetCareService.FinalizeThePetService(DateTime.Now);
-            rowAnimalCare.AnimailServices.Add(PetCareService);
+            // rowAnimalCare.AnimailServices.Add(PetCareService);
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+
+            //rowAnimalCare.AnimailServices.Where(x => x.PetService.Id.Equals(petCareServiceId)).FirstOrDefault().FinalizeThePetService(DateTime.Now);
+            //_rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
         }
         public void calculateValueTotalOnRow(RowAnimalCare rowAnimalCare)
         {
