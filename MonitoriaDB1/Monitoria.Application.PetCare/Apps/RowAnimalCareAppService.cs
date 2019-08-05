@@ -78,8 +78,13 @@ namespace Monitoria.Application.PetCare.Apps
         }
         public void calculateValueTotalOnRow(Guid rowAnimalCareId)
         {
-            var RowAnimal = _rowAnimalCareService.GetRowAnimalCareById(rowAnimalCareId);
+             var RowAnimal = _rowAnimalCareService.GetRowAnimalCareById(rowAnimalCareId);
             _rowAnimalCareService.calculateValueTotalOnRow(RowAnimal);
+        }
+
+        public void AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId)
+        {
+            _rowAnimalCareService.AlterProfessionalService(rowAnimalCareId, petServiceId, newProfessionalId);
         }
     }
 }

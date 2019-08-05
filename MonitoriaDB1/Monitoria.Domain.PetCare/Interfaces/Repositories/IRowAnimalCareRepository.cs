@@ -16,5 +16,7 @@ namespace Monitoria.Domain.PetCare.Interfaces.Repositories
         RowAnimalCare GetRowAnimalCareById(Guid id);
         RowAnimalCare GetEntityEqualTo(RowAnimalCare rowAnimalCare);
         bool ExistingEntity(RowAnimalCare rowAnimalCare);
+        Professional GetProfessionalById(Guid Id);
+        PetServices GetPetServiceById(Guid Id);
     }
 }

@@ -19,5 +19,6 @@ namespace Monitoria.Application.PetCare.Interfaces
         void StartPetCareServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId);
         void EndPetCareServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId);
         void calculateValueTotalOnRow(Guid rowAnimalCareId);
+        void AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId);
     }
 }

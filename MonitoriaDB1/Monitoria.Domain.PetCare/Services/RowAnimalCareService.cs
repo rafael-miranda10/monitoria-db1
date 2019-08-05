@@ -72,32 +72,22 @@ namespace Monitoria.Domain.PetCare.Services
 
         public void StartPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
         {
-            // var PetCareService = rowAnimalCare.AnimailServices.Where(x => x.PetService.Id.Equals(petCareServiceId)).FirstOrDefault();
             var PetCareService = (from p in rowAnimalCare.AnimailServices
                                   where p.Id.Equals(petCareServiceId)
                                   select p).FirstOrDefault();
 
-            rowAnimalCare.AnimailServices.Remove(PetCareService);
             PetCareService.StartThePetService();
-            rowAnimalCare.AnimailServices.Add(PetCareService);
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
         }
 
         public void EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
         {
-            //var noTracking = _rowAnimalCareRepository.ModifiedStateEntity(rowAnimalCare);
-
             var PetCareService = (from p in rowAnimalCare.AnimailServices
                                   where p.Id.Equals(petCareServiceId)
                                   select p).FirstOrDefault();
 
-            //rowAnimalCare.AnimailServices.Remove(PetCareService);
             PetCareService.FinalizeThePetService(DateTime.Now);
-            // rowAnimalCare.AnimailServices.Add(PetCareService);
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
-
-            //rowAnimalCare.AnimailServices.Where(x => x.PetService.Id.Equals(petCareServiceId)).FirstOrDefault().FinalizeThePetService(DateTime.Now);
-            //_rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
         }
         public void calculateValueTotalOnRow(RowAnimalCare rowAnimalCare)
         {
@@ -108,6 +98,28 @@ namespace Monitoria.Domain.PetCare.Services
                 total += petCareServie.ServiceValue;
             }
             rowAnimalCare.CalculatePriceTotal(total);
+            _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+        }
+
+        public Professional GetProfessionalById(Guid Id)
+        {
+            return _rowAnimalCareRepository.GetProfessionalById(Id);
+        }
+
+        public PetServices GetPetServiceById(Guid Id)
+        {
+            return _rowAnimalCareRepository.GetPetServiceById(Id);
+        }
+
+        public void AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId)
+        {
+            var petService = _rowAnimalCareRepository.GetPetServiceById(petServiceId);
+            var newProfessional = _rowAnimalCareRepository.GetProfessionalById(newProfessionalId);
+            var rowAnimalCare = _rowAnimalCareRepository.GetRowAnimalCareById(rowAnimalCareId);
+            var result = rowAnimalCare.AnimailServices.Where(x => x.PetService.Id.Equals(petServiceId)).FirstOrDefault();
+            rowAnimalCare.AnimailServices.Remove(result);
+            result.AlterProfessional(newProfessional);
+            rowAnimalCare.AnimailServices.Add(result);
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
         }
     }

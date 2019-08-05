@@ -60,14 +60,24 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public RowAnimalCare GetRowAnimalCareById(Guid id)
         {
-            // var result = _context.RowAnimalCare.Find(id); -*- .AsNoTracking()
             var result = _context.RowAnimalCare.AsNoTracking().Where(x => x.Id.Equals(id))
                 .Include(x => x.AnimailServices).AsNoTracking()
                 .FirstOrDefault();
-            //_context.Entry(result).State = EntityState.Detached;
-            //_context.Entry(result.AnimailServices).State = EntityState.Detached;
             var rowAnimalCareRepModel = _mapper.Map<RowAnimalCareRepModel, RowAnimalCare>(result);
             return rowAnimalCareRepModel;
+        }
+
+        public Professional GetProfessionalById(Guid Id)
+        {
+            var result = _context.Professional.AsNoTracking().Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            var professionalRepModel = _mapper.Map<ProfessionalRepModel, Professional>(result);
+            return professionalRepModel;
+        }
+        public PetServices GetPetServiceById(Guid Id)
+        {
+            var result = _context.PetServices.AsNoTracking().Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            var petServicesRepModel = _mapper.Map<PetServicesRepModel, PetServices>(result);
+            return petServicesRepModel;
         }
 
         public void RemoveRowAnimalCare(RowAnimalCare rowAnimalCare)
@@ -95,37 +105,16 @@ namespace Monitoria.Infra.Data.Repositories.PetCare
 
         public void UpdateRowAnimalCare(RowAnimalCare rowAnimalCare)
         {
-            try
-            {
-                var rowAnimalCareRepModel = _mapper.Map<RowAnimalCare, RowAnimalCareRepModel>(rowAnimalCare);
-                var tracked = GetRowAnimalCareByIdTracked(rowAnimalCareRepModel.Id);
-                RemoveProfessionalServicesAnimal(tracked.AnimailServices);
-                ModifiedStateEntity(tracked);
-                _context.SaveChanges();
+            var rowAnimalCareRepModel = _mapper.Map<RowAnimalCare, RowAnimalCareRepModel>(rowAnimalCare);
+            var tracked = GetRowAnimalCareByIdTracked(rowAnimalCareRepModel.Id);
+            RemoveProfessionalServicesAnimal(tracked.AnimailServices);
+            ModifiedStateEntity(tracked);
+            _context.SaveChanges();
 
-
-                _context.RowAnimalCare.Attach(rowAnimalCareRepModel);
-                _context.Entry(rowAnimalCareRepModel).State = EntityState.Modified;
-                AddProfessionalServicesAnimal(rowAnimalCareRepModel.AnimailServices);
-                _context.SaveChanges();
-
-                // ModifiedStateEntity(rowAnimalCareRepModel);
-                // var tracked = GetRowAnimalCareByIdTracked(rowAnimalCareRepModel.Id);
-                //tracked = rowAnimalCareRepModel;
-                //_context.Entry(tracked).State = EntityState.Modified;
-
-                //_context.RowAnimalCare.Attach(rowAnimalCareRepModel);
-                //_context.Entry(rowAnimalCareRepModel).State = EntityState.Modified;
-                //_context.ProfessionalServicesAnimal.Attach(rowAnimalCareRepModel.AnimailServices.FirstOrDefault());
-                //_context.Entry(rowAnimalCareRepModel.AnimailServices.FirstOrDefault()).State = EntityState.Modified;
-
-
-                _context.SaveChanges();
-            }
-            catch(Exception ex)
-            {
-                int z = 0;
-            }
+            _context.RowAnimalCare.Attach(rowAnimalCareRepModel);
+            _context.Entry(rowAnimalCareRepModel).State = EntityState.Modified;
+            AddProfessionalServicesAnimal(rowAnimalCareRepModel.AnimailServices);
+            _context.SaveChanges();
         }
         private RowAnimalCareRepModel GetRowAnimalCareByIdTracked(Guid id)
         {

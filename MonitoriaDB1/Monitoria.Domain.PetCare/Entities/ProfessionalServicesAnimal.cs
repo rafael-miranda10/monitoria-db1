@@ -67,5 +67,10 @@ namespace Monitoria.Domain.PetCare.Entities
 
             return false;
         }
+
+        public void AlterProfessional(Professional newProfessional)
+        {
+            Professional = newProfessional;
+        }
     }
 }

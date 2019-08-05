@@ -37,7 +37,8 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         [TestMethod]
         public void ReturnErrorWhenProfessionalServicesAnimalHasError()
         {
-            var _servicesAnimal = new ProfessionalServicesAnimal(_professional, _petServicesConsult, "O animal ficará em observação");
+            var _servicesAnimal = new ProfessionalServicesAnimal(_professional, _petServicesConsult, 1,"O animal ficará em observação");
+            _servicesAnimal.StartThePetService();
             _servicesAnimal.FinalizeThePetService(DateTime.Now.AddDays(-2));
 
             var rowAnimalCare = new RowAnimalCare(_animal.Id);
@@ -48,10 +49,12 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         [TestMethod]
         public void ReturnSuccessWhenProfessionalServicesAnimalIsOk()
         {
-            var _SAConsult = new ProfessionalServicesAnimal(_professional, _petServicesConsult, "O animal ficará em observação");
+            var _SAConsult = new ProfessionalServicesAnimal(_professional, _petServicesConsult, 1,"O animal ficará em observação");
+            _SAConsult.StartThePetService();
             _SAConsult.FinalizeThePetService(DateTime.Now.AddDays(2));
 
-            var _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut, "O animal apresenta pequenos ferimentos sugerindo alergia");
+            var _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut,2, "O animal apresenta pequenos ferimentos sugerindo alergia");
+            _SAHairCut.StartThePetService();
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
             var rowAnimalCare = new RowAnimalCare(_animal.Id);
@@ -64,9 +67,11 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         public void ReturnSuccessWhenProfessionalServiceValueTotalIsEqualsThe10550()
         {
             var _SAConsult = new ProfessionalServicesAnimal(_professional, _petServicesConsult,1 ,"O animal ficará em observação");
+            _SAConsult.StartThePetService();
             _SAConsult.FinalizeThePetService(DateTime.Now.AddDays(2));
 
             var _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut,2 ,"O animal apresenta pequenos ferimentos sugerindo alergia");
+            _SAHairCut.StartThePetService();
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
             var rowAnimalCare = new RowAnimalCare(_animal.Id);

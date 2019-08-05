@@ -32,9 +32,12 @@ namespace Monitoria.Domain.PetCare.Entities
 
         public void CalculatePriceTotal(decimal value)
         {
-            //if (AnimailServices.Count > 0)
-            //    ValueTotal = AnimailServices.Sum(x => x.PetService.ServiceValue);
             ValueTotal = value;
+        }
+        public void CalculatePriceTotal()
+        {
+            if (AnimailServices.Count > 0)
+                ValueTotal = AnimailServices.Sum(x => x.PetService.ServiceValue);
         }
 
         public void AddProfessionalService(ProfessionalServicesAnimal profService)

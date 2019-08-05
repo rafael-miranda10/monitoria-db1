@@ -33,6 +33,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         public void ReturnErrorWhenEndDateIsLowerThanStartDate()
         {
             var serviceToAnimal = new ProfessionalServicesAnimal(_professional, _petServices, 1,"O animal ficará em observação");
+            serviceToAnimal.StartThePetService();
             serviceToAnimal.FinalizeThePetService(DateTime.Now.AddDays(-2));
             Assert.IsTrue(serviceToAnimal.Invalid);
         }
@@ -41,6 +42,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         public void ReturnSuccessWhenEndDateIsGreaterThanStartDate()
         {
             var serviceToAnimal = new ProfessionalServicesAnimal(_professional, _petServices, 1,"O animal ficará em observação");
+            serviceToAnimal.StartThePetService();
             serviceToAnimal.FinalizeThePetService(DateTime.Now.AddDays(2));
             Assert.IsTrue(serviceToAnimal.Valid);
         }
@@ -49,6 +51,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         public void ReturnSuccessWhenEndDateAreEqualsToStartDate()
         {
             var serviceToAnimal = new ProfessionalServicesAnimal(_professional, _petServices,1 ,"O animal ficará em observação");
+            serviceToAnimal.StartThePetService();
             serviceToAnimal.FinalizeThePetService(DateTime.Now);
             Assert.IsTrue(serviceToAnimal.Valid);
         }
