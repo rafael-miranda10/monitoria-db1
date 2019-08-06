@@ -22,5 +22,6 @@ namespace Monitoria.Domain.PetCare.Interfaces.Services
         Professional GetProfessionalById(Guid Id);
         PetServices GetPetServiceById(Guid Id);
         void AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId);
+        RowAnimalCare AddPetServiceOnRowAnimalCare(RowAnimalCare rowAnimalCare, ProfessionalServicesAnimal professionalServices);
     }
 }

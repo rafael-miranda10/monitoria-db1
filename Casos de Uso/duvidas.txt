@@ -1,0 +1,3 @@
+ * Como está os testes? o que mais testar nesse caso?
+ * anti corrupção, está correto? senti uma certa dificuldade em manupular os objetos pois os atributo são passados todos pelo construtor...
+ * o jeito que foi feito está de acordo com o que foi proposta no caso de uso?

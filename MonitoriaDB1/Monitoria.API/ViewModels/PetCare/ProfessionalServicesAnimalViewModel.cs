@@ -21,6 +21,6 @@ namespace Monitoria.API.ViewModels.PetCare
         public Guid PetServiceId { get;  set; }
         public string Note { get;  set; }
         public int ExecutionOrder { get; set; }
-        public Guid RowAnimalCareId { get; set; }
+        //public Guid RowAnimalCareId { get; set; }
     }
 }

@@ -102,5 +102,30 @@ namespace Monitoria.API.Controllers.PetCare
                 return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
             }
         }
+
+        [Route("AddNewPetServiceOnRow")]
+        [HttpPost]
+        public IActionResult AddNewPetServiceOnRow(Guid rowAnimalCareId, ProfessionalServicesAnimalViewModel professionalPetServices)
+        {
+            try
+            {
+                var serviceOnRow = _mapper.Map<ProfessionalServicesAnimalViewModel, ProfessionalServicesAnimal>(professionalPetServices);
+
+                if (!serviceOnRow.Notifications.Any())
+                {
+                    var result =_rowAnimalCareAppService.AddPetServiceOnRowAnimalCare(rowAnimalCareId, serviceOnRow);
+                    if (!result.Notifications.Any())
+                        return Ok(new { success = true });
+
+                    return BadRequest(new { errors = result.Notifications });
+                }
+
+                return BadRequest(new { errors = serviceOnRow.Notifications });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+            }
+        }
     }
 }

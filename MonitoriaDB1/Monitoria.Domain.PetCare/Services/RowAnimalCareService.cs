@@ -1,4 +1,5 @@
-﻿using Monitoria.Domain.PetCare.Entities;
+﻿using Flunt.Notifications;
+using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Interfaces.Repositories;
 using Monitoria.Domain.PetCare.Interfaces.Services;
 using Monitoria.Domain.Registration.Entities;
@@ -121,6 +122,22 @@ namespace Monitoria.Domain.PetCare.Services
             result.AlterProfessional(newProfessional);
             rowAnimalCare.AnimailServices.Add(result);
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+        }
+
+        public RowAnimalCare AddPetServiceOnRowAnimalCare(RowAnimalCare rowAnimalCare, ProfessionalServicesAnimal professionalServices)
+        {
+            var existPosition = rowAnimalCare.AnimailServices.Where(x => x.ExecutionOrder.Equals(professionalServices.ExecutionOrder)).FirstOrDefault();
+
+            if(existPosition == null)
+            {
+                rowAnimalCare.AnimailServices.Add(professionalServices);
+                _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+                return rowAnimalCare;
+            }
+
+            rowAnimalCare.AddNotification(new Notification("RowAnimalCare.ProfessionalServicesAnimal", $"O serviço {professionalServices.PetService.Description} " +
+                $" não pode ser adicionado para ser executado na posição {professionalServices.ExecutionOrder}"));
+            return rowAnimalCare;
         }
     }
 }

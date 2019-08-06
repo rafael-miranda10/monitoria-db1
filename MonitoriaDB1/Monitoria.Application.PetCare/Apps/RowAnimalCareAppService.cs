@@ -86,5 +86,12 @@ namespace Monitoria.Application.PetCare.Apps
         {
             _rowAnimalCareService.AlterProfessionalService(rowAnimalCareId, petServiceId, newProfessionalId);
         }
+
+        public RowAnimalCare AddPetServiceOnRowAnimalCare(Guid rowAnimalCareId, ProfessionalServicesAnimal professionalServices)
+        {
+            var RowAnimal = _rowAnimalCareService.GetRowAnimalCareById(rowAnimalCareId);
+            var rowResult = _rowAnimalCareService.AddPetServiceOnRowAnimalCare(RowAnimal, professionalServices);
+            return rowResult;
+        }
     }
 }
