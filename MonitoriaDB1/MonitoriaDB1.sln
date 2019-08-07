@@ -75,6 +75,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCuttin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoria.Infra.CrossCutting", "Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj", "{D3666858-52D2-43E3-9287-93B910DA0339}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services Tests", "Services Tests", "{0F7249DF-940B-4124-B6D8-14D4C563652F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoria.Services.PetCare.Tests", "Monitoria.Services.PetCare.Tests\Monitoria.Services.PetCare.Tests.csproj", "{C8FF2646-3B68-47B3-B24A-BD9FF84EA289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,6 +149,10 @@ Global
 		{D3666858-52D2-43E3-9287-93B910DA0339}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3666858-52D2-43E3-9287-93B910DA0339}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3666858-52D2-43E3-9287-93B910DA0339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8FF2646-3B68-47B3-B24A-BD9FF84EA289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8FF2646-3B68-47B3-B24A-BD9FF84EA289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8FF2646-3B68-47B3-B24A-BD9FF84EA289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8FF2646-3B68-47B3-B24A-BD9FF84EA289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -181,6 +189,8 @@ Global
 		{8E3EB574-5C10-4A60-B689-1C030D2AFC51} = {74770A1D-0105-4648-8BC8-F19AFF63B263}
 		{DA22900C-AD68-499C-9327-DBAB8408668E} = {A595C0DB-AA04-45BF-84CC-E7DACEEA459C}
 		{D3666858-52D2-43E3-9287-93B910DA0339} = {DA22900C-AD68-499C-9327-DBAB8408668E}
+		{0F7249DF-940B-4124-B6D8-14D4C563652F} = {1499D49A-0F0A-4121-8FF8-74B088137028}
+		{C8FF2646-3B68-47B3-B24A-BD9FF84EA289} = {0F7249DF-940B-4124-B6D8-14D4C563652F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A8EFCC-FC88-4970-9F0F-0B19AADAAA81}
