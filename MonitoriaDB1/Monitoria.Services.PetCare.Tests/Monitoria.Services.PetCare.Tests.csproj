@@ -7,9 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="Moq" Version="4.12.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Monitoria.Domain.PetCare\Monitoria.Domain.PetCare.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.Cross.Mapping\Monitoria.Infra.CrossCutting.csproj" />
+    <ProjectReference Include="..\Monitoria.Infra.Data\Monitoria.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

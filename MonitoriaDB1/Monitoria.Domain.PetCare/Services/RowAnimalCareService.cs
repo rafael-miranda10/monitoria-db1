@@ -71,7 +71,7 @@ namespace Monitoria.Domain.PetCare.Services
             return _rowAnimalCareRepository.GetAllServicesOfAnimal(animal);
         }
 
-        public void StartPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
+        public RowAnimalCare StartPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
         {
             var PetCareService = (from p in rowAnimalCare.AnimailServices
                                   where p.Id.Equals(petCareServiceId)
@@ -79,9 +79,10 @@ namespace Monitoria.Domain.PetCare.Services
 
             PetCareService.StartThePetService();
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+            return rowAnimalCare;
         }
 
-        public void EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
+        public RowAnimalCare EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
         {
             var PetCareService = (from p in rowAnimalCare.AnimailServices
                                   where p.Id.Equals(petCareServiceId)
@@ -89,8 +90,9 @@ namespace Monitoria.Domain.PetCare.Services
 
             PetCareService.FinalizeThePetService(DateTime.Now);
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+            return rowAnimalCare;
         }
-        public void calculateValueTotalOnRow(RowAnimalCare rowAnimalCare)
+        public RowAnimalCare calculateValueTotalOnRow(RowAnimalCare rowAnimalCare)
         {
             decimal total = 0;
             foreach(var item in rowAnimalCare.AnimailServices)
@@ -100,6 +102,7 @@ namespace Monitoria.Domain.PetCare.Services
             }
             rowAnimalCare.CalculatePriceTotal(total);
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+            return rowAnimalCare;
         }
 
         public Professional GetProfessionalById(Guid Id)
@@ -112,7 +115,7 @@ namespace Monitoria.Domain.PetCare.Services
             return _rowAnimalCareRepository.GetPetServiceById(Id);
         }
 
-        public void AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId)
+        public RowAnimalCare AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId)
         {
             var petService = _rowAnimalCareRepository.GetPetServiceById(petServiceId);
             var newProfessional = _rowAnimalCareRepository.GetProfessionalById(newProfessionalId);
@@ -122,6 +125,7 @@ namespace Monitoria.Domain.PetCare.Services
             result.AlterProfessional(newProfessional);
             rowAnimalCare.AnimailServices.Add(result);
             _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+            return rowAnimalCare;
         }
 
         public RowAnimalCare AddPetServiceOnRowAnimalCare(RowAnimalCare rowAnimalCare, ProfessionalServicesAnimal professionalServices)
