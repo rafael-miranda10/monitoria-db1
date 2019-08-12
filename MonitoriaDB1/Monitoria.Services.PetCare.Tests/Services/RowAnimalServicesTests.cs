@@ -39,6 +39,9 @@ namespace Monitoria.Services.PetCare.Tests.Services
         private List<ProfessionalServicesAnimal> _animalsServices;
         private PetCareContext _context;
         private IMapper _mapper;
+        private ProfessionalServicesAnimal _SAConsult;
+        private ProfessionalServicesAnimal _SAHairCut;
+        private RowAnimalCareService _rowAnimalCareService;
 
 
         [TestInitialize]
@@ -71,25 +74,25 @@ namespace Monitoria.Services.PetCare.Tests.Services
             _petServicesConsult = new PetServices("Consulta Veterinária", CategoryEnum.VeterinaryProcedure, "Examinar o animal para o diagnóstico inicial", (decimal)70.5, true);
             _petServicesHairCut = new PetServices("Banho e Tosa", CategoryEnum.AnimalEsthetics, "Examinar o animal em busca de pequenos ferimentos", (decimal)35.0, true);
             _animal = new Animal("Greg", 2, SpeciesEnum.Canine, true);
-        }
-        [TestMethod]
-        public void Test_Test()
-        {
-            var rowAnimalCareService = new RowAnimalCareService(_rowAniamlCareRepository.Object, _petServicesRepository.Object);
-            var _SAConsult = new ProfessionalServicesAnimal(_professional, _petServicesConsult, 1, "O animal ficará em observação");
+
+             _SAConsult = new ProfessionalServicesAnimal(_professional, _petServicesConsult, 1, "O animal ficará em observação");
             _SAConsult.Id = Guid.NewGuid();
-            var _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut, 2, "O animal apresenta pequenos ferimentos sugerindo alergia");
+            _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut, 2, "O animal apresenta pequenos ferimentos sugerindo alergia");
             _SAHairCut.Id = Guid.NewGuid();
             _rowAniamlCare = new RowAnimalCare(_animal.Id = Guid.NewGuid());
             _rowAniamlCare.Id = Guid.NewGuid();
             _rowAniamlCare.AddProfessionalService(_SAConsult);
             _rowAniamlCare.AddProfessionalService(_SAHairCut);
+            _rowAnimalCareService = new RowAnimalCareService(_rowAniamlCareRepository.Object, _petServicesRepository.Object);
+            _rowAnimalCareService.AddRowAnimalCare(_rowAniamlCare);
+        }
+        [TestMethod]
+        public void Test_Test()
+        {
 
-            rowAnimalCareService.AddRowAnimalCare(_rowAniamlCare);
+            var result = _rowAnimalCareService.StartPetCareServiceOnRow(_rowAniamlCare, _SAConsult.Id);
 
-            rowAnimalCareService.StartPetCareServiceOnRow(_rowAniamlCare, _SAConsult.Id);
-
-            var PetCareService = (from p in _rowAniamlCare.AnimailServices
+            var PetCareService = (from p in result.AnimailServices
                                   where p.Id.Equals(_SAConsult.Id)
                                   select p).FirstOrDefault();
 
