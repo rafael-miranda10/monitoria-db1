@@ -15,8 +15,8 @@ namespace Monitoria.Services.PetCare.Tests.Services
     [TestClass]
     public class RowAnimalServicesTests
     {
-        private Mock<IRowAnimalCareRepository> _rowAniamlCareRepository;
-        private Mock<IPetServicesRepository> _petServicesRepository;
+        private Mock<RowAnimalCareRepository> _rowAniamlCareRepository;
+        private Mock<PetServicesRepository> _petServicesRepository;
         private List<ProfessionalServicesAnimal> _animalsServices;
         private RowAnimalCare _rowAniamlCare;
         private PetCareContext _context;
@@ -39,16 +39,17 @@ namespace Monitoria.Services.PetCare.Tests.Services
             var mapper = new Mapper(mappingConfig);
             _context = new PetCareContext(options);
 
-            _rowAniamlCareRepository = new Mock<IRowAnimalCareRepository>(_context, mapper);
-            _petServicesRepository = new Mock<IPetServicesRepository>(_context, mapper);
+            _rowAniamlCareRepository = new Mock<RowAnimalCareRepository>(_context, mapper);
+            _petServicesRepository = new Mock<PetServicesRepository>(_context, mapper);
         }
         [TestMethod]
         public void Test_Test()
         {
             var rowAnimalCareService = new RowAnimalCareService(_rowAniamlCareRepository.Object, _petServicesRepository.Object);
-            
-            
-            
+
+
+
+
         }
 
 
