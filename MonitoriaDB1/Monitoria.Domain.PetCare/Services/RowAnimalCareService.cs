@@ -3,7 +3,6 @@ using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Interfaces.Repositories;
 using Monitoria.Domain.PetCare.Interfaces.Services;
 using Monitoria.Domain.Registration.Entities;
-using Monitoria.Domain.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,7 @@ namespace Monitoria.Domain.PetCare.Services
         private readonly IRowAnimalCareRepository _rowAnimalCareRepository;
         private readonly IPetServicesRepository _petServicesRepository;
 
-        public RowAnimalCareService(IRowAnimalCareRepository rowAnimalCareRepository, IPetServicesRepository petServicesRepository) 
+        public RowAnimalCareService(IRowAnimalCareRepository rowAnimalCareRepository, IPetServicesRepository petServicesRepository)
         {
             _rowAnimalCareRepository = rowAnimalCareRepository;
             _petServicesRepository = petServicesRepository;
@@ -28,7 +27,7 @@ namespace Monitoria.Domain.PetCare.Services
 
         public bool ExistingEntity(RowAnimalCare rowAnimalCare)
         {
-           return _rowAnimalCareRepository.ExistingEntity(rowAnimalCare);
+            return _rowAnimalCareRepository.ExistingEntity(rowAnimalCare);
         }
 
         public IEnumerable<RowAnimalCare> GetAllRowAnimalCare()
@@ -77,9 +76,13 @@ namespace Monitoria.Domain.PetCare.Services
                                   where p.Id.Equals(petCareServiceId)
                                   select p).FirstOrDefault();
 
-            PetCareService.StartThePetService();
-            _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
-            return rowAnimalCare;
+            if (PetCareService != null)
+            {
+                PetCareService.StartThePetService();
+                _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+                return rowAnimalCare;
+            }
+            return null;
         }
 
         public RowAnimalCare EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
@@ -95,7 +98,7 @@ namespace Monitoria.Domain.PetCare.Services
         public RowAnimalCare calculateValueTotalOnRow(RowAnimalCare rowAnimalCare)
         {
             decimal total = 0;
-            foreach(var item in rowAnimalCare.AnimailServices)
+            foreach (var item in rowAnimalCare.AnimailServices)
             {
                 var petCareServie = _petServicesRepository.GetPetServicesById(item.PetService.Id);
                 total += petCareServie.ServiceValue;
@@ -132,7 +135,7 @@ namespace Monitoria.Domain.PetCare.Services
         {
             var existPosition = rowAnimalCare.AnimailServices.Where(x => x.ExecutionOrder.Equals(professionalServices.ExecutionOrder)).FirstOrDefault();
 
-            if(existPosition == null)
+            if (existPosition == null)
             {
                 rowAnimalCare.AnimailServices.Add(professionalServices);
                 _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
