@@ -2,6 +2,7 @@
 using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Interfaces.Services;
 using Monitoria.Domain.Registration.Entities;
+using Monitoria.Domain.Registration.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 
@@ -10,15 +11,19 @@ namespace Monitoria.Application.PetCare.Apps
     public class RowAnimalCareAppService : IRowAnimalCareAppService
     {
         private readonly IRowAnimalCareService _rowAnimalCareService;
+        private readonly IAnimalService _animalService;
 
-        public RowAnimalCareAppService(IRowAnimalCareService rowAnimalCareService)
+        public RowAnimalCareAppService(IRowAnimalCareService rowAnimalCareService, IAnimalService animalService)
         {
             _rowAnimalCareService = rowAnimalCareService;
+            _animalService = animalService;
         }
 
-        public void AddRowAnimalCare(RowAnimalCare rowAnimalCare)
+        public RowAnimalCare AddRowAnimalCare(RowAnimalCare rowAnimalCare)
         {
-            _rowAnimalCareService.AddRowAnimalCare(rowAnimalCare);
+            rowAnimalCare.AddAnimalToRow(_animalService.GetAnimalById(rowAnimalCare.Animal.Id));
+            var result = _rowAnimalCareService.AddRowAnimalCare(rowAnimalCare);
+            return result;
         }
 
         public bool ExistingEntity(RowAnimalCare rowAnimalCare)
@@ -82,9 +87,9 @@ namespace Monitoria.Application.PetCare.Apps
             _rowAnimalCareService.calculateValueTotalOnRow(RowAnimal);
         }
 
-        public void AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId)
+        public RowAnimalCare AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId)
         {
-            _rowAnimalCareService.AlterProfessionalService(rowAnimalCareId, petServiceId, newProfessionalId);
+           return _rowAnimalCareService.AlterProfessionalService(rowAnimalCareId, petServiceId, newProfessionalId);
         }
 
         public RowAnimalCare AddPetServiceOnRowAnimalCare(Guid rowAnimalCareId, ProfessionalServicesAnimal professionalServices)

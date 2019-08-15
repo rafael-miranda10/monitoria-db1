@@ -27,37 +27,35 @@ namespace Monitoria.API.Controllers.PetCare
         {
             var rowAnimalCare = _mapper.Map<RowAnimalCareViewModel, RowAnimalCare>(rowAnimalCareVM);
 
-            if (!rowAnimalCare.Notifications.Any())
+
+            try
             {
-                try
-                {
-                    _rowAnimalCareAppService.AddRowAnimalCare(rowAnimalCare);
-                    return Ok(new { success = true });
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
-                }
+                var result = _rowAnimalCareAppService.AddRowAnimalCare(rowAnimalCare);
+                if (result.Notifications.Any())
+                    return BadRequest(new { errors = rowAnimalCare.Notifications });
+
+                return Ok(new { success = true });
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(new { errors = rowAnimalCare.Notifications });
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
             }
+
         }
 
         [Route("startServiceOnRow")]
         [HttpPost]
         public IActionResult startServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId)
         {
-                try
-                {
-                    _rowAnimalCareAppService.StartPetCareServiceOnRow(rowAnimalCareId, petCareServiceId);
-                    return Ok(new { success = true });
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
-                }
+            try
+            {
+                _rowAnimalCareAppService.StartPetCareServiceOnRow(rowAnimalCareId, petCareServiceId);
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+            }
         }
         [Route("endServiceOnRow")]
         [HttpPost]
@@ -94,7 +92,11 @@ namespace Monitoria.API.Controllers.PetCare
         {
             try
             {
-                _rowAnimalCareAppService.AlterProfessionalService(rowAnimalCareId, petServiceId, newProfessionalId);
+                var result = _rowAnimalCareAppService.AlterProfessionalService(rowAnimalCareId, petServiceId, newProfessionalId);
+
+                if (result.Notifications.Any())
+                    return BadRequest(new { errors = result.Notifications });
+
                 return Ok(new { success = true });
             }
             catch (Exception ex)
@@ -113,7 +115,7 @@ namespace Monitoria.API.Controllers.PetCare
 
                 if (!serviceOnRow.Notifications.Any())
                 {
-                    var result =_rowAnimalCareAppService.AddPetServiceOnRowAnimalCare(rowAnimalCareId, serviceOnRow);
+                    var result = _rowAnimalCareAppService.AddPetServiceOnRowAnimalCare(rowAnimalCareId, serviceOnRow);
                     if (!result.Notifications.Any())
                         return Ok(new { success = true });
 

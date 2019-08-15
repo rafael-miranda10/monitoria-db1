@@ -6,6 +6,10 @@ namespace Monitoria.Domain.Registration.Entities
 {
     public class Animal : Entity
     {
+        public Animal()
+        {
+
+        }
         public Animal(string name, int age, SpeciesEnum specie, bool isAlive)
         {
             Name = name;

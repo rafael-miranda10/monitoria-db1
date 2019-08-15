@@ -7,7 +7,7 @@ namespace Monitoria.Application.PetCare.Interfaces
 {
     public interface IRowAnimalCareAppService 
     {
-        void AddRowAnimalCare(RowAnimalCare rowAnimalCare);
+        RowAnimalCare AddRowAnimalCare(RowAnimalCare rowAnimalCare);
         void UpdateRowAnimalCare(RowAnimalCare rowAnimalCare);
         void RemoveRowAnimalCare(RowAnimalCare rowAnimalCare);
         void RemoveRowAnimalCareById(Guid id);
@@ -19,7 +19,7 @@ namespace Monitoria.Application.PetCare.Interfaces
         void StartPetCareServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId);
         void EndPetCareServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId);
         void calculateValueTotalOnRow(Guid rowAnimalCareId);
-        void AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId);
+        RowAnimalCare AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId);
         RowAnimalCare AddPetServiceOnRowAnimalCare(Guid rowAnimalCareId, ProfessionalServicesAnimal professionalServices);
     }
 }

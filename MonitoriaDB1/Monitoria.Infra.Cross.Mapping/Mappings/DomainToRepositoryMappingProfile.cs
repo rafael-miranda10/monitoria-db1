@@ -39,7 +39,8 @@ namespace Monitoria.Infra.CrossCutting.Mappings
                 .ForMember(d => d.ExecutionOrder, m => m.MapFrom(s => s.ExecutionOrder))
                 .ForMember(d => d.RowAnimalCareId, m => m.MapFrom(s => s.RowAnimalCare.Id));
             CreateMap<RowAnimalCare, RowAnimalCareRepModel>()
-                .ForMember(d => d.AnimailServices, m => m.MapFrom(s => s.AnimailServices));
+                .ForMember(d => d.AnimailServices, m => m.MapFrom(s => s.AnimailServices))
+                .ForPath(d => d.AnimalId, m => m.MapFrom(s => s.Animal.Id));
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             _servicesAnimal.StartThePetService();
             _servicesAnimal.FinalizeThePetService(DateTime.Now.AddDays(-2));
 
-            var rowAnimalCare = new RowAnimalCare(_animal.Id);
+            var rowAnimalCare = new RowAnimalCare(_animal);
             rowAnimalCare.AddProfessionalService(_servicesAnimal);
             Assert.IsTrue(rowAnimalCare.Invalid);
         }
@@ -57,7 +57,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             _SAHairCut.StartThePetService();
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
-            var rowAnimalCare = new RowAnimalCare(_animal.Id);
+            var rowAnimalCare = new RowAnimalCare(_animal);
             rowAnimalCare.AddProfessionalService(_SAConsult);
             rowAnimalCare.AddProfessionalService(_SAHairCut);
             Assert.IsTrue(rowAnimalCare.Valid);
@@ -74,7 +74,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             _SAHairCut.StartThePetService();
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
-            var rowAnimalCare = new RowAnimalCare(_animal.Id);
+            var rowAnimalCare = new RowAnimalCare(_animal);
             rowAnimalCare.AddProfessionalService(_SAConsult);
             rowAnimalCare.AddProfessionalService(_SAHairCut);
 

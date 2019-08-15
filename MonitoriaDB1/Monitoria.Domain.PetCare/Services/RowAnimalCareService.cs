@@ -20,9 +20,12 @@ namespace Monitoria.Domain.PetCare.Services
             _petServicesRepository = petServicesRepository;
         }
 
-        public void AddRowAnimalCare(RowAnimalCare rowAnimalCare)
+        public RowAnimalCare AddRowAnimalCare(RowAnimalCare rowAnimalCare)
         {
-            _rowAnimalCareRepository.AddRowAnimalCare(rowAnimalCare);
+            if (!rowAnimalCare.Notifications.Any())
+                _rowAnimalCareRepository.AddRowAnimalCare(rowAnimalCare);
+
+            return rowAnimalCare;
         }
 
         public bool ExistingEntity(RowAnimalCare rowAnimalCare)
@@ -120,10 +123,16 @@ namespace Monitoria.Domain.PetCare.Services
 
         public RowAnimalCare AlterProfessionalService(Guid rowAnimalCareId, Guid petServiceId, Guid newProfessionalId)
         {
-            var petService = _rowAnimalCareRepository.GetPetServiceById(petServiceId);
-            var newProfessional = _rowAnimalCareRepository.GetProfessionalById(newProfessionalId);
             var rowAnimalCare = _rowAnimalCareRepository.GetRowAnimalCareById(rowAnimalCareId);
             var result = rowAnimalCare.AnimailServices.Where(x => x.PetService.Id.Equals(petServiceId)).FirstOrDefault();
+            if(result.EndDate != null)
+            {
+                rowAnimalCare.AddNotification(new Notification("RowAnimalCare.ProfessionalServicesAnimal", "Não é possivel alterar o profissional por que o serviço informado já foi finalizado"));
+                return rowAnimalCare;
+            }
+
+            var petService = _rowAnimalCareRepository.GetPetServiceById(petServiceId);
+            var newProfessional = _rowAnimalCareRepository.GetProfessionalById(newProfessionalId);
             rowAnimalCare.AnimailServices.Remove(result);
             result.AlterProfessional(newProfessional);
             rowAnimalCare.AnimailServices.Add(result);

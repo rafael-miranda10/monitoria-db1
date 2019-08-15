@@ -7,7 +7,7 @@ namespace Monitoria.Domain.PetCare.Interfaces.Services
 {
     public interface IRowAnimalCareService 
     {
-        void AddRowAnimalCare(RowAnimalCare rowAnimalCare);
+        RowAnimalCare AddRowAnimalCare(RowAnimalCare rowAnimalCare);
         void UpdateRowAnimalCare(RowAnimalCare rowAnimalCare);
         void RemoveRowAnimalCare(RowAnimalCare rowAnimalCare);
         void RemoveRowAnimalCareById(Guid id);

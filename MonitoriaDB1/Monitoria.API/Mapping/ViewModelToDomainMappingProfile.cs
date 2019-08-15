@@ -45,6 +45,7 @@ namespace Monitoria.API.Mapping
                 .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
             CreateMap<RowAnimalCareViewModel, RowAnimalCare>()
                 .ForMember(d => d.AnimailServices, m => m.MapFrom(s => s.AnimailServices))
+                .ForPath(d => d.Animal.Id, m => m.MapFrom(s => s.AnimalId))
                 .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
         }
     }
