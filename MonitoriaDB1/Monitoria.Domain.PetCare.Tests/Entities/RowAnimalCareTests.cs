@@ -80,11 +80,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
 
             rowAnimalCare.CalculatePriceTotal();
 
-            //if (rowAnimalCare.ValueTotal == (decimal)105.50)
-            //    Assert.IsTrue(true);
-            //else
-            //    Assert.IsTrue(false);
-            Assert.Equals(105.50m, rowAnimalCare.ValueTotal);
+            Assert.AreEqual(105.50m, rowAnimalCare.ValueTotal);
         }
     }
 }

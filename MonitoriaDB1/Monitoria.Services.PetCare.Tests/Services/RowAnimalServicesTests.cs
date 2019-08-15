@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Monitoria.Domain.PetCare.Entities;
 using Monitoria.Domain.PetCare.Enum;
-using Monitoria.Domain.PetCare.Interfaces.Repositories;
 using Monitoria.Domain.PetCare.Services;
 using Monitoria.Domain.Registration.Entities;
 using Monitoria.Domain.Shared.Enum;
@@ -35,6 +33,7 @@ namespace Monitoria.Services.PetCare.Tests.Services
 
         // Mocks
         private string conectionString = "Server=RAFAEL-NOTE\\SQLExpress02;Database=MonitoriaDB1;Trusted_Connection=True;MultipleActiveResultSets=true";
+        //private string conectionString = "Server=localhost;Database=MonitoriaDB1;Trusted_Connection=True;MultipleActiveResultSets=true";
         private Mock<RowAnimalCareRepository> _rowAniamlCareRepository;
         private Mock<PetServicesRepository> _petServicesRepository;
         private Mock<ProfessionalRepository> _professionalServicesRepository;
@@ -144,15 +143,9 @@ namespace Monitoria.Services.PetCare.Tests.Services
         public void ReturnSuccessWhenValueTotalOk()
         {
             var result = _rowAnimalCareService.calculateValueTotalOnRow(_rowAniamlCare);
-
             Assert.AreEqual(105.50m, result.ValueTotal);
         }
-
-
-
 
     }
 }
 
-//https://www.lambda3.com.br/2012/06/testes-integrados-com-webapi/
-//https://flaviohenriquedecarvalho.wordpress.com/2015/02/18/o-que-onde-quando-e-quem-testar-no-seu-codigo/

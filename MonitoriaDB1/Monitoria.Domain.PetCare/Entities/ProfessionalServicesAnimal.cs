@@ -59,15 +59,6 @@ namespace Monitoria.Domain.PetCare.Entities
             StartDate = DateTime.Now;
         }
 
-        //public bool ExistInOrderExecution(int Order)
-        //{
-        //    var result = RowAnimalCare.AnimailServices.Where(x => x.ExecutionOrder == Order).FirstOrDefault();
-        //    if (result != null)
-        //        return true;
-
-        //    return false;
-        //}
-
         public void AlterProfessional(Professional newProfessional)
         {
             Professional = newProfessional;
