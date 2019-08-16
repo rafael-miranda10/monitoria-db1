@@ -87,7 +87,8 @@ namespace Monitoria.Services.PetCare.Tests.Services
             _SAConsult.Id = Guid.NewGuid();
             _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut, 2, "O animal apresenta pequenos ferimentos sugerindo alergia");
             _SAHairCut.Id = Guid.NewGuid();
-            _rowAniamlCare = new RowAnimalCare(_animal);
+            _rowAniamlCare = new RowAnimalCare();
+            _rowAniamlCare.AddAnimalToRow(_animal);
             _rowAniamlCare.Id = Guid.NewGuid();
             _rowAniamlCare.AddProfessionalService(_SAConsult);
             _rowAniamlCare.AddProfessionalService(_SAHairCut);

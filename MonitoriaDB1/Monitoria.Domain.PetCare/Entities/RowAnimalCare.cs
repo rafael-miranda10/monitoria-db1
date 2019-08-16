@@ -11,14 +11,10 @@ namespace Monitoria.Domain.PetCare.Entities
     {
         public RowAnimalCare()
         {
-
-        }
-        public RowAnimalCare(Animal animal)
-        {
-            Animal = animal;
-            ValueTotal = 0;
+            Animal = new Animal();
             AnimailServices = new List<ProfessionalServicesAnimal>();
         }
+
         public RowAnimalCare(Animal animal, List<ProfessionalServicesAnimal> animalsServices)
         {
             Animal = animal;
