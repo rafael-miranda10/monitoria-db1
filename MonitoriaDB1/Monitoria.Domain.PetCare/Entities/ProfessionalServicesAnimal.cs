@@ -38,6 +38,13 @@ namespace Monitoria.Domain.PetCare.Entities
 
         private bool ValidationOfEndDate(DateTime dateToVerify)
         {
+            if(StartDate == null)
+            {
+                AddNotification(new Notification("ProfessionalServicesAnimal.EndDate", "O serviço não foi iniciado ainda."));
+                return false;
+            }
+
+
             int resultCompare = DateTime.Compare(dateToVerify, StartDate.Value);
             if (resultCompare < 0)
             {

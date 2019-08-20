@@ -20,7 +20,6 @@ namespace Monitoria.Infra.Data.Configurations.PetCareContext
            // builder.Property(x => x.EndDate).HasDefaultValue();
 
             builder.Property(x => x.StartDate)
-               .IsRequired()
                .HasColumnName("StartDate");
 
             ////Relacionamento RowAnimalCare

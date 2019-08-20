@@ -88,15 +88,19 @@ namespace Monitoria.Domain.PetCare.Services
             return null;
         }
 
-        public RowAnimalCare EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
+        public ProfessionalServicesAnimal EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId)
         {
             var PetCareService = (from p in rowAnimalCare.AnimailServices
                                   where p.Id.Equals(petCareServiceId)
                                   select p).FirstOrDefault();
 
-            PetCareService.FinalizeThePetService(DateTime.Now);
-            _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
-            return rowAnimalCare;
+            if (PetCareService != null)
+            {
+                PetCareService.FinalizeThePetService(DateTime.Now);
+                _rowAnimalCareRepository.UpdateRowAnimalCare(rowAnimalCare);
+                return PetCareService;
+            }
+            return null;
         }
         public RowAnimalCare calculateValueTotalOnRow(RowAnimalCare rowAnimalCare)
         {
@@ -125,7 +129,7 @@ namespace Monitoria.Domain.PetCare.Services
         {
             var rowAnimalCare = _rowAnimalCareRepository.GetRowAnimalCareById(rowAnimalCareId);
             var result = rowAnimalCare.AnimailServices.Where(x => x.PetService.Id.Equals(petServiceId)).FirstOrDefault();
-            if(result.EndDate != null)
+            if (result.EndDate != null)
             {
                 rowAnimalCare.AddNotification(new Notification("RowAnimalCare.ProfessionalServicesAnimal", "Não é possivel alterar o profissional por que o serviço informado já foi finalizado"));
                 return rowAnimalCare;

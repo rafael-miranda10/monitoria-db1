@@ -9,14 +9,14 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public ProfessionalRepModel()
         {
         }
-        public ProfessionalRepModel(NameRepModel name, DocumentRepModel document, EmailRepModel email, AddressRepModel address, ProfessionalEnum jobPosition, ProfessionalServicesAnimalRepModel professionalServicesAnimal)
+       
+        public ProfessionalRepModel(NameRepModel name, DocumentRepModel document, EmailRepModel email, AddressRepModel address, ProfessionalEnum jobPosition)
         {
             Name = name;
             Document = document;
             Email = email;
             Address = address;
             JobPosition = jobPosition;
-            ProfessionalServicesAnimal = professionalServicesAnimal;
         }
 
         public NameRepModel Name { get; private set; }
@@ -24,6 +24,5 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public EmailRepModel Email { get; private set; }
         public AddressRepModel Address { get; private set; }
         public ProfessionalEnum JobPosition { get; private set; }
-        public ProfessionalServicesAnimalRepModel ProfessionalServicesAnimal { get; private set; }
     }
 }

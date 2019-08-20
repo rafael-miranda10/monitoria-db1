@@ -17,7 +17,7 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
 
         public Guid ProfessionalId { get; private set; }
         public Guid PetServiceId { get; private set; }
-        public DateTime StartDate { get; private set; }
+        public DateTime? StartDate { get; private set; }
         public DateTime? EndDate { get; private set; }
         public string Note { get; private set; }
         public int ExecutionOrder { get; private set; }

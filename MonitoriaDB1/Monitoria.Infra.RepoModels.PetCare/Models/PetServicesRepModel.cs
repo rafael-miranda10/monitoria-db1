@@ -8,14 +8,14 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public PetServicesRepModel()
         {
         }
-        public PetServicesRepModel(string descricao, CategoryEnum category, string checkList, decimal serviceValue, bool active, ProfessionalServicesAnimalRepModel professionalServicesAnimal)
+        
+        public PetServicesRepModel(string descricao, CategoryEnum category, string checkList, decimal serviceValue, bool active)
         {
             Description = descricao;
             Category = category;
             CheckList = checkList;
             Active = active;
             ServiceValue = serviceValue;
-            ProfessionalServicesAnimal = professionalServicesAnimal;
         }
 
         public string Description { get; private set; }
@@ -23,6 +23,5 @@ namespace Monitoria.Infra.RepoModels.PetCare.Models
         public string CheckList { get; private set; }
         public decimal ServiceValue { get; private set; }
         public bool Active { get; private set; }
-        public ProfessionalServicesAnimalRepModel ProfessionalServicesAnimal { get; private set; }
     }
 }

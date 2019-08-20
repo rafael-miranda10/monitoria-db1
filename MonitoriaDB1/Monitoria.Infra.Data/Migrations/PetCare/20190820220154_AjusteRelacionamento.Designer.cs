@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Monitoria.Infra.Data.Contexts;
 
 namespace Monitoria.Infra.Data.Migrations.PetCare
 {
     [DbContext(typeof(PetCareContext))]
-    partial class PetCareContextModelSnapshot : ModelSnapshot
+    [Migration("20190820220154_AjusteRelacionamento")]
+    partial class AjusteRelacionamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,10 +83,14 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
                     b.Property<Guid>("RowAnimalCareId");
 
-                    b.Property<DateTime?>("StartDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnName("StartDate");
 
                     b.HasKey("Id", "PetServiceId", "ProfessionalId");
+
+                    b.HasIndex("PetServiceId");
+
+                    b.HasIndex("ProfessionalId");
 
                     b.HasIndex("RowAnimalCareId");
 
@@ -225,6 +231,16 @@ namespace Monitoria.Infra.Data.Migrations.PetCare
 
             modelBuilder.Entity("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalServicesAnimalRepModel", b =>
                 {
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.PetServicesRepModel", "PetService")
+                        .WithMany()
+                        .HasForeignKey("PetServiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.ProfessionalRepModel", "Professional")
+                        .WithMany()
+                        .HasForeignKey("ProfessionalId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Monitoria.Infra.RepoModels.PetCare.Models.RowAnimalCareRepModel", "RowAnimalCare")
                         .WithMany("AnimailServices")
                         .HasForeignKey("RowAnimalCareId")

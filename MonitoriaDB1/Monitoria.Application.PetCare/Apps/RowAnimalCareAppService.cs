@@ -76,10 +76,11 @@ namespace Monitoria.Application.PetCare.Apps
             var RowAnimal = _rowAnimalCareService.GetRowAnimalCareById(rowAnimalCareId);
             _rowAnimalCareService.StartPetCareServiceOnRow(RowAnimal, petCareServiceId);
         }
-        public void EndPetCareServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId)
+        public ProfessionalServicesAnimal EndPetCareServiceOnRow(Guid rowAnimalCareId, Guid petCareServiceId)
         {
             var RowAnimal = _rowAnimalCareService.GetRowAnimalCareById(rowAnimalCareId);
-            _rowAnimalCareService.EndPetCareServiceOnRow(RowAnimal, petCareServiceId);
+            var petCare = _rowAnimalCareService.EndPetCareServiceOnRow(RowAnimal, petCareServiceId);
+            return petCare;
         }
         public void calculateValueTotalOnRow(Guid rowAnimalCareId)
         {

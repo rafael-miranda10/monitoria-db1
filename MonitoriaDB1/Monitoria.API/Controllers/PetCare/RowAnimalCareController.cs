@@ -63,7 +63,11 @@ namespace Monitoria.API.Controllers.PetCare
         {
             try
             {
-                _rowAnimalCareAppService.EndPetCareServiceOnRow(rowAnimalCareId, petCareServiceId);
+
+                var result = _rowAnimalCareAppService.EndPetCareServiceOnRow(rowAnimalCareId, petCareServiceId);
+                if (result.Notifications.Any())
+                    return BadRequest(new { errors = result.Notifications });
+
                 return Ok(new { success = true });
             }
             catch (Exception ex)

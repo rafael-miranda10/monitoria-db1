@@ -17,7 +17,7 @@ namespace Monitoria.Domain.PetCare.Interfaces.Services
         RowAnimalCare GetEntityEqualTo(RowAnimalCare rowAnimalCare);
         bool ExistingEntity(RowAnimalCare rowAnimalCare);
         RowAnimalCare StartPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId);
-        RowAnimalCare EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId);
+        ProfessionalServicesAnimal EndPetCareServiceOnRow(RowAnimalCare rowAnimalCare, Guid petCareServiceId);
         RowAnimalCare calculateValueTotalOnRow(RowAnimalCare rowAnimalCare);
         Professional GetProfessionalById(Guid Id);
         PetServices GetPetServiceById(Guid Id);
