@@ -1,0 +1,30 @@
+{
+  "description": "Consulta Veterinária",
+  "category": 2,
+  "checkList": "Sempre solicitar um hemograma completo",
+  "serviceValue": 60.90,
+  "active": true,
+  "id": "00000000-0000-0000-0000-000000000000"
+}
+
+//#######################################################
+
+{
+  "description": "Banho e Tosa",
+  "category": 1,
+  "checkList": "Sempre utilizar shampoo prime, água morna, não esquecer o acessório e de passar perfume",
+  "serviceValue": 35.90,
+  "active": true,
+  "id": "00000000-0000-0000-0000-000000000000"
+}
+
+//########################################################
+
+{
+  "description": "Taxi Dog",
+  "category": 1,
+  "checkList": "Sempre dirigir com segurança e nunca esquecer do cinto",
+  "serviceValue": 10.90,
+  "active": true,
+  "id": "00000000-0000-0000-0000-000000000000"
+}

@@ -1,0 +1,39 @@
+{
+  "name": {
+    "firstName": "Rafael Arthur",
+    "lastName": "Miranda"
+  },
+  "document": {
+    "number": "37025553824",
+    "type": 1
+  },
+  "email": {
+    "address": "arthur.rafa10@gmail.com"
+  },
+  "address": {
+    "street": "Rua Quintino Bocaiuva",
+    "number": "935",
+    "neighborhood": "JD Universitario",
+    "city": "Maringá",
+    "state": "Paraná",
+    "country": "Brasil",
+    "zipCode": "87020160"
+  },
+  "animails": [
+    {
+      "name": "Gerg",
+      "age": 1,
+      "specie": 2,
+      "isAlive": true,
+      "id": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "name": "Bud",
+      "age": 7,
+      "specie": 2,
+      "isAlive": true,
+      "id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "id": "00000000-0000-0000-0000-000000000000"
+}

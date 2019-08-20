@@ -1,0 +1,14 @@
+{
+  "animalId": "051DA687-F3FF-492A-8B46-17E69009FABE",
+  "valueTotal": 0,
+  "animailServices": [
+    {
+      "profissionalId": "64E5816C-4840-47E9-9355-3A07EADC429D",
+      "petServiceId": "C67889BA-AA67-48BF-88E5-80AD6BD2D3B4",
+      "note": "Animal muito fraco",
+      "executionOrder": 1,
+      "id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "id": "00000000-0000-0000-0000-000000000000"
+}

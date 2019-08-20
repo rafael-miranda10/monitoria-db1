@@ -1,0 +1,76 @@
+{
+  "name": {
+    "firstName": "Bruno",
+    "lastName": "Da Silva"
+  },
+  "document": {
+    "number": "98668385011",
+    "type": 1
+  },
+  "email": {
+    "address": "bruno.silva@gmail.com"
+  },
+  "address": {
+    "street": "Av. Brasil",
+    "number": "1569",
+    "neighborhood": "Centro",
+    "city": "Presidente Prudente",
+    "state": "São Paulo",
+    "country": "Brasil",
+    "zipCode": "19033040"
+  },
+  "jobPosition": 1,
+  "id": "00000000-0000-0000-0000-000000000000"
+}
+//########################################################################
+
+{
+  "name": {
+    "firstName": "Danilo",
+    "lastName": "Costa"
+  },
+  "document": {
+    "number": "20378487060",
+    "type": 1
+  },
+  "email": {
+    "address": "danilo.costa@gmail.com"
+  },
+  "address": {
+    "street": "Rua José LAves de Oliveira",
+    "number": "1569",
+    "neighborhood": "Brasil Novo",
+    "city": "Presidente Prudente",
+    "state": "São Paulo",
+    "country": "Brasil",
+    "zipCode": "19033040"
+  },
+  "jobPosition": 2,
+  "id": "00000000-0000-0000-0000-000000000000"
+}
+//########################################################################
+
+{
+  "name": {
+    "firstName": "Valdomiro",
+    "lastName": "Miranda"
+  },
+  "document": {
+    "number": "27213754076",
+    "type": 1
+  },
+  "email": {
+    "address": "valdomiro.miranda@gmail.com"
+  },
+  "address": {
+    "street": "Rua Nochete",
+    "number": "450",
+    "neighborhood": "Vila Operária",
+    "city": "Presidente Prudente",
+    "state": "São Paulo",
+    "country": "Brasil",
+    "zipCode": "19033040"
+  },
+  "jobPosition": 3,
+  "id": "00000000-0000-0000-0000-000000000000"
+}
