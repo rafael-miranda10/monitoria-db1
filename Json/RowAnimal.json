@@ -1,10 +1,10 @@
 {
-  "animalId": "5922E558-328C-4D8F-B962-4ECF8B7B50D2",
+  "animalId": "6907FB79-BEB4-4A01-9B4E-06CD430DF5F8",
   "valueTotal": 0,
   "animailServices": [
     {
       "profissionalId": "B84A2E20-1458-4594-8289-B1138E40E7C7",
-      "petServiceId": "4BF2FA9A-BFAE-43BB-A8C0-230DBF6324E2",
+      "petServiceId": "D5FA6386-5CBE-4078-BA7E-84F252E737B9",
       "note": "Animal muito fraco",
       "executionOrder": 1,
       "id": "00000000-0000-0000-0000-000000000000"
@@ -13,37 +13,3 @@
   "id": "00000000-0000-0000-0000-000000000000"
 }
 
-##################################################################################
-
-rowAnimalCareId : "0B321EE5-E806-4B3F-BB67-4FD35F6AC508"
-
-petCareServiceId: "697A1ABF-8CAD-42A2-8F3D-94B00E9ABEDC"
-
-newProfessionalId: "A62B30E4-3C6F-4AA1-BA5C-9D3947B3CB79"
-
-##################################################################################
-
-{
-      "profissionalId": "697A1ABF-8CAD-42A2-8F3D-94B00E9ABEDC",
-      "petServiceId": "2AA9A575-BCF3-4F2A-AB19-8FDED1999285",
-      "note": "Animal com pata quebrada",
-      "executionOrder": 2,
-      "id": "00000000-0000-0000-0000-000000000000"
-}
-
-############################################################################
-
-{
-  "animalId": "ba639c61-d844-406e-8a65-b4977b0936b5",
-  "valueTotal": 0,
-  "animailServices": [
-    {
-      "profissionalId": "B84A2E20-1458-4594-8289-B1138E40E7C7",
-      "petServiceId": "4BF2FA9A-BFAE-43BB-A8C0-230DBF6324E2",
-      "note": "Animal muito fraco",
-      "executionOrder": 1,
-      "id": "00000000-0000-0000-0000-000000000000"
-    }
-  ],
-  "id": "00000000-0000-0000-0000-000000000000"
-}

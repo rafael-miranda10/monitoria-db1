@@ -10,3 +10,5 @@ adicionar no AddAniamlToRow e Construtor
 ValidateAgeAnimal();
 
 
+Mudar no modelo do repositorio e na classe de configuração
+rodar migration e update-database
