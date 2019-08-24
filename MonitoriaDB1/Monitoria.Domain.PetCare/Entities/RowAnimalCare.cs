@@ -9,10 +9,9 @@ namespace Monitoria.Domain.PetCare.Entities
 {
     public class RowAnimalCare : Entity
     {
-        public RowAnimalCare()
+        protected RowAnimalCare()
         {
-            Animal = new Animal();
-            AnimailServices = new List<ProfessionalServicesAnimal>();
+
         }
 
         public RowAnimalCare(Animal animal, List<ProfessionalServicesAnimal> animalsServices)
@@ -53,12 +52,7 @@ namespace Monitoria.Domain.PetCare.Entities
         public void AddAnimalToRow(Animal animal)
         {
             Animal = animal;
-            ValidadeAgeAnimal();
         }
-        private void ValidadeAgeAnimal()
-        {
-            if(Animal.Age >= 10)
-                AddNotification(new Notification("RowAnimalCare.Animal","Não é possivel atender animais com idade igual o maior que 10 anos!"));
-        }
+
     }
 }

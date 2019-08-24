@@ -1,0 +1,12 @@
+RowAnimalCare.cs
+
+ private void ValidateAgeAnimal()
+ {
+     if(Animal.Age >= 10)
+         AddNotification(new Notification("RowAnimalCare.Animal","Não é possivel atender animais com idade igual o maior que 10 anos!"));
+ }
+
+adicionar no AddAniamlToRow e Construtor
+ValidateAgeAnimal();
+
+

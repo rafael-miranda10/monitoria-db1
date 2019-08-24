@@ -5,6 +5,7 @@ using Monitoria.Domain.Registration.Entities;
 using Monitoria.Domain.Shared.Enum;
 using Monitoria.Domain.Shared.ValueObjects;
 using System;
+using System.Collections.Generic;
 
 namespace Monitoria.Domain.PetCare.Tests.Entities
 {
@@ -19,6 +20,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
         private readonly Document _document;
         private readonly Address _address;
         private readonly Animal _animal;
+        private List<ProfessionalServicesAnimal> _animalServices;
 
 
         public RowAnimalCareTests()
@@ -31,6 +33,7 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             _petServicesConsult = new PetServices("Consulta Veterinária", CategoryEnum.VeterinaryProcedure, "Examinar o animal para o diagnóstico inicial", (decimal)70.5, true);
             _petServicesHairCut = new PetServices("Banho e Tosa", CategoryEnum.AnimalEsthetics, "Examinar o animal em busca de pequenos ferimentos", (decimal)35.0, true);
             _animal = new Animal("Greg", 2, SpeciesEnum.Canine, true);
+            
 
         }
 
@@ -40,9 +43,11 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             var _servicesAnimal = new ProfessionalServicesAnimal(_professional, _petServicesConsult, 1,"O animal ficará em observação");
             _servicesAnimal.StartThePetService();
             _servicesAnimal.FinalizeThePetService(DateTime.Now.AddDays(-2));
+            _animalServices = new List<ProfessionalServicesAnimal>();
+            _animalServices.Add(_servicesAnimal);
 
-            var rowAnimalCare = new RowAnimalCare();
-            rowAnimalCare.AddAnimalToRow(_animal);
+
+            var rowAnimalCare = new RowAnimalCare(_animal, _animalServices);
             rowAnimalCare.AddProfessionalService(_servicesAnimal);
             Assert.IsTrue(rowAnimalCare.Invalid);
         }
@@ -58,8 +63,12 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             _SAHairCut.StartThePetService();
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
-            var rowAnimalCare = new RowAnimalCare();
-            rowAnimalCare.AddAnimalToRow(_animal);
+            _animalServices = new List<ProfessionalServicesAnimal>();
+            _animalServices.Add(_SAConsult);
+            _animalServices.Add(_SAHairCut);
+
+
+            var rowAnimalCare = new RowAnimalCare(_animal, _animalServices);
             rowAnimalCare.AddProfessionalService(_SAConsult);
             rowAnimalCare.AddProfessionalService(_SAHairCut);
             Assert.IsTrue(rowAnimalCare.Valid);
@@ -76,10 +85,12 @@ namespace Monitoria.Domain.PetCare.Tests.Entities
             _SAHairCut.StartThePetService();
             _SAConsult.FinalizeThePetService(DateTime.Now);
 
-            var rowAnimalCare = new RowAnimalCare();
-            rowAnimalCare.AddAnimalToRow(_animal);
-            rowAnimalCare.AddProfessionalService(_SAConsult);
-            rowAnimalCare.AddProfessionalService(_SAHairCut);
+            _animalServices = new List<ProfessionalServicesAnimal>();
+            _animalServices.Add(_SAConsult);
+            _animalServices.Add(_SAHairCut);
+
+
+            var rowAnimalCare = new RowAnimalCare(_animal, _animalServices);
 
             rowAnimalCare.CalculatePriceTotal();
 

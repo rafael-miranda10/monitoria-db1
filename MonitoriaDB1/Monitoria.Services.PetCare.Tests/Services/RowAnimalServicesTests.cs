@@ -30,10 +30,11 @@ namespace Monitoria.Services.PetCare.Tests.Services
         private  Address _address;
         private  Animal _animal;
         private  RowAnimalCare _rowAniamlCare;
+        private List<ProfessionalServicesAnimal> _animalServices;
 
         // Mocks
-        private string conectionString = "Server=RAFAEL-NOTE\\SQLExpress02;Database=MonitoriaDB1;Trusted_Connection=True;MultipleActiveResultSets=true";
-        //private string conectionString = "Server=localhost;Database=MonitoriaDB1;Trusted_Connection=True;MultipleActiveResultSets=true";
+        //private string conectionString = "Server=RAFAEL-NOTE\\SQLExpress02;Database=MonitoriaDB1;Trusted_Connection=True;MultipleActiveResultSets=true";
+        private string conectionString = "Server=localhost;Database=MonitoriaDB1;Trusted_Connection=True;MultipleActiveResultSets=true";
         private Mock<RowAnimalCareRepository> _rowAniamlCareRepository;
         private Mock<PetServicesRepository> _petServicesRepository;
         private Mock<ProfessionalRepository> _professionalServicesRepository;
@@ -87,11 +88,16 @@ namespace Monitoria.Services.PetCare.Tests.Services
             _SAConsult.Id = Guid.NewGuid();
             _SAHairCut = new ProfessionalServicesAnimal(_professional, _petServicesHairCut, 2, "O animal apresenta pequenos ferimentos sugerindo alergia");
             _SAHairCut.Id = Guid.NewGuid();
-            _rowAniamlCare = new RowAnimalCare();
-            _rowAniamlCare.AddAnimalToRow(_animal);
+
+            _animalServices = new List<ProfessionalServicesAnimal>();
+            _animalServices.Add(_SAConsult);
+            _animalServices.Add(_SAHairCut);
+
+
+            _rowAniamlCare = new RowAnimalCare(_animal, _animalServices);
+
             _rowAniamlCare.Id = Guid.NewGuid();
-            _rowAniamlCare.AddProfessionalService(_SAConsult);
-            _rowAniamlCare.AddProfessionalService(_SAHairCut);
+
             _rowAnimalCareService = new RowAnimalCareService(_rowAniamlCareRepository.Object, _petServicesRepository.Object);
             _petServicesService = new PetServicesService(_petServicesRepository.Object);
             _professionalServiceService = new ProfessionalService(_professionalServicesRepository.Object);
@@ -128,11 +134,7 @@ namespace Monitoria.Services.PetCare.Tests.Services
         public void ReturnSuccessWhenEndDateIsOK()
         {
             _rowAnimalCareService.StartPetCareServiceOnRow(_rowAniamlCare, _SAConsult.Id);
-            var result = _rowAnimalCareService.EndPetCareServiceOnRow(_rowAniamlCare, _SAConsult.Id);
-
-            var PetCareService = (from p in result.AnimailServices
-                                  where p.Id.Equals(_SAConsult.Id)
-                                  select p).FirstOrDefault();
+            var PetCareService = _rowAnimalCareService.EndPetCareServiceOnRow(_rowAniamlCare, _SAConsult.Id);
 
             Assert.IsNotNull(PetCareService, "Serviço não inicializado");
             Assert.AreEqual(PetCareService.EndDate.Value.Day, DateTime.Now.Day);
