@@ -7,7 +7,6 @@ namespace Monitoria.Domain.Shared.Entities
     {
         public Entity()
         {
-           // Id = Guid.NewGuid();
         }
 
         public Guid Id { get; set; }
